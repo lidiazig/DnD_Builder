@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_perfil"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFCFC"
+    android:orientation="vertical"
+    tools:context=".ui.main.PerfilFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#040404"
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="114dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerAlineamiento"
+            app:layout_constraintStart_toEndOf="@+id/spinnerAlineamiento">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="16dp"
+                android:text="Nombre"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txtNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="55dp"
+                android:background="@color/cardview_dark_background"
+                android:ems="10"
+                android:hint="Nombre personaje"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="33dp"
+                android:layout_marginRight="33dp"
+                android:text="Nivel"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txtNivel"
+                android:layout_width="55dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="39dp"
+                android:background="@color/cardview_dark_background"
+                android:ems="10"
+                android:hint="Nivel"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/imagenPersonaje"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="162dp"
+                android:text="Clase"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="32dp"
+                android:text="Raza"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerClase" />
+
+            <Spinner
+                android:id="@+id/spinnerClase"
+                android:layout_width="0dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="51dp"
+                android:background="@color/cardview_dark_background"
+                app:layout_constraintBottom_toBottomOf="@+id/btnImagenAnterior"
+                app:layout_constraintEnd_toStartOf="@+id/btnImagenAnterior"
+                app:layout_constraintStart_toStartOf="@+id/textView15"
+                app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+            <Spinner
+                android:id="@+id/spinnerRaza"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="88dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginRight="34dp"
+                android:layout_marginBottom="88dp"
+                android:background="@color/cardview_dark_background"
+                app:layout_constraintBottom_toTopOf="@+id/txtGenero"
+                app:layout_constraintEnd_toEndOf="@+id/btnImagenAnterior"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spinnerClase" />
+
+            <ImageView
+                android:id="@+id/imagenPersonaje"
+                android:layout_width="161dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="63dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="61dp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSubir"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtNombre"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:layout_marginBottom="120dp"
+                android:text="Género"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textView18"
+                app:layout_constraintStart_toStartOf="@+id/txtGenero"
+                app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+            <Button
+                android:id="@+id/btnSubir"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="35dp"
+                android:text="Subir imagen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/spinnerRaza"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/txtGenero"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginRight="34dp"
+                android:layout_marginBottom="40dp"
+                android:background="@color/cardview_dark_background"
+                android:ems="10"
+                android:hint="Género"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/textView18"
+                app:layout_constraintEnd_toEndOf="@+id/spinnerRaza"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:text="Tamaño"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/textView19"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView19" />
+
+            <EditText
+                android:id="@+id/txtTamano"
+                android:layout_width="94dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginBottom="34dp"
+                android:background="@color/cardview_dark_background"
+                android:ems="10"
+                android:hint="Tamaño"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/textView23"
+                app:layout_constraintStart_toStartOf="@+id/textView18"
+                app:layout_constraintTop_toTopOf="@+id/textView18" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Edad"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/txtEdad"
+                app:layout_constraintStart_toStartOf="@+id/txtEdad" />
+
+            <EditText
+                android:id="@+id/txtEdad"
+                android:layout_width="93dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="69dp"
+                android:layout_marginLeft="69dp"
+                android:layout_marginTop="116dp"
+                android:layout_marginEnd="68dp"
+                android:layout_marginRight="68dp"
+                android:layout_marginBottom="117dp"
+                android:background="@color/cardview_dark_background"
+                android:ems="10"
+                android:hint="Edad"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="@+id/spinnerAlineamiento"
+                app:layout_constraintEnd_toEndOf="@+id/imagenPersonaje"
+                app:layout_constraintStart_toEndOf="@+id/txtGenero"
+                app:layout_constraintTop_toTopOf="@+id/btnSubir" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginBottom="24dp"
+                android:text="Idiomas"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toTopOf="@+id/txtIdiomas"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <EditText
+                android:id="@+id/txtIdiomas"
+                android:layout_width="300dp"
+                android:layout_height="131dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:background="@color/cardview_dark_background"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Idiomas del personaje"
+                android:inputType="textMultiLine"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
+                android:layout_marginBottom="265dp"
+                android:text="Alineamiento"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinnerAlineamiento"
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="47dp"
+                android:layout_marginBottom="49dp"
+                android:background="@color/cardview_dark_background"
+                android:entries="@array/alineamientos"
+                app:layout_constraintBottom_toBottomOf="@+id/textView20"
+                app:layout_constraintEnd_toStartOf="@+id/txtEdad"
+                app:layout_constraintStart_toStartOf="@+id/textView23"
+                app:layout_constraintTop_toTopOf="@+id/textView23" />
+
+            <Button
+                android:id="@+id/btnImagenAnterior"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="1dp"
+                android:layout_marginRight="1dp"
+                android:background="@android:color/darker_gray"
+                android:foreground="@drawable/arrowleft"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imagenPersonaje"
+                app:layout_constraintEnd_toStartOf="@+id/imagenPersonaje"
+                app:layout_constraintTop_toTopOf="@+id/imagenPersonaje" />
+
+            <Button
+                android:id="@+id/btnImagenSiguiente"
+                android:layout_width="40dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginLeft="6dp"
+                android:background="@android:color/darker_gray"
+                android:foreground="@drawable/arrowright"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btnImagenAnterior"
+                app:layout_constraintStart_toEndOf="@+id/imagenPersonaje"
+                app:layout_constraintTop_toTopOf="@+id/btnImagenAnterior" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
