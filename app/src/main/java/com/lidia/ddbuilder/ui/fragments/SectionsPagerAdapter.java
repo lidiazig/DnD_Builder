@@ -1,4 +1,4 @@
-package com.lidia.ddbuilder.ui.main;
+package com.lidia.ddbuilder.ui.fragments;
 
 import android.content.Context;
 

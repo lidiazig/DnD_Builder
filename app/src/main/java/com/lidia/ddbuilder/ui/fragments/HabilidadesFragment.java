@@ -1,4 +1,4 @@
-package com.lidia.ddbuilder.ui.main;
+package com.lidia.ddbuilder.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.lidia.ddbuilder.R;
 
-public class ConjurosFragment extends Fragment {
-
+public class HabilidadesFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
 
-    public static ConjurosFragment newInstance(int index) {
-        ConjurosFragment fragment = new ConjurosFragment();
+    public static HabilidadesFragment newInstance(int index) {
+        HabilidadesFragment fragment = new HabilidadesFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
@@ -41,7 +40,7 @@ public class ConjurosFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_conjuros, container, false);
+        View root = inflater.inflate(R.layout.fragment_habilidades, container, false);
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {

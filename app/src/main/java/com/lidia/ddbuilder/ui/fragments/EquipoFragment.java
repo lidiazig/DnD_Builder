@@ -1,4 +1,4 @@
-package com.lidia.ddbuilder.ui.main;
+package com.lidia.ddbuilder.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +11,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.lidia.ddbuilder.R;
 
-public class InventarioFragment extends Fragment {
+public class EquipoFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
 
-    public static InventarioFragment newInstance(int index) {
-        InventarioFragment fragment = new InventarioFragment();
+    public static EquipoFragment newInstance(int index) {
+        EquipoFragment fragment = new EquipoFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
@@ -40,7 +40,7 @@ public class InventarioFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_inventario, container, false);
+        View root = inflater.inflate(R.layout.fragment_equipo, container, false);
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {

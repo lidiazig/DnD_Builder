@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#FDFCFC"
     android:orientation="vertical"
-    tools:context=".ui.main.PerfilFragment">
+    tools:context=".ui.fragments.PerfilFragment">
 
     <ScrollView
         android:layout_width="match_parent"
