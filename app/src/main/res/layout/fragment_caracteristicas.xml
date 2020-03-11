@@ -244,16 +244,16 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:layout_width="175dp"
-                android:layout_height="130dp"
+                android:layout_width="229dp"
+                android:layout_height="128dp"
                 app:cardBackgroundColor="#595656"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
                 app:cardPreventCornerOverlap="false"
                 app:cardUseCompatPadding="false"
                 app:contentPadding="5dp"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="459dp">
+                tools:layout_editor_absoluteX="11dp"
+                tools:layout_editor_absoluteY="453dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -266,26 +266,140 @@
                         android:text="INICIATIVA"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        tools:layout_editor_absoluteX="34dp"
-                        tools:layout_editor_absoluteY="16dp" />
+                        tools:layout_editor_absoluteX="51dp"
+                        tools:layout_editor_absoluteY="7dp" />
 
                     <EditText
                         android:id="@+id/editText8"
-                        android:layout_width="65dp"
+                        android:layout_width="50dp"
                         android:layout_height="35dp"
                         android:ems="10"
                         android:inputType="number"
-                        tools:layout_editor_absoluteX="51dp"
-                        tools:layout_editor_absoluteY="69dp" />
+                        tools:layout_editor_absoluteX="153dp"
+                        tools:layout_editor_absoluteY="67dp" />
 
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:text="+5"
+                        android:textSize="30sp"
+                        tools:layout_editor_absoluteX="16dp"
+                        tools:layout_editor_absoluteY="62dp" />
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="69dp"
+                        android:layout_height="30dp"
+                        android:text="= DES +"
+                        android:textSize="18sp"
+                        tools:layout_editor_absoluteX="75dp"
+                        tools:layout_editor_absoluteY="72dp" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="50dp"
+                        android:layout_height="20dp"
+                        android:text="DOTE"
+                        tools:layout_editor_absoluteX="152dp"
+                        tools:layout_editor_absoluteY="37dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="395dp"
+                android:layout_height="155dp"
+                tools:layout_editor_absoluteX="13dp"
+                tools:layout_editor_absoluteY="601dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CA"
+                        tools:layout_editor_absoluteX="9dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOQUE"
+                        tools:layout_editor_absoluteX="7dp"
+                        tools:layout_editor_absoluteY="68dp" />
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DESPR"
+                        tools:layout_editor_absoluteX="9dp"
+                        tools:layout_editor_absoluteY="120dp" />
+
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="25"
+                        tools:layout_editor_absoluteX="39dp"
+                        tools:layout_editor_absoluteY="16dp" />
+
+                    <TextView
+                        android:id="@+id/textView29"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="= 10 +"
+                        tools:layout_editor_absoluteX="67dp"
+                        tools:layout_editor_absoluteY="17dp" />
+
+                    <EditText
+                        android:id="@+id/editText2"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:inputType="numberSigned"
+                        tools:layout_editor_absoluteX="115dp"
+                        tools:layout_editor_absoluteY="5dp" />
+
+                    <EditText
+                        android:id="@+id/editText3"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:layout_editor_absoluteX="221dp"
+                        tools:layout_editor_absoluteY="1dp" />
+
+                    <EditText
+                        android:id="@+id/editText4"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:layout_editor_absoluteX="280dp"
+                        tools:layout_editor_absoluteY="2dp" />
+
+                    <EditText
+                        android:id="@+id/editText5"
+                        android:layout_width="50dp"
+                        android:layout_height="35dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        tools:layout_editor_absoluteX="341dp"
+                        tools:layout_editor_absoluteY="5dp" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="175dp"
                 android:layout_height="130dp"
-                tools:layout_editor_absoluteX="212dp"
-                tools:layout_editor_absoluteY="459dp">
+                tools:layout_editor_absoluteX="14dp"
+                tools:layout_editor_absoluteY="1206dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
