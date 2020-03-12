@@ -4,427 +4,724 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9C27B0">
+    android:background="#000000">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#000000"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="#000000">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="392dp"
-                android:layout_height="423dp"
-                tools:layout_editor_absoluteX="10dp"
-                tools:layout_editor_absoluteY="8dp">
+            <EditText
+                android:id="@+id/txtTempCar"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="321dp"
+                tools:layout_editor_absoluteY="322dp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/txtTempInt"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="318dp"
+                tools:layout_editor_absoluteY="224dp" />
 
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="PUNT"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="103dp"
-                        tools:layout_editor_absoluteY="8dp" />
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TEMP"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="329dp"
+                tools:layout_editor_absoluteY="33dp" />
 
-                    <EditText
-                        android:id="@+id/txtConstitucion"
-                        android:layout_width="65dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        tools:layout_editor_absoluteX="93dp"
-                        tools:layout_editor_absoluteY="174dp" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MOD"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="33dp" />
 
-                    <TextView
-                        android:id="@+id/lbModCar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="207dp"
-                        tools:layout_editor_absoluteY="354dp" />
+            <TextView
+                android:id="@+id/lbModDes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="230dp"
+                tools:layout_editor_absoluteY="128dp" />
 
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CAR"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="14dp"
-                        tools:layout_editor_absoluteY="354dp" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FUE"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="41dp"
+                tools:layout_editor_absoluteY="80dp" />
 
-                    <EditText
-                        android:id="@+id/txtInteligencia"
-                        android:layout_width="65dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        tools:layout_editor_absoluteX="93dp"
-                        tools:layout_editor_absoluteY="230dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DES"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="128dp" />
 
-                    <EditText
-                        android:id="@+id/txtSabiduria"
-                        android:layout_width="65dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        tools:layout_editor_absoluteX="93dp"
-                        tools:layout_editor_absoluteY="293dp" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CON"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="178dp" />
 
-                    <TextView
-                        android:id="@+id/lbModFue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="207dp"
-                        tools:layout_editor_absoluteY="61dp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INT"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="47dp"
+                tools:layout_editor_absoluteY="224dp" />
 
-                    <EditText
-                        android:id="@+id/txtDestreza"
-                        android:layout_width="65dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        tools:layout_editor_absoluteX="93dp"
-                        tools:layout_editor_absoluteY="119dp" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAB"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="273dp" />
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CON"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="9dp"
-                        tools:layout_editor_absoluteY="174dp" />
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CAR"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="322dp" />
 
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="INT"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="23dp"
-                        tools:layout_editor_absoluteY="230dp" />
+            <TextView
+                android:id="@+id/lbModCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="322dp" />
 
-                    <EditText
-                        android:id="@+id/txtCarisma"
-                        android:layout_width="65dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        tools:layout_editor_absoluteX="93dp"
-                        tools:layout_editor_absoluteY="354dp" />
+            <TextView
+                android:id="@+id/lbModSab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="224dp" />
 
-                    <EditText
-                        android:id="@+id/txtFuerza"
-                        android:layout_width="65dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textColor="#FFFFFF"
-                        android:textSize="24sp"
-                        tools:layout_editor_absoluteX="93dp"
-                        tools:layout_editor_absoluteY="61dp" />
+            <TextView
+                android:id="@+id/lbModInt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="230dp"
+                tools:layout_editor_absoluteY="273dp" />
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TEMP"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="308dp"
-                        tools:layout_editor_absoluteY="8dp" />
+            <TextView
+                android:id="@+id/lbModCon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="230dp"
+                tools:layout_editor_absoluteY="178dp" />
 
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SAB"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="13dp"
-                        tools:layout_editor_absoluteY="293dp" />
+            <TextView
+                android:id="@+id/lbModFue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+0"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="230dp"
+                tools:layout_editor_absoluteY="80dp" />
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="FUE"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="18dp"
-                        tools:layout_editor_absoluteY="61dp" />
+            <EditText
+                android:id="@+id/txtCarisma"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="120dp"
+                tools:layout_editor_absoluteY="322dp" />
 
-                    <TextView
-                        android:id="@+id/textView8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MOD"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="206dp"
-                        tools:layout_editor_absoluteY="8dp" />
+            <EditText
+                android:id="@+id/txtFuerza"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="120dp"
+                tools:layout_editor_absoluteY="83dp" />
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DES"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="18dp"
-                        tools:layout_editor_absoluteY="119dp" />
+            <EditText
+                android:id="@+id/txtDestreza"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="120dp"
+                tools:layout_editor_absoluteY="128dp" />
 
-                    <TextView
-                        android:id="@+id/lbModDes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="207dp"
-                        tools:layout_editor_absoluteY="119dp" />
+            <EditText
+                android:id="@+id/txtConstitucion"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="120dp"
+                tools:layout_editor_absoluteY="178dp" />
 
-                    <TextView
-                        android:id="@+id/lbModInt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="207dp"
-                        tools:layout_editor_absoluteY="230dp" />
+            <EditText
+                android:id="@+id/txtInteligencia"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="120dp"
+                tools:layout_editor_absoluteY="224dp" />
 
-                    <TextView
-                        android:id="@+id/lbModCon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="207dp"
-                        tools:layout_editor_absoluteY="174dp" />
+            <EditText
+                android:id="@+id/txtSabiduria"
+                android:layout_width="66dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="120dp"
+                tools:layout_editor_absoluteY="273dp" />
 
-                    <TextView
-                        android:id="@+id/lbModSab"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="+0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="206dp"
-                        tools:layout_editor_absoluteY="293dp" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PUNT"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="128dp"
+                tools:layout_editor_absoluteY="33dp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="229dp"
-                android:layout_height="128dp"
-                app:cardBackgroundColor="#595656"
-                app:cardCornerRadius="5dp"
-                app:cardElevation="5dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="false"
-                app:contentPadding="5dp"
-                tools:layout_editor_absoluteX="11dp"
-                tools:layout_editor_absoluteY="453dp">
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="83dp"
+                android:layout_height="40dp"
+                android:text="TOQUE"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="261dp"
+                tools:layout_editor_absoluteY="466dp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:text="INICIATIVA"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="72dp"
+                tools:layout_editor_absoluteY="406dp" />
 
-                    <TextView
-                        android:id="@+id/textView27"
-                        android:layout_width="99dp"
-                        android:layout_height="30dp"
-                        android:text="INICIATIVA"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        tools:layout_editor_absoluteX="51dp"
-                        tools:layout_editor_absoluteY="7dp" />
+            <TextView
+                android:id="@+id/lbIniciativa"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:text="0"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="33dp"
+                tools:layout_editor_absoluteY="466dp" />
 
-                    <EditText
-                        android:id="@+id/editText8"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        tools:layout_editor_absoluteX="153dp"
-                        tools:layout_editor_absoluteY="67dp" />
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="69dp"
+                android:layout_height="30dp"
+                android:text="= DES +"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="476dp" />
 
-                    <TextView
-                        android:id="@+id/textView12"
-                        android:layout_width="50dp"
-                        android:layout_height="40dp"
-                        android:text="+5"
-                        android:textSize="30sp"
-                        tools:layout_editor_absoluteX="16dp"
-                        tools:layout_editor_absoluteY="62dp" />
+            <EditText
+                android:id="@+id/txtDoteIniciativa"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="476dp" />
 
-                    <TextView
-                        android:id="@+id/textView21"
-                        android:layout_width="69dp"
-                        android:layout_height="30dp"
-                        android:text="= DES +"
-                        android:textSize="18sp"
-                        tools:layout_editor_absoluteX="75dp"
-                        tools:layout_editor_absoluteY="72dp" />
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="48dp"
+                android:layout_height="20dp"
+                android:text="DOTE"
+                android:textColor="@android:color/background_light"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="441dp" />
 
-                    <TextView
-                        android:id="@+id/textView22"
-                        android:layout_width="50dp"
-                        android:layout_height="20dp"
-                        android:text="DOTE"
-                        tools:layout_editor_absoluteX="152dp"
-                        tools:layout_editor_absoluteY="37dp" />
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="CA"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="298dp"
+                tools:layout_editor_absoluteY="406dp" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/lbCa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="357dp"
+                tools:layout_editor_absoluteY="402dp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="395dp"
-                android:layout_height="155dp"
-                tools:layout_editor_absoluteX="13dp"
-                tools:layout_editor_absoluteY="601dp">
+            <TextView
+                android:id="@+id/lbToque"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="357dp"
+                tools:layout_editor_absoluteY="461dp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="81dp"
+                android:layout_height="40dp"
+                android:text="DESPR"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="261dp"
+                tools:layout_editor_absoluteY="521dp" />
 
-                    <TextView
-                        android:id="@+id/textView24"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="CA"
-                        tools:layout_editor_absoluteX="9dp"
-                        tools:layout_editor_absoluteY="16dp" />
+            <TextView
+                android:id="@+id/lbDesprevenido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="357dp"
+                tools:layout_editor_absoluteY="520dp" />
 
-                    <TextView
-                        android:id="@+id/textView25"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TOQUE"
-                        tools:layout_editor_absoluteX="7dp"
-                        tools:layout_editor_absoluteY="68dp" />
+            <EditText
+                android:id="@+id/txtTempFue"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="320dp"
+                tools:layout_editor_absoluteY="80dp" />
 
-                    <TextView
-                        android:id="@+id/textView26"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="DESPR"
-                        tools:layout_editor_absoluteX="9dp"
-                        tools:layout_editor_absoluteY="120dp" />
+            <EditText
+                android:id="@+id/txtTempDes"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="318dp"
+                tools:layout_editor_absoluteY="128dp" />
 
-                    <TextView
-                        android:id="@+id/textView28"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="25"
-                        tools:layout_editor_absoluteX="39dp"
-                        tools:layout_editor_absoluteY="16dp" />
+            <EditText
+                android:id="@+id/txtTempCon"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="318dp"
+                tools:layout_editor_absoluteY="178dp" />
 
-                    <TextView
-                        android:id="@+id/textView29"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="= 10 +"
-                        tools:layout_editor_absoluteX="67dp"
-                        tools:layout_editor_absoluteY="17dp" />
+            <EditText
+                android:id="@+id/txtTempSab"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="318dp"
+                tools:layout_editor_absoluteY="273dp" />
 
-                    <EditText
-                        android:id="@+id/editText2"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="numberSigned"
-                        tools:layout_editor_absoluteX="115dp"
-                        tools:layout_editor_absoluteY="5dp" />
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ATAQUE BASE"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="269dp"
+                tools:layout_editor_absoluteY="598dp" />
 
-                    <EditText
-                        android:id="@+id/editText3"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        tools:layout_editor_absoluteX="221dp"
-                        tools:layout_editor_absoluteY="1dp" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SALVACIONES"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="72dp"
+                tools:layout_editor_absoluteY="598dp" />
 
-                    <EditText
-                        android:id="@+id/editText4"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        tools:layout_editor_absoluteX="280dp"
-                        tools:layout_editor_absoluteY="2dp" />
+            <TextView
+                android:id="@+id/lbAtaqueBase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/0"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="309dp"
+                tools:layout_editor_absoluteY="644dp" />
 
-                    <EditText
-                        android:id="@+id/editText5"
-                        android:layout_width="50dp"
-                        android:layout_height="35dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        tools:layout_editor_absoluteX="341dp"
-                        tools:layout_editor_absoluteY="5dp" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/lbFortaleza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="644dp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="175dp"
-                android:layout_height="130dp"
-                tools:layout_editor_absoluteX="14dp"
-                tools:layout_editor_absoluteY="1206dp">
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FORTALEZA"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="657dp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REFLEJOS"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="52dp"
+                tools:layout_editor_absoluteY="714dp" />
 
-                    <TextView
-                        android:id="@+id/textView10"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ATAQUE BASE"
-                        android:textSize="18sp"
-                        tools:layout_editor_absoluteX="29dp"
-                        tools:layout_editor_absoluteY="16dp" />
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VOLUNTAD"
+                android:textColor="@android:color/background_light"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="44dp"
+                tools:layout_editor_absoluteY="778dp" />
 
-                    <TextView
-                        android:id="@+id/textView11"
-                        android:layout_width="163dp"
-                        android:layout_height="38dp"
-                        android:text="+5/+1"
-                        android:textSize="24dp"
-                        tools:layout_editor_absoluteX="7dp"
-                        tools:layout_editor_absoluteY="61dp" />
+            <TextView
+                android:id="@+id/lbVoluntad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="765dp" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/lbReflejos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="174dp"
+                tools:layout_editor_absoluteY="706dp" />
+
+            <TextView
+                android:id="@+id/lbPresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="@android:color/background_light"
+                android:textSize="30sp"
+                tools:layout_editor_absoluteX="324dp"
+                tools:layout_editor_absoluteY="758dp" />
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PRESA"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="300dp"
+                tools:layout_editor_absoluteY="707dp" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VELOCIDAD"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="40dp"
+                tools:layout_editor_absoluteY="1197dp" />
+
+            <EditText
+                android:id="@+id/txtVelocidad"
+                android:layout_width="65dp"
+                android:layout_height="55dp"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="48dp"
+                tools:layout_editor_absoluteY="1237dp" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PG Máximos"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="970dp" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heridas/PG Actuales"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="143dp"
+                tools:layout_editor_absoluteY="970dp" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daño no letal"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="320dp"
+                tools:layout_editor_absoluteY="970dp" />
+
+            <EditText
+                android:id="@+id/txtPgMax"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="29dp"
+                tools:layout_editor_absoluteY="1011dp" />
+
+            <EditText
+                android:id="@+id/txtHeridas"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="172dp"
+                tools:layout_editor_absoluteY="1011dp" />
+
+            <EditText
+                android:id="@+id/txtNoLetal"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:inputType="number"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="318dp"
+                tools:layout_editor_absoluteY="1011dp" />
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reducción de daño"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="147dp"
+                tools:layout_editor_absoluteY="1061dp" />
+
+            <EditText
+                android:id="@+id/txtRedDano"
+                android:layout_width="388dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:hint="Reducciones de daño"
+                android:inputType="textPersonName"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                android:textSize="14sp"
+                tools:layout_editor_absoluteX="26dp"
+                tools:layout_editor_absoluteY="1111dp" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resistencia a conjuros"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="18sp"
+                tools:layout_editor_absoluteX="170dp"
+                tools:layout_editor_absoluteY="1219dp" />
+
+            <EditText
+                android:id="@+id/txtResistenciaConjuros"
+                android:layout_width="257dp"
+                android:layout_height="wrap_content"
+                android:background="#6F838383"
+                android:ems="10"
+                android:hint="Resistencia a conjuros"
+                android:inputType="textPersonName"
+                android:shadowColor="#FFFFFF"
+                android:textColor="@android:color/background_light"
+                android:textColorHint="#FAFAFA"
+                tools:layout_editor_absoluteX="170dp"
+                tools:layout_editor_absoluteY="1267dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
