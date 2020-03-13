@@ -9,9 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lidia.ddbuilder.R;
 
 public class DotesFragment extends Fragment {
+
+    private FloatingActionButton fab;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
