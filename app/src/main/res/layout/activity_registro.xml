@@ -26,7 +26,7 @@
         android:layout_margin="10dp"
         android:background="@android:color/darker_gray"
         android:ems="10"
-        android:hint="Inserta email"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:padding="10dp" />
 
@@ -38,7 +38,7 @@
         android:layout_margin="10dp"
         android:background="@android:color/darker_gray"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp" />
 
@@ -50,5 +50,5 @@
         android:layout_margin="10dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Registrarse" />
+        android:text="register" />
 </LinearLayout>

@@ -38,7 +38,7 @@
         android:layout_margin="10dp"
         android:background="@android:color/darker_gray"
         android:ems="10"
-        android:hint="Contraseña"
+        android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp" />
 
@@ -58,7 +58,7 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:text="No tengo usuario"
+        android:text="I'm a new user"
         android:textColor="#F44336" />
 
     <TextView
@@ -68,6 +68,6 @@
         android:layout_gravity="center"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:text="He olvidado mi contraseña"
+        android:text="I forgot my password"
         android:textColor="#F44336" />
 </LinearLayout>
