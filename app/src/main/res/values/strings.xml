@@ -1,10 +1,4 @@
 <resources>
     <string name="app_name">D&amp;D Builder</string>
     <string name="title_activity_lista_personajes">ListaPersonajesActivity</string>
-
-    <string-array name="alineamientos">
-        <item>Legal Bueno</item>
-        <item>Legal Neutral</item>
-        <item>Legal Malvado</item>
-    </string-array>
 </resources>

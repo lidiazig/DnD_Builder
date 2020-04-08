@@ -308,7 +308,6 @@
                 android:layout_marginTop="47dp"
                 android:layout_marginBottom="49dp"
                 android:background="@color/cardview_dark_background"
-                android:entries="@array/alineamientos"
                 app:layout_constraintBottom_toBottomOf="@+id/textView20"
                 app:layout_constraintEnd_toStartOf="@+id/txtEdad"
                 app:layout_constraintStart_toStartOf="@+id/textView23"
