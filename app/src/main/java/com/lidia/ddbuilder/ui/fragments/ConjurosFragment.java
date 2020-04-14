@@ -1,18 +1,35 @@
 package com.lidia.ddbuilder.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.adapters.HechizosAdapter;
+import com.lidia.ddbuilder.pojo.Hechizo;
+import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
+import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ConjurosFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+    private ArrayList<String> hechizos = new ArrayList<>();
+    private int elemento = R.layout.elemento_hechizo;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -42,6 +59,17 @@ public class ConjurosFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_conjuros, container, false);
+        recyclerView = root.findViewById(R.id.recyclerViewHechizos);
+        hechizos = new ArrayList<>();
+        getHechizos();
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        HechizosAdapter adapter = new HechizosAdapter(getContext(), hechizos, elemento);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -53,5 +81,39 @@ public class ConjurosFragment extends Fragment {
 
          */
         return root;
+    }
+
+    private void getHechizos() {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
+
+        Call<ArrayList<Hechizo>> call = conexion.doGetHechizosClase(2);
+        call.enqueue(new Callback<ArrayList<Hechizo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Hechizo>> call, Response<ArrayList<Hechizo>> response) {
+                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+
+                        setHechizosJSON(response.body());
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Hechizo>> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
+    }
+
+    private void setHechizosJSON(ArrayList<Hechizo> response) {
+        for (int i = 0; i < response.size(); i++) {
+            hechizos.add(response.get(i).getNombre());
+        }
     }
 }

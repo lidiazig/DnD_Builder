@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.lidia.ddbuilder.ui.fragments.PerfilFragment;
 import com.lidia.ddbuilder.ui.fragments.SectionsPagerAdapter;
 
 public class PersonajeActivity extends AppCompatActivity {
