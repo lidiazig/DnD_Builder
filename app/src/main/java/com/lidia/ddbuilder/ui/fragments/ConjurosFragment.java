@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HechizosAdapter;
-import com.lidia.ddbuilder.pojo.Hechizo;
+import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
@@ -28,7 +27,7 @@ import retrofit2.Response;
 public class ConjurosFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<String> hechizos = new ArrayList<>();
+    private ArrayList<HechizoBase> hechizos = new ArrayList<>();
     private int elemento = R.layout.elemento_hechizo;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -63,13 +62,6 @@ public class ConjurosFragment extends Fragment {
         hechizos = new ArrayList<>();
         getHechizos();
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
-        HechizosAdapter adapter = new HechizosAdapter(getContext(), hechizos, elemento);
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -86,10 +78,10 @@ public class ConjurosFragment extends Fragment {
     private void getHechizos() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<Hechizo>> call = conexion.doGetHechizosClase(2);
-        call.enqueue(new Callback<ArrayList<Hechizo>>() {
+        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(2);
+        call.enqueue(new Callback<ArrayList<HechizoBase>>() {
             @Override
-            public void onResponse(Call<ArrayList<Hechizo>> call, Response<ArrayList<Hechizo>> response) {
+            public void onResponse(Call<ArrayList<HechizoBase>> call, Response<ArrayList<HechizoBase>> response) {
                 Log.i("Responsestring", response.body().toString());
                 //Toast.makeText()
                 if (response.isSuccessful()) {
@@ -97,7 +89,12 @@ public class ConjurosFragment extends Fragment {
                         Log.i("onSuccess", response.body().toString());
 
                         setHechizosJSON(response.body());
+                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+                        HechizosAdapter adapter = new HechizosAdapter(getContext(), hechizos, elemento, getFragmentManager());
 
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(adapter);
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -105,15 +102,19 @@ public class ConjurosFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<Hechizo>> call, Throwable t) {
+            public void onFailure(Call<ArrayList<HechizoBase>> call, Throwable t) {
                 Log.d("ERROR", t.getMessage());
             }
         });
     }
 
-    private void setHechizosJSON(ArrayList<Hechizo> response) {
+    private void setHechizosJSON(ArrayList<HechizoBase> response) {
         for (int i = 0; i < response.size(); i++) {
-            hechizos.add(response.get(i).getNombre());
+            HechizoBase hechizoBase = new HechizoBase();
+            hechizoBase.setId(response.get(i).getId());
+            hechizoBase.setNombre(response.get(i).getNombre());
+            hechizoBase.setNivel(response.get(i).getNivel());
+            hechizos.add(hechizoBase);
         }
     }
 }

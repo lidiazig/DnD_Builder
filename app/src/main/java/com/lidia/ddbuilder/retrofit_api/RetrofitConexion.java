@@ -4,6 +4,7 @@ package com.lidia.ddbuilder.retrofit_api;
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Clase;
 import com.lidia.ddbuilder.pojo.Hechizo;
+import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Raza;
 
 import java.util.ArrayList;
@@ -23,9 +24,9 @@ public interface RetrofitConexion {
     @GET("/api/razas")
     Call<ArrayList<Raza>> doGetRazas();
 
-    @GET("/api/hechizos")
-    Call<ArrayList<Hechizo>> doGetHechizos();
+    @GET("/api/hechizos/{id}")
+    Call<Hechizo> doGetHechizo(@Path("id") int id);
 
     @GET("/api/hechizos/clase/{id}")
-    Call<ArrayList<Hechizo>> doGetHechizosClase(@Path("id") int id);
+    Call<ArrayList<HechizoBase>> doGetHechizosClase(@Path("id") int id);
 }
