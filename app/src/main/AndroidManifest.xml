@@ -16,17 +16,26 @@
         <activity
             android:name=".PersonajeActivity"
             android:label="Personaje"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".ListaPersonajesActivity"
             android:label="@string/title_activity_lista_personajes"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
+            <!-- QUITAR COMENTARIOS PARA PONER LA MAIN COMO LAUNCHER
+            BORRAR EL CÓDIGO DE PERSONAJE ACTIVITY
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
     </application>
 

@@ -6,11 +6,14 @@ import com.lidia.ddbuilder.pojo.Clase;
 import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Raza;
+import com.lidia.ddbuilder.pojo.Usuario;
 
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface RetrofitConexion {
@@ -29,4 +32,10 @@ public interface RetrofitConexion {
 
     @GET("/api/hechizos/clase/{id}")
     Call<ArrayList<HechizoBase>> doGetHechizosClase(@Path("id") int id);
+
+    @POST("/api/usuarios")
+    Call<Usuario> doCreateUser(@Body Usuario user);
+
+    @POST("/api/usuarios/login")
+    Call<Usuario> doLogin(@Body Usuario user);
 }

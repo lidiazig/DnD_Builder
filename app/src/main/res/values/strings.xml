@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">D&amp;D Builder</string>
-    <string name="title_activity_lista_personajes">ListaPersonajesActivity</string>
+    <string name="title_activity_lista_personajes">Characters</string>
+    <string name="title_activity_personaje"></string>
 </resources>
