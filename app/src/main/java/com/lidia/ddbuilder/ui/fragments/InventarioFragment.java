@@ -7,14 +7,25 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.adapters.InventarioAdapter;
+import com.lidia.ddbuilder.dialogs.InventarioDialog;
+import com.lidia.ddbuilder.pojo.Inventario;
+
+import java.util.ArrayList;
 
 public class InventarioFragment extends Fragment {
 
     private FloatingActionButton fab;
+    private RecyclerView recyclerView;
+    private ArrayList<Inventario> inventario;
+    private int elemento = R.layout.dialog_inventario;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -44,6 +55,28 @@ public class InventarioFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_inventario, container, false);
+
+        fab = root.findViewById(R.id.fabInventario);
+        recyclerView = root.findViewById(R.id.recyclerViewInventario);
+        inventario = new ArrayList<>();
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+        InventarioAdapter adapter = new InventarioAdapter(getContext(), inventario, elemento, getFragmentManager());
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Inventario i = new Inventario();
+
+                InventarioDialog inventarioDialog = new InventarioDialog(i);
+                inventarioDialog.getView();
+                inventarioDialog.show(getFragmentManager(), "inventario");
+            }
+        });
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {

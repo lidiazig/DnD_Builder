@@ -3,8 +3,10 @@ package com.lidia.ddbuilder.retrofit_api;
 
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Clase;
+import com.lidia.ddbuilder.pojo.Dote;
 import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
+import com.lidia.ddbuilder.pojo.Inventario;
 import com.lidia.ddbuilder.pojo.Raza;
 import com.lidia.ddbuilder.pojo.Usuario;
 
@@ -38,4 +40,16 @@ public interface RetrofitConexion {
 
     @POST("/api/usuarios/login")
     Call<Usuario> doLogin(@Body Usuario user);
+
+    @GET("/api/dotes")
+    Call<ArrayList<Dote>> doGetDotes();
+
+    @GET("/api/dotes/{id}")
+    Call<Dote> doGetDote(@Path("id") int id);
+
+    @POST("/api/inventario")
+    Call<Inventario> doSaveObject(@Body Inventario objeto);
+
+    @GET("/api/inventario/{id}")
+    Call<ArrayList<Inventario>> doGetInventario(@Path("id") int id);
 }

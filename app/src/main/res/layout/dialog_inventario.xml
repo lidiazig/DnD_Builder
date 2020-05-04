@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/txtNombreInventario"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_dark_background"
+        android:ems="10"
+        android:hint="Object name"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/txtUnidadesInventario"
+        android:layout_width="105dp"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@color/cardview_dark_background"
+        android:ems="10"
+        android:hint="Units"
+        android:inputType="number"
+        android:padding="5dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnSaveInventario"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_margin="5dp"
+        android:background="#B0FFFFFF"
+        android:padding="5dp"
+        android:text="save object" />
+
+</LinearLayout>
