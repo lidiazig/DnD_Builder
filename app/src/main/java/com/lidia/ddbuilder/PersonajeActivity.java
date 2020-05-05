@@ -1,5 +1,4 @@
 package com.lidia.ddbuilder;
-
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -7,10 +6,10 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageButton;
 
-import com.lidia.ddbuilder.ui.fragments.PerfilFragment;
+import com.lidia.ddbuilder.dialogs.HomeDialog;
 import com.lidia.ddbuilder.ui.fragments.SectionsPagerAdapter;
 
 public class PersonajeActivity extends AppCompatActivity {
@@ -48,5 +47,13 @@ public class PersonajeActivity extends AppCompatActivity {
                     break;
             }
         }
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HomeDialog homeDialog = new HomeDialog();
+                homeDialog.showDialog(PersonajeActivity.this);
+            }
+        });
     }
 }

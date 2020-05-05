@@ -7,6 +7,7 @@ import com.lidia.ddbuilder.pojo.Dote;
 import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Inventario;
+import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Raza;
 import com.lidia.ddbuilder.pojo.Usuario;
 
@@ -19,6 +20,12 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface RetrofitConexion {
+
+    @POST("/api/personaje")
+    Call<Personaje> doCreatePersonaje(@Body Personaje personaje);
+
+    @GET("/api/personaje/{id}")
+    Call<ArrayList<Personaje>> doGetPersonajesUser(@Path("id") int id);
 
     @GET("/api/alineamientos")
     Call<ArrayList<Alineamiento>> doGetAlineamientos();
