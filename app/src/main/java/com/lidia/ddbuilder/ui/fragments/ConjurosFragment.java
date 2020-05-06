@@ -29,6 +29,7 @@ public class ConjurosFragment extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<HechizoBase> hechizos = new ArrayList<>();
     private int elemento = R.layout.elemento_hechizo;
+    private int clase;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -60,7 +61,11 @@ public class ConjurosFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_conjuros, container, false);
         recyclerView = root.findViewById(R.id.recyclerViewHechizos);
         hechizos = new ArrayList<>();
-        getHechizos();
+        clase=PerfilFragment.personaje.getIdClase();
+        if(clase==1 || clase==2 || clase==3 || clase==6 || clase==7 || clase==9 || clase==10)
+            if(clase==10)
+                clase=9;
+            getHechizos();
 
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
@@ -78,11 +83,11 @@ public class ConjurosFragment extends Fragment {
     private void getHechizos() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(2);
+        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(clase+1);
         call.enqueue(new Callback<ArrayList<HechizoBase>>() {
             @Override
             public void onResponse(Call<ArrayList<HechizoBase>> call, Response<ArrayList<HechizoBase>> response) {
-                Log.i("Responsestring", response.body().toString());
+//                Log.i("Responsestring", response.body().toString());
                 //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {

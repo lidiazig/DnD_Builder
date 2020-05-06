@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Clase;
+import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Raza;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
@@ -32,6 +34,8 @@ import retrofit2.Response;
  * A placeholder fragment containing a simple view.
  */
 public class PerfilFragment extends Fragment {
+
+    public static Personaje personaje = new Personaje();
 
     private ArrayList<String> clases = new ArrayList<>();
     private ArrayList<String> alineamientos = new ArrayList<>();
@@ -70,12 +74,115 @@ public class PerfilFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_perfil, container, false);
 
+        txtNombre = root.findViewById(R.id.txtNombre);
+        txtNivel = root.findViewById(R.id.txtNivel);
+        txtGenero = root.findViewById(R.id.txtGenero);
+        txtTamano = root.findViewById(R.id.txtTamano);
+        txtEdad = root.findViewById(R.id.txtEdad);
+        txtIdiomas = root.findViewById(R.id.txtIdiomas);
+
+        btnSubir = root.findViewById(R.id.btnSubir);
+        btnAnterior = root.findViewById(R.id.btnImagenAnterior);
+        btnSiguiente = root.findViewById(R.id.btnImagenSiguiente);
+
         spinnerClase = root.findViewById(R.id.spinnerClase);
         spinnerAlineamiento = root.findViewById(R.id.spinnerAlineamiento);
         spinnerRaza = root.findViewById(R.id.spinnerRaza);
         setSpinnerClase();
         setSpinnerRaza();
         setSpinnerAlineamiento();
+
+        txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(!txtNombre.getText().equals(""))
+                        personaje.setNombre(txtNombre.getText().toString());
+                }
+            }
+        });
+        txtNivel.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(!txtNivel.getText().equals(""))
+                        personaje.setNivel(txtNivel.getText().toString());
+                }
+            }
+        });
+        txtGenero.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(!txtGenero.getText().equals(""))
+                        personaje.setGenero(txtGenero.getText().toString());
+                }
+            }
+        });
+        txtTamano.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(!txtTamano.getText().equals(""))
+                        personaje.setTamano(txtTamano.getText().toString());
+                }
+            }
+        });
+        txtEdad.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(!txtEdad.getText().equals(""))
+                        personaje.setEdad(txtEdad.getText().toString());
+                }
+            }
+        });
+       /* txtIdiomas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(!txtIdiomas.getText().equals(""))
+                        personaje.setIdiomas(txtIdiomas.getText().toString());
+                }
+            }
+        });
+
+        */
+
+       spinnerAlineamiento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               personaje.setIdAlineamiento(spinnerAlineamiento.getSelectedItemPosition());
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+
+           }
+       });
+        spinnerRaza.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               personaje.setIdRaza(spinnerRaza.getSelectedItemPosition());
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+
+           }
+       });
+        spinnerClase.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+               personaje.setIdClase(spinnerClase.getSelectedItemPosition());
+           }
+
+           @Override
+           public void onNothingSelected(AdapterView<?> parent) {
+
+           }
+       });
+
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -118,6 +225,7 @@ public class PerfilFragment extends Fragment {
     }
 
     private void spinAlineamientoJSON(ArrayList<Alineamiento> response) {
+        alineamientos.clear();
         for (int i = 0; i < response.size(); i++) {
             alineamientos.add(response.get(i).getAlineamiento());
         }
@@ -156,6 +264,7 @@ public class PerfilFragment extends Fragment {
     }
 
     private void spinRazaJSON(ArrayList<Raza> response) {
+        razas.clear();
         for (int i = 0; i < response.size(); i++) {
             razas.add(response.get(i).getRaza());
         }
@@ -194,6 +303,7 @@ public class PerfilFragment extends Fragment {
     }
 
     private void spinClaseJSON(ArrayList<Clase> response) {
+        clases.clear();
         for (int i = 0; i < response.size(); i++) {
             clases.add(response.get(i).getClase());
         }
