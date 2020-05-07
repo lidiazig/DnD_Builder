@@ -62,6 +62,7 @@ public class ConjurosFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerViewHechizos);
         hechizos = new ArrayList<>();
         clase=PerfilFragment.personaje.getIdClase();
+        //Cambio la última clase porque al coincidir hechizos de mago y hechicero solo están almacenados para una clase y así no estar duplicados
         if(clase==1 || clase==2 || clase==3 || clase==6 || clase==7 || clase==9 || clase==10)
             if(clase==10)
                 clase=9;
