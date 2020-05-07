@@ -4,6 +4,7 @@ package com.lidia.ddbuilder.retrofit_api;
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Clase;
 import com.lidia.ddbuilder.pojo.Dote;
+import com.lidia.ddbuilder.pojo.Habilidad;
 import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Inventario;
@@ -59,4 +60,7 @@ public interface RetrofitConexion {
 
     @GET("/api/inventario/{id}")
     Call<ArrayList<Inventario>> doGetInventario(@Path("id") int id);
+
+    @GET("/api/habilidades")
+    Call<ArrayList<Habilidad>> doGetHabilidades();
 }

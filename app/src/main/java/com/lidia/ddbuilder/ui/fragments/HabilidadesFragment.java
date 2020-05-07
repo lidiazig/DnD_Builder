@@ -1,6 +1,7 @@
 package com.lidia.ddbuilder.ui.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +9,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.adapters.HabilidadesAdapter;
+import com.lidia.ddbuilder.pojo.Habilidad;
+import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
+import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HabilidadesFragment extends Fragment {
+
+    private RecyclerView recyclerView;
+    private ArrayList<Habilidad> habilidades;
+    private int elemento = R.layout.elemento_habilidades;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -41,6 +58,9 @@ public class HabilidadesFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_habilidades, container, false);
+        recyclerView = root.findViewById(R.id.recyclerViewHabilidades);
+        habilidades = new ArrayList<>();
+        getHabilidades();
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -52,5 +72,50 @@ public class HabilidadesFragment extends Fragment {
 
          */
         return root;
+    }
+
+    private void getHabilidades() {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
+
+        Call<ArrayList<Habilidad>> call = conexion.doGetHabilidades();
+        call.enqueue(new Callback<ArrayList<Habilidad>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {
+                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+
+                        setHabilidadesJSON(response.body());
+                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+                        HabilidadesAdapter adapter = new HabilidadesAdapter(getContext(), habilidades, elemento, getFragmentManager());
+
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(adapter);
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Habilidad>> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
+    }
+
+    private void setHabilidadesJSON(ArrayList<Habilidad> response) {
+        for (int i = 0; i < response.size(); i++) {
+            Habilidad habilidad = new Habilidad();
+            habilidad.setId(response.get(i).getId());
+            habilidad.setNombre(response.get(i).getNombre());
+            habilidad.setCaracteristica(response.get(i).getCaracteristica());
+            habilidad.setPenalizacion(response.get(i).isPenalizacion());
+            habilidad.setSoloEntrenamiento(response.get(i).isSoloEntrenamiento());
+            habilidades.add(habilidad);
+        }
     }
 }

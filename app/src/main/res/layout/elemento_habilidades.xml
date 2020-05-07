@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lbNombreHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/lbModHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/lbAbilityHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/lbTrainedHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtRanksHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/txtPenaltyHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/txtModsHabilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:layout_weight="2"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>
