@@ -45,19 +45,26 @@ public class HabilidadesAdapter extends RecyclerView.Adapter<HabilidadesAdapter.
     @Override
     public void onBindViewHolder(@NonNull Elemento holder, final int position) {
         holder.txtNombre.setText(habilidades.get(position).getNombre());
-        holder.txtMod.setText(habilidades.get(position).getModHabilidad());
+        //holder.txtMod.setText(habilidades.get(position).getModHabilidad());
         holder.txtCaracteristica.setText(habilidades.get(position).getCaracteristica());
-        if(habilidades.get(position).isSoloEntrenamiento())
+        if(habilidades.get(position).isSoloEntrenamiento()==1)
             holder.txtTrained.setText("Yes");
         else
             holder.txtTrained.setText("No");
-        holder.txtRanks.setText(habilidades.get(position).getRangos());
-        if(habilidades.get(position).isPenalizacion()) {
-            holder.txtPenalty.isEnabled();
-            holder.txtPenalty.setText(habilidades.get(position).getPenalizador());
-        }
-        holder.txtMods.setText(habilidades.get(position).getModVarios());
+       // holder.txtRanks.setText(habilidades.get(position).getRangos());
+       if(habilidades.get(position).isPenalizacion()==1) {
+            holder.txtPenalty.setEnabled(true);
+            holder.txtPenalty.setVisibility(View.VISIBLE);
+           // holder.txtPenalty.setText(habilidades.get(position).getPenalizador());
+        }else {
+           holder.txtPenalty.setEnabled(false);
+           holder.txtPenalty.setVisibility(View.INVISIBLE);;
+       }
+       // holder.txtMods.setText(habilidades.get(position).getModVarios());
+
     }
+
+
 
 
 

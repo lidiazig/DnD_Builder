@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 public class Habilidad {
     private int id;
     private String nombre;
-    private boolean penalizacion;
+    private int penalizacion;
     @SerializedName("solo_entrenamiento")
-    private boolean soloEntrenamiento;
+    private int soloEntrenamiento;
     private String caracteristica;
     private int rangos;
     @SerializedName("mod_varios")
@@ -32,19 +32,19 @@ public class Habilidad {
         this.nombre = nombre;
     }
 
-    public boolean isPenalizacion() {
+    public int isPenalizacion() {
         return penalizacion;
     }
 
-    public void setPenalizacion(boolean penalizacion) {
+    public void setPenalizacion(int penalizacion) {
         this.penalizacion = penalizacion;
     }
 
-    public boolean isSoloEntrenamiento() {
+    public int isSoloEntrenamiento() {
         return soloEntrenamiento;
     }
 
-    public void setSoloEntrenamiento(boolean soloEntrenamiento) {
+    public void setSoloEntrenamiento(int soloEntrenamiento) {
         this.soloEntrenamiento = soloEntrenamiento;
     }
 
