@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="Armor Class"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/textView59"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Armor"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView60"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Shield"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView61"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Dex"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView63"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Size"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView64"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Natural armor"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView65"
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Deflection"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView66"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Misc"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/txtArmorDialog"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtShieldDialog"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtDexDialog"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtSizeDialog"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtNaturalDialog"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtDeflectionDialog"
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="number"
+            android:textColor="#FFFFFF" />
+
+        <EditText
+            android:id="@+id/txtMiscDialog"
+            android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:backgroundTint="@color/cardview_light_background"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSaveAC"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="save" />
+
+</LinearLayout>

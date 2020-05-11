@@ -93,12 +93,11 @@
                     android:layout_weight="2"
                     android:backgroundTint="@color/cardview_light_background"
                     android:ems="10"
-                    android:enabled="false"
                     android:gravity="center"
                     android:inputType="numberSigned"
                     android:textColor="#FFFFFF"
                     android:textSize="14sp"
-                    android:visibility="invisible" />
+                    android:visibility="visible" />
 
             </TableRow>
 

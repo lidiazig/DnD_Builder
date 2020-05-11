@@ -20,11 +20,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000000">
+            android:background="#000000"
+            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="@+id/textView8">
 
             <EditText
                 android:id="@+id/txtTempCar"
-                android:layout_width="65dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:layout_marginLeft="23dp"
@@ -39,8 +41,8 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtNoLetal"
-                app:layout_constraintStart_toStartOf="@+id/textView24"
+                app:layout_constraintEnd_toEndOf="@+id/lbCa"
+                app:layout_constraintStart_toStartOf="@+id/lbAtaqueBase"
                 app:layout_constraintTop_toBottomOf="@+id/txtTempSab" />
 
             <EditText
@@ -65,30 +67,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="33dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:text="TEMP"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/txtTempFue"
+                app:layout_constraintStart_toStartOf="@+id/txtTempFue"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="51dp"
-                android:layout_marginLeft="51dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginLeft="22dp"
                 android:layout_marginTop="33dp"
-                android:layout_marginEnd="51dp"
-                android:layout_marginRight="51dp"
                 android:text="MOD"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/txtTempFue"
-                app:layout_constraintStart_toStartOf="@+id/textView22"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -109,13 +106,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="41dp"
                 android:layout_marginLeft="41dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginBottom="3dp"
                 android:text="STR"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBottom_toBottomOf="@+id/txtFuerza"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -137,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
                 android:layout_marginLeft="38dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="19dp"
                 android:text="CON"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
@@ -150,8 +147,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginRight="3dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
                 android:text="INT"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
@@ -163,15 +160,15 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="17dp"
                 android:text="WIS"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                app:layout_constraintBottom_toTopOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="@+id/textView6" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -179,30 +176,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="38dp"
                 android:layout_marginLeft="38dp"
-                android:layout_marginTop="17dp"
                 android:text="CHA"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintTop_toTopOf="@+id/txtCarisma" />
 
             <TextView
                 android:id="@+id/lbModCar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
                 android:text="+0"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/lbModInt"
-                app:layout_constraintTop_toBottomOf="@+id/lbModInt" />
+                app:layout_constraintStart_toStartOf="@+id/lbModSab"
+                app:layout_constraintTop_toBottomOf="@+id/lbModSab" />
 
             <TextView
-                android:id="@+id/lbModSab"
+                android:id="@+id/lbModInt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
@@ -216,24 +210,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/lbModCon" />
 
             <TextView
-                android:id="@+id/lbModInt"
+                android:id="@+id/lbModSab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="18dp"
                 android:text="+0"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/lbModSab"
-                app:layout_constraintTop_toBottomOf="@+id/lbModSab" />
+                app:layout_constraintStart_toStartOf="@+id/lbModInt"
+                app:layout_constraintTop_toBottomOf="@+id/lbModInt" />
 
             <TextView
                 android:id="@+id/lbModCon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="19dp"
                 android:text="+0"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
@@ -259,11 +251,11 @@
                 android:id="@+id/txtCarisma"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="73dp"
-                android:layout_marginLeft="73dp"
+                android:layout_marginStart="34dp"
+                android:layout_marginLeft="34dp"
                 android:layout_marginTop="17dp"
-                android:layout_marginEnd="71dp"
-                android:layout_marginRight="71dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginRight="34dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -272,8 +264,8 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/lbModInt"
-                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="@+id/textView22"
+                app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toBottomOf="@+id/txtSabiduria" />
 
             <EditText
@@ -314,7 +306,7 @@
                 android:id="@+id/txtConstitucion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="19dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -348,7 +340,7 @@
                 android:id="@+id/txtSabiduria"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
+                android:layout_marginTop="18dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -367,80 +359,78 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="33dp"
                 android:text="SCORE"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/txtFuerza"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/txtFuerza" />
 
             <TextView
                 android:id="@+id/textView25"
-                android:layout_width="83dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="70dp"
-                android:layout_marginLeft="70dp"
-                android:layout_marginEnd="70dp"
-                android:layout_marginRight="70dp"
+                android:layout_width="85dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
                 android:text="TOUCH"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="24sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lbToque"
-                app:layout_constraintEnd_toEndOf="@+id/txtRedDano"
-                app:layout_constraintStart_toEndOf="@+id/lbFortaleza" />
+                app:layout_constraintBottom_toBottomOf="@+id/txtDoteIniciativa"
+                app:layout_constraintEnd_toStartOf="@+id/lbToque"
+                app:layout_constraintStart_toEndOf="@+id/txtDoteIniciativa"
+                app:layout_constraintTop_toTopOf="@+id/lbIniciativa" />
 
             <TextView
                 android:id="@+id/textView27"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_marginTop="84dp"
-                android:layout_marginBottom="84dp"
+                android:layout_marginTop="296dp"
+                android:layout_marginBottom="296dp"
                 android:text="INITIATIVE"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/lbDesprevenido"
+                app:layout_constraintBottom_toBottomOf="@+id/textView50"
                 app:layout_constraintEnd_toStartOf="@+id/txtHeridas"
-                app:layout_constraintStart_toStartOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@+id/textView6" />
+                app:layout_constraintStart_toStartOf="@+id/textView5"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/lbIniciativa"
-                android:layout_width="50dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="3dp"
+                android:gravity="center"
                 android:text="0"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView25"
-                app:layout_constraintEnd_toStartOf="@+id/textView21"
-                app:layout_constraintTop_toTopOf="@+id/textView25" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbDesIniciativa"
+                app:layout_constraintEnd_toStartOf="@+id/lbDesIniciativa"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/textView21"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
+                android:id="@+id/lbDesIniciativa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="46dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:text="= DEX +"
                 android:textColor="@android:color/background_light"
                 android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lbIniciativa"
-                app:layout_constraintEnd_toEndOf="@+id/textView27"
-                app:layout_constraintStart_toStartOf="@+id/textView27" />
+                app:layout_constraintEnd_toStartOf="@+id/txtDoteIniciativa"
+                app:layout_constraintStart_toEndOf="@+id/lbIniciativa"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
             <EditText
                 android:id="@+id/txtDoteIniciativa"
-                android:layout_width="48dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="95dp"
-                android:layout_marginLeft="95dp"
-                android:layout_marginEnd="95dp"
-                android:layout_marginRight="95dp"
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -448,101 +438,102 @@
                 android:shadowColor="#FFFFFF"
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView21"
-                app:layout_constraintEnd_toStartOf="@+id/txtTempCar"
-                app:layout_constraintStart_toEndOf="@+id/lbIniciativa" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbDesIniciativa"
+                app:layout_constraintEnd_toStartOf="@+id/textView25"
+                app:layout_constraintStart_toEndOf="@+id/lbDesIniciativa" />
 
             <TextView
                 android:id="@+id/textView22"
-                android:layout_width="0dp"
+                android:layout_width="48dp"
                 android:layout_height="0dp"
+                android:layout_marginStart="107dp"
+                android:layout_marginLeft="107dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginEnd="107dp"
+                android:layout_marginRight="107dp"
                 android:layout_marginBottom="5dp"
                 android:text="FEAT"
                 android:textColor="@android:color/background_light"
                 app:layout_constraintBottom_toTopOf="@+id/textView25"
-                app:layout_constraintEnd_toEndOf="@+id/txtDoteIniciativa"
-                app:layout_constraintStart_toStartOf="@+id/txtDoteIniciativa"
+                app:layout_constraintEnd_toStartOf="@+id/txtTempCar"
+                app:layout_constraintStart_toStartOf="@+id/textView28"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="37dp"
-                android:layout_marginLeft="37dp"
-                android:layout_marginEnd="53dp"
-                android:layout_marginRight="53dp"
+                android:layout_marginStart="36dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="411dp"
+                android:layout_marginEnd="31dp"
+                android:layout_marginRight="31dp"
+                android:layout_marginBottom="411dp"
                 android:text="AC"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="24sp"
-                app:layout_constraintBaseline_toBaselineOf="@+id/lbCa"
-                app:layout_constraintEnd_toEndOf="@+id/lbCa"
-                app:layout_constraintStart_toStartOf="@+id/textView25" />
+                app:layout_constraintBottom_toTopOf="@+id/textView48"
+                app:layout_constraintEnd_toEndOf="@+id/txtTempCar"
+                app:layout_constraintStart_toStartOf="@+id/textView25"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/lbCa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
                 android:text="10"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
-                app:layout_constraintStart_toStartOf="@+id/lbToque"
-                app:layout_constraintTop_toBottomOf="@+id/txtTempCar" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView24"
+                app:layout_constraintStart_toStartOf="@+id/lbToque" />
 
             <TextView
                 android:id="@+id/lbToque"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="13dp"
-                android:layout_marginLeft="13dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginEnd="37dp"
+                android:layout_marginRight="37dp"
                 android:text="10"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
-                app:layout_constraintStart_toEndOf="@+id/textView25"
-                app:layout_constraintTop_toBottomOf="@+id/lbCa" />
+                app:layout_constraintBaseline_toBaselineOf="@+id/textView25"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView25" />
 
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="81dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="297dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginRight="35dp"
-                android:layout_marginBottom="297dp"
+                android:layout_marginStart="37dp"
+                android:layout_marginLeft="37dp"
+                android:layout_marginTop="217dp"
+                android:layout_marginEnd="37dp"
+                android:layout_marginRight="37dp"
+                android:layout_marginBottom="217dp"
                 android:text="FLAT-F"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView48"
+                app:layout_constraintBottom_toTopOf="@+id/textView28"
                 app:layout_constraintEnd_toEndOf="@+id/textView9"
-                app:layout_constraintStart_toEndOf="@+id/txtDoteIniciativa"
-                app:layout_constraintTop_toTopOf="@+id/txtTempInt" />
+                app:layout_constraintStart_toEndOf="@+id/textView22"
+                app:layout_constraintTop_toBottomOf="@+id/txtTempSab" />
 
             <TextView
                 android:id="@+id/lbDesprevenido"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="73dp"
                 android:text="10"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView26"
-                app:layout_constraintStart_toEndOf="@+id/textView26" />
+                app:layout_constraintStart_toStartOf="@+id/lbToque"
+                app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
             <EditText
                 android:id="@+id/txtTempFue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginLeft="2dp"
                 android:layout_marginTop="23dp"
-                android:layout_marginEnd="1dp"
-                android:layout_marginRight="1dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -551,7 +542,7 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/txtTempCar"
+                app:layout_constraintEnd_toEndOf="@+id/txtTempDes"
                 app:layout_constraintStart_toStartOf="@+id/txtTempDes"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
@@ -576,7 +567,7 @@
                 android:id="@+id/txtTempCon"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="19dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -593,11 +584,7 @@
                 android:id="@+id/txtTempSab"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="57dp"
-                android:layout_marginLeft="57dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="57dp"
-                android:layout_marginRight="57dp"
+                android:layout_marginTop="18dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -606,21 +593,24 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/textView25"
+                app:layout_constraintEnd_toEndOf="@+id/txtTempCar"
+                app:layout_constraintStart_toStartOf="@+id/txtTempCar"
                 app:layout_constraintTop_toBottomOf="@+id/txtTempInt" />
 
             <TextView
                 android:id="@+id/textView43"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="37dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="36dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginRight="50dp"
                 android:text="BASE ATTACK"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/lbDesprevenido"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtDoteIniciativa"
                 app:layout_constraintTop_toBottomOf="@+id/lbDesprevenido" />
 
             <TextView
@@ -640,8 +630,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="22dp"
-                android:layout_marginEnd="31dp"
-                android:layout_marginRight="31dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
                 android:text="0/0"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
@@ -688,13 +678,13 @@
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginLeft="44dp"
+                android:layout_marginEnd="22dp"
+                android:layout_marginRight="22dp"
                 android:text="WILLPOWER"
                 android:textColor="@android:color/background_light"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/lbVoluntad"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintEnd_toStartOf="@+id/lbVoluntad" />
 
             <TextView
                 android:id="@+id/lbVoluntad"
@@ -723,8 +713,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="27dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginRight="14dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
                 android:text="0"
                 android:textColor="@android:color/background_light"
                 android:textSize="30sp"
@@ -746,11 +736,11 @@
                 android:id="@+id/textView47"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="17dp"
+                android:layout_marginBottom="18dp"
                 android:text="Wounds/Current HP"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtNoLetal"
+                app:layout_constraintBottom_toTopOf="@+id/txtPgMax"
                 app:layout_constraintEnd_toStartOf="@+id/textView48"
                 app:layout_constraintStart_toEndOf="@+id/textView46" />
 
@@ -760,8 +750,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginLeft="15dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="6dp"
                 android:text="Max HP"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
@@ -773,9 +763,9 @@
                 android:id="@+id/txtNoLetal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="31dp"
-                android:layout_marginRight="31dp"
-                android:layout_marginBottom="68dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -784,17 +774,17 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtRedDano"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtHeridas" />
+                app:layout_constraintStart_toEndOf="@+id/txtHeridas"
+                app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
             <EditText
                 android:id="@+id/txtHeridas"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="55dp"
-                android:layout_marginRight="55dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="54dp"
+                android:layout_marginRight="54dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -813,9 +803,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="29dp"
                 android:layout_marginLeft="29dp"
-                android:layout_marginTop="17dp"
                 android:layout_marginEnd="52dp"
                 android:layout_marginRight="52dp"
+                android:layout_marginBottom="68dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:gravity="center"
@@ -824,9 +814,9 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/txtRedDano"
                 app:layout_constraintEnd_toStartOf="@+id/txtHeridas"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView46" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/textView49"
@@ -845,11 +835,11 @@
                 android:id="@+id/txtRedDano"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginLeft="26dp"
-                android:layout_marginEnd="26dp"
-                android:layout_marginRight="26dp"
-                android:layout_marginBottom="67dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginBottom="161dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:hint="Damage reduction"
@@ -858,7 +848,7 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/textView45"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -866,22 +856,21 @@
                 android:id="@+id/textView45"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginBottom="22dp"
+                android:layout_marginEnd="26dp"
+                android:layout_marginRight="26dp"
+                android:layout_marginBottom="16dp"
                 android:text="SPEED"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/textView52"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toTopOf="@+id/txtVelocidad"
+                app:layout_constraintEnd_toEndOf="@+id/txtVelocidad" />
 
             <EditText
                 android:id="@+id/txtVelocidad"
-                android:layout_width="72dp"
-                android:layout_height="54dp"
+                android:layout_width="98dp"
+                android:layout_height="47dp"
                 android:layout_marginStart="48dp"
                 android:layout_marginLeft="48dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginEnd="57dp"
                 android:layout_marginRight="57dp"
                 android:background="#6F838383"
@@ -892,28 +881,35 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/txtResistenciaConjuros"
+                app:layout_constraintBottom_toTopOf="@+id/txtResistenciaConjuros"
+                app:layout_constraintEnd_toStartOf="@+id/textView52"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView45" />
+                app:layout_constraintTop_toTopOf="@+id/txtResistenciaConjuros"
+                app:layout_constraintVertical_bias="0.74" />
 
             <TextView
                 android:id="@+id/textView52"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="108dp"
+                android:layout_marginRight="108dp"
+                android:layout_marginBottom="20dp"
                 android:text="Spell resistance"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtResistenciaConjuros"
-                app:layout_constraintStart_toStartOf="@+id/txtResistenciaConjuros" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtVelocidad" />
 
             <EditText
                 android:id="@+id/txtResistenciaConjuros"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="13dp"
-                android:layout_marginRight="13dp"
-                android:layout_marginBottom="166dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginEnd="39dp"
+                android:layout_marginRight="39dp"
+                android:layout_marginBottom="4dp"
                 android:background="#6F838383"
                 android:ems="10"
                 android:hint="Spell resistance"
@@ -923,14 +919,14 @@
                 android:textColorHint="#FAFAFA"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtVelocidad" />
+                app:layout_constraintStart_toEndOf="@+id/txtPgMax" />
 
             <TextView
                 android:id="@+id/textView48"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
                 android:text="Non lethal"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="18sp"
