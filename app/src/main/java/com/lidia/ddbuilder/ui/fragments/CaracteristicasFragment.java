@@ -1,5 +1,6 @@
 package com.lidia.ddbuilder.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,27 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.dialogs.ArmorClassDialog;
+import com.lidia.ddbuilder.dialogs.SalvacionesDialog;
+import com.lidia.ddbuilder.pojo.ArmorClass;
 import com.lidia.ddbuilder.pojo.Caracteristicas;
+import com.lidia.ddbuilder.pojo.Salvacion;
 
 public class CaracteristicasFragment extends Fragment {
 
     private EditText txtFue, txtDes, txtCon, txtInt, txtSab, txtCar, txtTempFue, txtTempDes, txtTempCon, txtTempInt, txtTempSab, txtTempCar,
-    txtDoteIniciativa, txtPgMax, txtHeridas, txtNoLetal, txtRedDano, txtVelocidad, txtResCon;
+            txtDoteIniciativa, txtPgMax, txtHeridas, txtNoLetal, txtRedDano, txtVelocidad, txtResCon;
     private TextView lbModFue, lbModDes, lbModCon, lbModInt, lbModSab, lbModCar, lbIniciativa, lbCa, lbToque, lbDesprevenido, lbAtaqueBase,
-    lbPresa, lbFortaleza, lbReflejos, lbVoluntad;
+            lbPresa, lbFortaleza, lbReflejos, lbVoluntad;
 
     private Caracteristicas caracteristicas;
+    public static ArmorClass armorClass = new ArmorClass();
+    public static Salvacion fortaleza = new Salvacion();
+    public static Salvacion reflejos = new Salvacion();
+    public static Salvacion voluntad = new Salvacion();
 
+    private final int ARMOR = 1;
+    private final int SALVACIONES = 2;
     private static final String ARG_SECTION_NUMBER = "section_number";
 
     private PageViewModel pageViewModel;
@@ -82,7 +93,7 @@ public class CaracteristicasFragment extends Fragment {
         txtResCon = root.findViewById(R.id.txtResistenciaConjuros);
 
         lbIniciativa = root.findViewById(R.id.lbIniciativa);
-        lbCa = root.findViewById(R.id.lbCa);
+        lbCa = root.findViewById(R.id.lbArmorClass);
         lbToque = root.findViewById(R.id.lbToque);
         lbDesprevenido = root.findViewById(R.id.lbDesprevenido);
         lbAtaqueBase = root.findViewById(R.id.lbAtaqueBase);
@@ -146,6 +157,48 @@ public class CaracteristicasFragment extends Fragment {
             }
         });
 
+        lbCa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Armor();
+            }
+        });
+
+        lbToque.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Armor();
+            }
+        });
+
+        lbDesprevenido.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Armor();
+            }
+        });
+
+        lbFortaleza.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Salvaciones();
+            }
+        });
+
+        lbReflejos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Salvaciones();
+            }
+        });
+
+        lbVoluntad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Salvaciones();
+            }
+        });
+
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -159,11 +212,44 @@ public class CaracteristicasFragment extends Fragment {
         return root;
     }
 
-    private String calculoMod(int num){
-        int mod = (num-10)/2;
-        if(mod>=0)
-            return "+"+mod;
+    private String calculoMod(int num) {
+        int mod = (num - 10) / 2;
+        if (mod >= 0)
+            return "+" + mod;
         else
-            return ""+mod;
+            return "" + mod;
+    }
+
+    private void Armor() {
+        ArmorClassDialog armorClassDialog = new ArmorClassDialog();
+        armorClassDialog.getView();
+        armorClassDialog.setTargetFragment(this, ARMOR);
+        armorClassDialog.show(getFragmentManager(), "armor");
+    }
+
+    private void Salvaciones(){
+        SalvacionesDialog salvacionesDialog = new SalvacionesDialog();
+        salvacionesDialog.getView();
+        salvacionesDialog.setTargetFragment(this, SALVACIONES);
+        salvacionesDialog.show(getFragmentManager(), "salvaciones");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == ARMOR) { // 1 is an arbitrary number, can be any int
+            // This is the return result of your DialogFragment
+            if(resultCode == 1) { // 1 is an arbitrary number, can be any int
+                lbCa.setText(armorClass.getAc() + "");
+                lbToque.setText(armorClass.getTouch() + "");
+                lbDesprevenido.setText(armorClass.getFlatfooted() + "");
+            }
+        }
+        if(requestCode==SALVACIONES){
+            if(resultCode==1) {
+                lbFortaleza.setText(fortaleza.getTotal() + "");
+                lbReflejos.setText(reflejos.getTotal() + "");
+                lbVoluntad.setText(voluntad.getTotal() + "");
+            }
+        }
     }
 }

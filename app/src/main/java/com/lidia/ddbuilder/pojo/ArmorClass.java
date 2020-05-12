@@ -1,6 +1,9 @@
 package com.lidia.ddbuilder.pojo;
 
 public class ArmorClass {
+    private int ac;
+    private int touch;
+    private int flatfooted;
     private int armor;
     private int shield;
     private int dex;
@@ -8,6 +11,30 @@ public class ArmorClass {
     private int naturalArmor;
     private int deflection;
     private int misc;
+
+    public int getAc() {
+        return ac;
+    }
+
+    public void setAc(int ac) {
+        this.ac = ac;
+    }
+
+    public int getTouch() {
+        return touch;
+    }
+
+    public void setTouch(int touch) {
+        this.touch = touch;
+    }
+
+    public int getFlatfooted() {
+        return flatfooted;
+    }
+
+    public void setFlatfooted(int flatfooted) {
+        this.flatfooted = flatfooted;
+    }
 
     public int getArmor() {
         return armor;

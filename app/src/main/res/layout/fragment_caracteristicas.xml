@@ -41,7 +41,7 @@
                 android:textColor="@android:color/background_light"
                 android:textColorHint="#FAFAFA"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/lbCa"
+                app:layout_constraintEnd_toEndOf="@+id/lbArmorClass"
                 app:layout_constraintStart_toStartOf="@+id/lbAtaqueBase"
                 app:layout_constraintTop_toBottomOf="@+id/txtTempSab" />
 
@@ -478,7 +478,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/lbCa"
+                android:id="@+id/lbArmorClass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
@@ -678,9 +678,9 @@
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="22dp"
-                android:layout_marginRight="22dp"
-                android:text="WILLPOWER"
+                android:layout_marginEnd="36dp"
+                android:layout_marginRight="36dp"
+                android:text="WILL"
                 android:textColor="@android:color/background_light"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@+id/lbVoluntad"
