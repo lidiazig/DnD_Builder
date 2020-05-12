@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.dialogs.EquipoDialog;
 
 public class EquipoFragment extends Fragment {
 
@@ -44,6 +45,17 @@ public class EquipoFragment extends Fragment {
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_equipo, container, false);
+
+        fab = root.findViewById(R.id.fabEquipo);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EquipoDialog equipoDialog = new EquipoDialog();
+                equipoDialog.getView();
+                equipoDialog.show(getFragmentManager(), "equipo");
+            }
+        });
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
