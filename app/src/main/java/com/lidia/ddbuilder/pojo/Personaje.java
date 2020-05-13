@@ -2,7 +2,11 @@ package com.lidia.ddbuilder.pojo;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Personaje {
+import java.util.ArrayList;
+
+public class Personaje{
+
+    private static Personaje INSTANCE = null;
     private int id;
     @SerializedName("id_usuario")
     private int idUsuario;
@@ -19,6 +23,12 @@ public class Personaje {
     private String edad;
     @SerializedName("id_imagen")
     private int idImagen;
+    private ArrayList<Equipo> equipo;
+    private Caracteristicas caracteristicas;
+    private ArrayList<Inventario> inventario;
+    private ArmorClass armorClass;
+    private ArrayList<Salvacion> salvaciones;
+
 
     public int getId() {
         return id;
@@ -106,5 +116,24 @@ public class Personaje {
 
     public void setIdImagen(int idImagen) {
         this.idImagen = idImagen;
+    }
+
+    public ArrayList<Equipo> getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(ArrayList<Equipo> equipo) {
+        this.equipo = equipo;
+    }
+
+    private synchronized static void createInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Personaje();
+        }
+    }
+
+    public static Personaje getInstance() {
+        if (INSTANCE == null) createInstance();
+        return INSTANCE;
     }
 }

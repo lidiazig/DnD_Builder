@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,24 +12,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.R;
-import com.lidia.ddbuilder.dialogs.InventarioDialog;
-import com.lidia.ddbuilder.pojo.Inventario;
-import com.lidia.ddbuilder.ui.fragments.InventarioFragment;
+import com.lidia.ddbuilder.pojo.Equipo;
 
 import java.util.ArrayList;
 
-
-public class InventarioAdapter extends RecyclerView.Adapter<InventarioAdapter.Elemento> {
-    private final int INVENTORY = 1;
+public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.Elemento> {
     private Context context;
-    private ArrayList<Inventario> inventario;
+    private ArrayList<Equipo> equipo;
     private int resource;
     private FragmentManager fragmentManager;
-    private InventarioFragment inventarioFragment;
 
-    public InventarioAdapter(Context context, ArrayList<Inventario> inventario, int resource, FragmentManager fragmentManager) {
+    public EquipoAdapter(Context context, ArrayList<Equipo> equipo, int resource, FragmentManager fragmentManager) {
         this.context = context;
-        this.inventario = inventario;
+        this.equipo = equipo;
         this.resource = resource;
         this.fragmentManager = fragmentManager;
     }
@@ -44,36 +39,28 @@ public class InventarioAdapter extends RecyclerView.Adapter<InventarioAdapter.El
 
     @Override
     public void onBindViewHolder(@NonNull Elemento holder, final int position) {
-        holder.lbNombre.setText(inventario.get(position).getNombre());
-        holder.lbUnidades.setText(inventario.get(position).getCantidad());
+        holder.lbNombre.setText(equipo.get(position).getNombre());
         holder.lbNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InventarioDialog inventarioDialog = new InventarioDialog(inventario.get(position));
-                inventarioDialog.setTargetFragment(inventarioFragment, 2);
-                inventarioDialog.getView();
-                inventarioDialog.show(fragmentManager, "inventario");
                 //Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return inventario.size();
+        return equipo.size();
     }
 
     public class Elemento extends RecyclerView.ViewHolder{
-
-        private TextView lbNombre, lbUnidades;
-        private Button btnEliminar;
+        private TextView lbNombre;
+        private ImageButton btnEliminar;
 
         public Elemento(@NonNull View itemView) {
             super(itemView);
-            lbNombre = itemView.findViewById(R.id.lbNombreInventarioFila);
-            lbUnidades = itemView.findViewById(R.id.lbUnidadesInventarioFila);
-            btnEliminar = itemView.findViewById(R.id.btnEliminarInventarioFila);
+            lbNombre = itemView.findViewById(R.id.lbNombreElementoEquipo);
+            btnEliminar = itemView.findViewById(R.id.btnEliminarEquipo);
         }
     }
 }

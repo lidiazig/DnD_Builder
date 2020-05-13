@@ -1,6 +1,7 @@
 package com.lidia.ddbuilder.dialogs;
 
 import android.graphics.Typeface;
+import android.media.audiofx.DynamicsProcessing;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,10 @@ import androidx.fragment.app.DialogFragment;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Arma;
 import com.lidia.ddbuilder.pojo.Armadura;
+import com.lidia.ddbuilder.pojo.Equipo;
+import com.lidia.ddbuilder.ui.fragments.EquipoFragment;
+
+import java.util.ArrayList;
 
 public class EquipoDialog extends DialogFragment {
     private LinearLayout arma1, arma2, arma3, arma4, armadura1, armadura2, armadura3, armadura4;
@@ -26,11 +31,12 @@ public class EquipoDialog extends DialogFragment {
             txtTipoArmadura, txtBonusArmadura, txtDex, txtPenalty, txtSpell, txtSpeed, txtPeso, txtPropiedades;
     private Button btnSave;
 
-    private Arma arma;
-    private Armadura armadura;
+    private Equipo objeto;
+    private ArrayList<Equipo> equipo;
 
-    public EquipoDialog(){
+    public EquipoDialog() {
         super();
+        this.equipo = EquipoFragment.equipo;
     }
 
     @Override
@@ -83,7 +89,7 @@ public class EquipoDialog extends DialogFragment {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.rbArma:
                         rbArma.setTypeface(Typeface.DEFAULT_BOLD);
                         rbArmadura.setTypeface(Typeface.DEFAULT);
@@ -118,6 +124,30 @@ public class EquipoDialog extends DialogFragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (rbArma.isChecked()){
+                    objeto = new Arma(txtNombre.getText().toString(),
+                            txtPropiedades.getText().toString(),
+                            Integer.parseInt(txtBonusArma.getText().toString()),
+                            txtDano.getText().toString(),
+                            txtCritico.getText().toString(),
+                            Integer.parseInt(txtRango.getText().toString()),
+                            txtTipoArma.getText().toString(),
+                            Integer.parseInt(txtMunicion.getText().toString()));
+                }else{
+                    objeto = new Armadura(txtNombre.getText().toString(),
+                            txtPropiedades.getText().toString(),
+                            txtTipoArmadura.getText().toString(),
+                            Integer.parseInt(txtBonusArmadura.getText().toString()),
+                            Integer.parseInt(txtDex.getText().toString()),
+                            Integer.parseInt(txtPenalty.getText().toString()),
+                            txtSpell.getText().toString(),
+                            Integer.parseInt(txtSpeed.getText().toString()),
+                            Integer.parseInt(txtPeso.getText().toString()));
+                }
+
+                equipo.add(objeto);
+                getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
 
                 dismiss();
             }

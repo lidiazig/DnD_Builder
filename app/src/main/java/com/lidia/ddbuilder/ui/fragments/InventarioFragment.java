@@ -1,5 +1,6 @@
 package com.lidia.ddbuilder.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +23,14 @@ import java.util.ArrayList;
 
 public class InventarioFragment extends Fragment {
 
+    private final int INVENTORY = 1;
+    private final int UPDATE = 2;
+
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    private ArrayList<Inventario> inventario;
-    private int elemento = R.layout.dialog_inventario;
+    public static ArrayList<Inventario> inventario = new ArrayList<>();
+    private int elemento = R.layout.elemento_inventario;
+    private InventarioAdapter adapter;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -58,25 +63,25 @@ public class InventarioFragment extends Fragment {
 
         fab = root.findViewById(R.id.fabInventario);
         recyclerView = root.findViewById(R.id.recyclerViewInventario);
-        inventario = new ArrayList<>();
-
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
-        InventarioAdapter adapter = new InventarioAdapter(getContext(), inventario, elemento, getFragmentManager());
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Inventario i = new Inventario();
-
-                InventarioDialog inventarioDialog = new InventarioDialog(i);
+                InventarioDialog inventarioDialog = new InventarioDialog();
                 inventarioDialog.getView();
+                inventarioDialog.setTargetFragment(InventarioFragment.this, INVENTORY);
                 inventarioDialog.show(getFragmentManager(), "inventario");
             }
         });
+
+        adapter = new InventarioAdapter(getContext(), inventario, elemento, getFragmentManager());
+
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
+
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -88,5 +93,22 @@ public class InventarioFragment extends Fragment {
 
          */
         return root;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == INVENTORY) { // 1 is an arbitrary number, can be any int
+            // This is the return result of your DialogFragment
+            if(resultCode == 1) { // 1 is an arbitrary number, can be any int
+                adapter.notifyDataSetChanged();
+            }
+        }
+
+        if(requestCode == UPDATE) { // 1 is an arbitrary number, can be any int
+            // This is the return result of your DialogFragment
+            if(resultCode == 1) { // 1 is an arbitrary number, can be any int
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 }

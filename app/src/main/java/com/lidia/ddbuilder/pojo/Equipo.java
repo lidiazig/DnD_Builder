@@ -4,6 +4,7 @@ public class Equipo {
     private String nombre;
     private String propiedades;
 
+
     public Equipo(String nombre, String propiedades) {
         this.nombre = nombre;
         this.propiedades = propiedades;

@@ -14,6 +14,7 @@ import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Inventario;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
+import com.lidia.ddbuilder.ui.fragments.InventarioFragment;
 
 import java.util.ArrayList;
 
@@ -24,12 +25,20 @@ import retrofit2.Response;
 public class InventarioDialog extends DialogFragment {
     private EditText txtNombre, txtUnidades;
     private Button btnSave;
-    private Inventario inventario;
+    private Inventario objeto;
+    private ArrayList<Inventario> inventario;
 
-    public InventarioDialog (Inventario inventario) {
+    public InventarioDialog () {
         super();
-        this.inventario = inventario;
+        this.inventario = InventarioFragment.inventario;
     }
+
+    public InventarioDialog (Inventario objeto) {
+        super();
+        this.inventario = InventarioFragment.inventario;
+        this.objeto = objeto;
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,29 +46,53 @@ public class InventarioDialog extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dialog_inventario, container, false);
         txtNombre = v.findViewById(R.id.txtNombreInventario);
         txtUnidades = v.findViewById(R.id.txtUnidadesInventario);
         btnSave = v.findViewById(R.id.btnSaveInventario);
-        if(savedInstanceState!=null) {
-            txtNombre.setText(inventario.getNombre());
-            txtUnidades.setText(inventario.getCantidad());
+
+        if(objeto!=null) {
+            txtNombre.setText(objeto.getNombre());
+            txtUnidades.setText(objeto.getCantidad());
+
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   // int position = inventario.indexOf(objeto);
+
+                    objeto.setNombre(txtNombre.getText().toString());
+                    objeto.setCantidad(txtUnidades.getText().toString());
+
+                 //   inventario.set(position, objeto);
+
+                    getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
+                    dismiss();
+                    //saveObject();
+                }
+            });
+
+        }else {
+            objeto = new Inventario();
+
+            btnSave.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    objeto.setNombre(txtNombre.getText().toString());
+                    objeto.setCantidad(txtUnidades.getText().toString());
+
+                    inventario.add(objeto);
+
+                    getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
+                    dismiss();
+                    //saveObject();
+                }
+            });
         }
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                inventario.setNombre(txtNombre.getText().toString());
-                inventario.setCantidad(txtUnidades.getText().toString());
-
-                saveObject();
-            }
-        });
 
         return v;
     }
-
+/*
     private void saveObject() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
@@ -85,4 +118,6 @@ public class InventarioDialog extends DialogFragment {
             }
         });
     }
+
+ */
 }

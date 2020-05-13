@@ -2,6 +2,7 @@ package com.lidia.ddbuilder.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,7 +108,11 @@ public class CaracteristicasFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtFue.getText().equals(""))
-                        lbModFue.setText(calculoMod(Integer.parseInt(txtFue.getText().toString())));
+                        try {
+                            lbModFue.setText(calculoMod(Integer.parseInt(txtFue.getText().toString())));
+                        } catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
                 }
             }
         });
@@ -116,7 +121,11 @@ public class CaracteristicasFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtDes.getText().equals(""))
-                        lbModDes.setText(calculoMod(Integer.parseInt(txtDes.getText().toString())));
+                        try {
+                            lbModDes.setText(calculoMod(Integer.parseInt(txtDes.getText().toString())));
+                        } catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
                 }
             }
         });
@@ -125,7 +134,12 @@ public class CaracteristicasFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtCon.getText().equals(""))
-                        lbModCon.setText(calculoMod(Integer.parseInt(txtCon.getText().toString())));
+                        try {
+                            lbModCon.setText(calculoMod(Integer.parseInt(txtCon.getText().toString())));
+                        } catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
+
                 }
             }
         });
@@ -134,7 +148,12 @@ public class CaracteristicasFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtInt.getText().equals(""))
-                        lbModInt.setText(calculoMod(Integer.parseInt(txtInt.getText().toString())));
+                        try {
+                            lbModInt.setText(calculoMod(Integer.parseInt(txtInt.getText().toString())));
+                        }catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
+
                 }
             }
         });
@@ -143,7 +162,12 @@ public class CaracteristicasFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtSab.getText().equals(""))
-                        lbModSab.setText(calculoMod(Integer.parseInt(txtSab.getText().toString())));
+                        try {
+                            lbModSab.setText(calculoMod(Integer.parseInt(txtSab.getText().toString())));
+                        }catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
+
                 }
             }
         });
@@ -152,7 +176,11 @@ public class CaracteristicasFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtCar.getText().equals(""))
-                        lbModCar.setText(calculoMod(Integer.parseInt(txtCar.getText().toString())));
+                        try {
+                            lbModCar.setText(calculoMod(Integer.parseInt(txtCar.getText().toString())));
+                        }catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
                 }
             }
         });
@@ -227,7 +255,7 @@ public class CaracteristicasFragment extends Fragment {
         armorClassDialog.show(getFragmentManager(), "armor");
     }
 
-    private void Salvaciones(){
+    private void Salvaciones() {
         SalvacionesDialog salvacionesDialog = new SalvacionesDialog();
         salvacionesDialog.getView();
         salvacionesDialog.setTargetFragment(this, SALVACIONES);
@@ -236,16 +264,16 @@ public class CaracteristicasFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == ARMOR) { // 1 is an arbitrary number, can be any int
+        if (requestCode == ARMOR) { // 1 is an arbitrary number, can be any int
             // This is the return result of your DialogFragment
-            if(resultCode == 1) { // 1 is an arbitrary number, can be any int
+            if (resultCode == 1) { // 1 is an arbitrary number, can be any int
                 lbCa.setText(armorClass.getAc() + "");
                 lbToque.setText(armorClass.getTouch() + "");
                 lbDesprevenido.setText(armorClass.getFlatfooted() + "");
             }
         }
-        if(requestCode==SALVACIONES){
-            if(resultCode==1) {
+        if (requestCode == SALVACIONES) {
+            if (resultCode == 1) {
                 lbFortaleza.setText(fortaleza.getTotal() + "");
                 lbReflejos.setText(reflejos.getTotal() + "");
                 lbVoluntad.setText(voluntad.getTotal() + "");
