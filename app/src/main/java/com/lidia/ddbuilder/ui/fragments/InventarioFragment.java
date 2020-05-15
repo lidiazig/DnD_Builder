@@ -24,7 +24,6 @@ import java.util.ArrayList;
 public class InventarioFragment extends Fragment {
 
     private final int INVENTORY = 1;
-    private final int UPDATE = 2;
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
@@ -74,7 +73,7 @@ public class InventarioFragment extends Fragment {
             }
         });
 
-        adapter = new InventarioAdapter(getContext(), inventario, elemento, getFragmentManager());
+        adapter = new InventarioAdapter(getContext(), inventario, elemento, getFragmentManager(), this);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setHasFixedSize(true);
@@ -98,13 +97,6 @@ public class InventarioFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(requestCode == INVENTORY) { // 1 is an arbitrary number, can be any int
-            // This is the return result of your DialogFragment
-            if(resultCode == 1) { // 1 is an arbitrary number, can be any int
-                adapter.notifyDataSetChanged();
-            }
-        }
-
-        if(requestCode == UPDATE) { // 1 is an arbitrary number, can be any int
             // This is the return result of your DialogFragment
             if(resultCode == 1) { // 1 is an arbitrary number, can be any int
                 adapter.notifyDataSetChanged();

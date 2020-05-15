@@ -8,6 +8,10 @@ public class Arma extends Equipo {
     private String tipo;
     private int municion;
 
+    public Arma(String nombre, String propiedades) {
+        super(nombre, propiedades);
+    }
+
     public Arma(String nombre, String propiedades, int ataque, String dano, String critico, int rango, String tipo, int municion) {
         super(nombre, propiedades);
         this.ataque = ataque;

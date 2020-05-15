@@ -1,4 +1,8 @@
 package com.lidia.ddbuilder;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
@@ -28,32 +32,38 @@ public class PersonajeActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            switch (i) {
-                case 0: tabLayout.getTabAt(i).setIcon(R.drawable.iconprofile);
-                    break;
-                case 1: tabLayout.getTabAt(i).setIcon(R.drawable.iconcaracteristicas);
-                    break;
-                case 2: tabLayout.getTabAt(i).setIcon(R.drawable.iconskills);
-                    break;
-                case 3: tabLayout.getTabAt(i).setIcon(R.drawable.iconequipo);
-                    break;
-                case 4: tabLayout.getTabAt(i).setIcon(R.drawable.iconfeats);
-                    break;
-                case 5: tabLayout.getTabAt(i).setIcon(R.drawable.iconinventory);
-                    break;
-                case 6: tabLayout.getTabAt(i).setIcon(R.drawable.iconspells);
-                    break;
+            for (int i = 0; i < tabLayout.getTabCount(); i++) {
+                switch (i) {
+                    case 0:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconprofile);
+                        break;
+                    case 1:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconcaracteristicas);
+                        break;
+                    case 2:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconskills);
+                        break;
+                    case 3:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconequipo);
+                        break;
+                    case 4:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconfeats);
+                        break;
+                    case 5:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconinventory);
+                        break;
+                    case 6:
+                        tabLayout.getTabAt(i).setIcon(R.drawable.iconspells);
+                        break;
+                }
             }
+
+            btnHome.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HomeDialog homeDialog = new HomeDialog();
+                    homeDialog.showDialog(PersonajeActivity.this);
+                }
+            });
         }
-
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HomeDialog homeDialog = new HomeDialog();
-                homeDialog.showDialog(PersonajeActivity.this);
-            }
-        });
     }
-}

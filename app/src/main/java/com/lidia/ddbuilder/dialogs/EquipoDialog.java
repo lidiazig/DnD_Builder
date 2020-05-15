@@ -1,7 +1,6 @@
 package com.lidia.ddbuilder.dialogs;
 
 import android.graphics.Typeface;
-import android.media.audiofx.DynamicsProcessing;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +36,11 @@ public class EquipoDialog extends DialogFragment {
     public EquipoDialog() {
         super();
         this.equipo = EquipoFragment.equipo;
+    }
+    public EquipoDialog(Equipo objeto) {
+        super();
+        this.equipo = EquipoFragment.equipo;
+        this.objeto = objeto;
     }
 
     @Override
@@ -86,74 +90,126 @@ public class EquipoDialog extends DialogFragment {
         radioGroup = v.findViewById(R.id.radioGroupEquipo);
         btnSave = v.findViewById(R.id.btnSaveEquipo);
 
+        if(objeto!=null) {
+            rbArma.setEnabled(false);
+            rbArmadura.setEnabled(false);
+            txtNombre.setText(objeto.getNombre());
+            txtPropiedades.setText(objeto.getPropiedades());
+
+            if(objeto instanceof Arma){
+                rbArma.setChecked(true);
+
+                txtBonusArma.setText(((Arma) objeto).getAtaque()+"");
+                txtDano.setText(((Arma) objeto).getDano());
+                txtCritico.setText(((Arma) objeto).getCritico());
+                txtRango.setText(((Arma) objeto).getRango()+"");
+                txtTipoArma.setText(((Arma) objeto).getTipo());
+                txtMunicion.setText(((Arma) objeto).getMunicion()+"");
+            }else{
+                rbArmadura.setChecked(true);
+                activateArmadura();
+
+                txtTipoArmadura.setText(((Armadura) objeto).getTipo());
+                txtBonusArmadura.setText(((Armadura) objeto).getBonus()+"");
+                txtDex.setText(((Armadura) objeto).getMaxDex()+"");
+                txtPenalty.setText(((Armadura) objeto).getPenalty()+"");
+                txtSpell.setText(((Armadura) objeto).getSpellFailure());
+                txtSpeed.setText(((Armadura) objeto).getVelocidad()+"");
+                txtPeso.setText(((Armadura) objeto).getPeso()+"");
+            }
+        }else {
+            rbArmadura.setEnabled(true);
+            rbArma.setEnabled(true);
+        }
+
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.rbArma:
-                        rbArma.setTypeface(Typeface.DEFAULT_BOLD);
-                        rbArmadura.setTypeface(Typeface.DEFAULT);
-                        arma1.setVisibility(View.VISIBLE);
-                        arma2.setVisibility(View.VISIBLE);
-                        arma3.setVisibility(View.VISIBLE);
-                        arma4.setVisibility(View.VISIBLE);
-
-                        armadura1.setVisibility(View.GONE);
-                        armadura2.setVisibility(View.GONE);
-                        armadura3.setVisibility(View.GONE);
-                        armadura4.setVisibility(View.GONE);
+                        activateArma();
                         break;
                     case R.id.rbArmadura:
-                        rbArmadura.setTypeface(Typeface.DEFAULT_BOLD);
-                        rbArma.setTypeface(Typeface.DEFAULT);
-                        arma1.setVisibility(View.GONE);
-                        arma2.setVisibility(View.GONE);
-                        arma3.setVisibility(View.GONE);
-                        arma4.setVisibility(View.GONE);
-
-                        armadura1.setVisibility(View.VISIBLE);
-                        armadura2.setVisibility(View.VISIBLE);
-                        armadura3.setVisibility(View.VISIBLE);
-                        armadura4.setVisibility(View.VISIBLE);
+                        activateArmadura();
                         break;
                 }
             }
         });
-
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (rbArma.isChecked()){
-                    objeto = new Arma(txtNombre.getText().toString(),
-                            txtPropiedades.getText().toString(),
-                            Integer.parseInt(txtBonusArma.getText().toString()),
-                            txtDano.getText().toString(),
-                            txtCritico.getText().toString(),
-                            Integer.parseInt(txtRango.getText().toString()),
-                            txtTipoArma.getText().toString(),
-                            Integer.parseInt(txtMunicion.getText().toString()));
+                    if(objeto==null) {
+                        objeto = new Arma("","");
+                        equipo.add(objeto);
+                    }
+                    Arma arma = (Arma) objeto;
+
+                    arma.setAtaque(Integer.parseInt(txtBonusArma.getText().toString()));
+                    arma.setDano(txtDano.getText().toString());
+                    arma.setCritico(txtCritico.getText().toString());
+                    arma.setRango(Integer.parseInt(txtRango.getText().toString()));
+                    arma.setTipo(txtTipoArma.getText().toString());
+                    arma.setMunicion(Integer.parseInt(txtMunicion.getText().toString()));
+
                 }else{
-                    objeto = new Armadura(txtNombre.getText().toString(),
-                            txtPropiedades.getText().toString(),
-                            txtTipoArmadura.getText().toString(),
-                            Integer.parseInt(txtBonusArmadura.getText().toString()),
-                            Integer.parseInt(txtDex.getText().toString()),
-                            Integer.parseInt(txtPenalty.getText().toString()),
-                            txtSpell.getText().toString(),
-                            Integer.parseInt(txtSpeed.getText().toString()),
-                            Integer.parseInt(txtPeso.getText().toString()));
+                    if(objeto==null) {
+                        objeto = new Armadura("", "");
+                        equipo.add(objeto);
+                    }
+                    Armadura armadura = (Armadura) objeto;
+
+                    armadura.setTipo(txtTipoArmadura.getText().toString());
+                    armadura.setBonus(Integer.parseInt(txtBonusArmadura.getText().toString()));
+                    armadura.setMaxDex(Integer.parseInt(txtDex.getText().toString()));
+                    armadura.setPenalty(Integer.parseInt(txtPenalty.getText().toString()));
+                    armadura.setSpellFailure(txtSpell.getText().toString());
+                    armadura.setVelocidad(Integer.parseInt(txtSpeed.getText().toString()));
+                    armadura.setPeso(Integer.parseInt(txtPeso.getText().toString()));
                 }
 
-                equipo.add(objeto);
+                objeto.setNombre(txtNombre.getText().toString());
+                objeto.setPropiedades(txtPropiedades.getText().toString());
+
                 getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
 
                 dismiss();
             }
         });
 
+
+
         // Create the AlertDialog object and return it
         return v;
+    }
+
+    private void activateArma(){
+        rbArma.setTypeface(Typeface.DEFAULT_BOLD);
+        rbArmadura.setTypeface(Typeface.DEFAULT);
+        arma1.setVisibility(View.VISIBLE);
+        arma2.setVisibility(View.VISIBLE);
+        arma3.setVisibility(View.VISIBLE);
+        arma4.setVisibility(View.VISIBLE);
+
+        armadura1.setVisibility(View.GONE);
+        armadura2.setVisibility(View.GONE);
+        armadura3.setVisibility(View.GONE);
+        armadura4.setVisibility(View.GONE);
+    }
+
+    private void activateArmadura(){
+        rbArmadura.setTypeface(Typeface.DEFAULT_BOLD);
+        rbArma.setTypeface(Typeface.DEFAULT);
+        arma1.setVisibility(View.GONE);
+        arma2.setVisibility(View.GONE);
+        arma3.setVisibility(View.GONE);
+        arma4.setVisibility(View.GONE);
+
+        armadura1.setVisibility(View.VISIBLE);
+        armadura2.setVisibility(View.VISIBLE);
+        armadura3.setVisibility(View.VISIBLE);
+        armadura4.setVisibility(View.VISIBLE);
     }
 }

@@ -20,18 +20,18 @@ import java.util.ArrayList;
 
 
 public class InventarioAdapter extends RecyclerView.Adapter<InventarioAdapter.Elemento> {
-    private final int INVENTORY = 1;
     private Context context;
     private ArrayList<Inventario> inventario;
     private int resource;
     private FragmentManager fragmentManager;
     private InventarioFragment inventarioFragment;
 
-    public InventarioAdapter(Context context, ArrayList<Inventario> inventario, int resource, FragmentManager fragmentManager) {
+    public InventarioAdapter(Context context, ArrayList<Inventario> inventario, int resource, FragmentManager fragmentManager, InventarioFragment inventarioFragment) {
         this.context = context;
         this.inventario = inventario;
         this.resource = resource;
         this.fragmentManager = fragmentManager;
+        this.inventarioFragment = inventarioFragment;
     }
 
     @NonNull
@@ -54,6 +54,14 @@ public class InventarioAdapter extends RecyclerView.Adapter<InventarioAdapter.El
                 inventarioDialog.getView();
                 inventarioDialog.show(fragmentManager, "inventario");
                 //Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                inventario.remove(position);
+                notifyDataSetChanged();
             }
         });
     }

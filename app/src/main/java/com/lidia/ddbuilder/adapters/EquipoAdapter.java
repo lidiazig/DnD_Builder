@@ -12,7 +12,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.dialogs.EquipoDialog;
 import com.lidia.ddbuilder.pojo.Equipo;
+import com.lidia.ddbuilder.ui.fragments.EquipoFragment;
 
 import java.util.ArrayList;
 
@@ -21,12 +23,14 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.Elemento> 
     private ArrayList<Equipo> equipo;
     private int resource;
     private FragmentManager fragmentManager;
+    private EquipoFragment equipoFragment;
 
-    public EquipoAdapter(Context context, ArrayList<Equipo> equipo, int resource, FragmentManager fragmentManager) {
+    public EquipoAdapter(Context context, ArrayList<Equipo> equipo, int resource, FragmentManager fragmentManager, EquipoFragment equipoFragment) {
         this.context = context;
         this.equipo = equipo;
         this.resource = resource;
         this.fragmentManager = fragmentManager;
+        this.equipoFragment = equipoFragment;
     }
 
     @NonNull
@@ -43,7 +47,17 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoAdapter.Elemento> 
         holder.lbNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+                EquipoDialog equipoDialog = new EquipoDialog(equipo.get(position));
+                equipoDialog.setTargetFragment(equipoFragment, 2);
+                equipoDialog.getView();
+                equipoDialog.show(fragmentManager, "equipo");
+            }
+        });
+        holder.btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                equipo.remove(position);
+                notifyDataSetChanged();
             }
         });
     }

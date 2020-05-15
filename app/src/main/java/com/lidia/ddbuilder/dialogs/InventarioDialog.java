@@ -55,40 +55,23 @@ public class InventarioDialog extends DialogFragment {
         if(objeto!=null) {
             txtNombre.setText(objeto.getNombre());
             txtUnidades.setText(objeto.getCantidad());
-
-            btnSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   // int position = inventario.indexOf(objeto);
-
-                    objeto.setNombre(txtNombre.getText().toString());
-                    objeto.setCantidad(txtUnidades.getText().toString());
-
-                 //   inventario.set(position, objeto);
-
-                    getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
-                    dismiss();
-                    //saveObject();
-                }
-            });
-
-        }else {
-            objeto = new Inventario();
-
-            btnSave.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    objeto.setNombre(txtNombre.getText().toString());
-                    objeto.setCantidad(txtUnidades.getText().toString());
-
-                    inventario.add(objeto);
-
-                    getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
-                    dismiss();
-                    //saveObject();
-                }
-            });
         }
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(objeto==null){
+                    objeto = new Inventario();
+                    inventario.add(objeto);
+                }
+                objeto.setNombre(txtNombre.getText().toString());
+                objeto.setCantidad(txtUnidades.getText().toString());
+
+                getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
+                dismiss();
+                //saveObject();
+            }
+        });
 
         return v;
     }

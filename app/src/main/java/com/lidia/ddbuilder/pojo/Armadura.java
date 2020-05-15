@@ -9,6 +9,10 @@ public class Armadura extends Equipo {
     private int velocidad;
     private int peso;
 
+    public Armadura(String nombre, String propiedades) {
+        super(nombre, propiedades);
+    }
+
     public Armadura(String nombre, String propiedades, String tipo, int bonus, int maxDex, int penalty, String spellFailure, int velocidad, int peso) {
         super(nombre, propiedades);
         this.tipo = tipo;

@@ -72,7 +72,7 @@ public class EquipoFragment extends Fragment {
             }
         });
 
-        adapter = new EquipoAdapter(getContext(), equipo, elemento, getFragmentManager());
+        adapter = new EquipoAdapter(getContext(), equipo, elemento, getFragmentManager(),this);
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         recyclerView.setHasFixedSize(true);
