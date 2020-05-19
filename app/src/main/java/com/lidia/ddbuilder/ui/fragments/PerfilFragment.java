@@ -1,12 +1,16 @@
 package com.lidia.ddbuilder.ui.fragments;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -40,6 +44,7 @@ import com.lidia.ddbuilder.pojo.Raza;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -59,12 +64,14 @@ public class PerfilFragment extends Fragment {
     private ArrayList<String> clases = new ArrayList<>();
     private ArrayList<String> alineamientos = new ArrayList<>();
     private ArrayList<String> razas = new ArrayList<>();
+    private ArrayList<Integer> imagenes = new ArrayList<>();
 
 
     private EditText txtNombre, txtNivel, txtGenero, txtTamano, txtEdad, txtIdiomas;
     private Spinner spinnerClase, spinnerRaza, spinnerAlineamiento;
     private Button btnSubir, btnAnterior, btnSiguiente;
     private ImageView imagen;
+    private int contador = 0;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -113,6 +120,7 @@ public class PerfilFragment extends Fragment {
         setSpinnerClase();
         setSpinnerRaza();
         setSpinnerAlineamiento();
+        fillImagenes();
 
         txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -225,6 +233,27 @@ public class PerfilFragment extends Fragment {
 
         });
 
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contador++;
+                if (contador >= imagenes.size())
+                    contador = 0;
+
+                imagen.setImageResource(imagenes.get(contador));
+            }
+        });
+        btnAnterior.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contador--;
+                if (contador < 0)
+                    contador = imagenes.size() - 1;
+
+                imagen.setImageResource(imagenes.get(contador));
+            }
+        });
+
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -238,13 +267,69 @@ public class PerfilFragment extends Fragment {
         return root;
     }
 
+    private void fillImagenes() {
+        imagenes.add(R.drawable.barbarian_female);
+        imagenes.add(R.drawable.barbarian_male);
+        imagenes.add(R.drawable.bard_male);
+        imagenes.add(R.drawable.bard_female);
+        imagenes.add(R.drawable.cleric_female);
+        imagenes.add(R.drawable.cleric_male);
+        imagenes.add(R.drawable.druid_female);
+        imagenes.add(R.drawable.druid_male);
+        imagenes.add(R.drawable.dwarf_female);
+        imagenes.add(R.drawable.dwarf_male);
+        imagenes.add(R.drawable.fighter_female);
+        imagenes.add(R.drawable.fighter_male);
+        imagenes.add(R.drawable.gnome_female);
+        imagenes.add(R.drawable.gnome_male);
+        imagenes.add(R.drawable.halfling_female);
+        imagenes.add(R.drawable.halfling_male);
+        imagenes.add(R.drawable.halforc_female);
+        imagenes.add(R.drawable.halforc_male);
+        imagenes.add(R.drawable.monk_female);
+        imagenes.add(R.drawable.monk_male);
+        imagenes.add(R.drawable.paladin_female);
+        imagenes.add(R.drawable.paladin_male);
+        imagenes.add(R.drawable.ranger_female);
+        imagenes.add(R.drawable.ranger_male);
+        imagenes.add(R.drawable.rogue_female);
+        imagenes.add(R.drawable.rogue_male);
+        imagenes.add(R.drawable.sorcerer_female);
+        imagenes.add(R.drawable.wizard_male);
+    }
+
+    public static int getCameraPhotoOrientation(Context context, String imagePath) {
+        int rotate = 0;
+        try {
+            File imageFile = new File(imagePath);
+            ExifInterface exif = new ExifInterface(
+                    imageFile.getAbsolutePath());
+            int orientation = exif.getAttributeInt(
+                    ExifInterface.TAG_ORIENTATION,
+                    ExifInterface.ORIENTATION_NORMAL);
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    rotate = 270;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    rotate = 180;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    rotate = 90;
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rotate;
+    }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == IMAGE_PICKER_SELECT && data!=null) {
+        if (requestCode == IMAGE_PICKER_SELECT && data != null) {
             Uri uri = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getActivity().getContentResolver().query(uri,
                     filePathColumn, null, null, null);
             cursor.moveToFirst();
@@ -253,10 +338,17 @@ public class PerfilFragment extends Fragment {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
 
-            imagen.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-            //La imagen se pone pero mal rotada. Seguir el código del enlace para arreglarlo
-            //https://stackoverflow.com/questions/3647993/android-bitmaps-loaded-from-gallery-are-rotated-in-imageview/15341203
+            BitmapFactory.Options o2 = new BitmapFactory.Options();
+            o2.inSampleSize = 2;
+// Get the original bitmap from the filepath to which you want to change orientation
+// fileName ist the filepath of the image
+            Bitmap cachedImage = BitmapFactory.decodeFile(picturePath, o2);
+            int rotate = getCameraPhotoOrientation(getContext(), picturePath);
+            Matrix matrix = new Matrix();
+            matrix.postRotate(rotate);
+// Here you will get the image bitmap which has changed orientation
+            cachedImage = Bitmap.createBitmap(cachedImage, 0, 0, cachedImage.getWidth(), cachedImage.getHeight(), matrix, true);
+            imagen.setImageBitmap(cachedImage);
         }
     }
 
