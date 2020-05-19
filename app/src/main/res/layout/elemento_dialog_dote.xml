@@ -5,12 +5,11 @@
     android:background="#000000"
     android:orientation="vertical">
 
-    <RadioButton
-        android:id="@+id/rbDoteAdd"
+    <TextView
+        android:id="@+id/txtNombreDoteDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:button="@android:drawable/radiobutton_off_background"
-        android:text="RadioButton"
-        android:textColor="#FFFFFF" />
-
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 </LinearLayout>

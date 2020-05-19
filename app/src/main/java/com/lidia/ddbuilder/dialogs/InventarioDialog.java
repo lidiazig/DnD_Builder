@@ -1,7 +1,7 @@
 package com.lidia.ddbuilder.dialogs;
 
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +12,11 @@ import androidx.fragment.app.DialogFragment;
 
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Inventario;
-import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
-import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
+
 import com.lidia.ddbuilder.ui.fragments.InventarioFragment;
 
 import java.util.ArrayList;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class InventarioDialog extends DialogFragment {
     private EditText txtNombre, txtUnidades;
@@ -75,32 +71,4 @@ public class InventarioDialog extends DialogFragment {
 
         return v;
     }
-/*
-    private void saveObject() {
-        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
-
-        Call<Inventario> call = conexion.doSaveObject(inventario);
-        call.enqueue(new Callback<Inventario>() {
-            @Override
-            public void onResponse(Call<Inventario> call, Response<Inventario> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
-
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Inventario> call, Throwable t) {
-                Log.d("ERROR", t.getMessage());
-            }
-        });
-    }
-
- */
 }

@@ -13,13 +13,14 @@ import com.lidia.ddbuilder.pojo.Dote;
 
 public class DoteVerDialog extends DialogFragment {
 
-    private TextView txtNombre, txtPrerrequisito, txtDescripcion;
+    private TextView txtNombre, txtPrerrequisito, txtDescripcion, txtAdditional;
     private Dote dote;
 
-    public DoteVerDialog(Dote dote){
+    public DoteVerDialog(Dote dote) {
         super();
         this.dote = dote;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +33,15 @@ public class DoteVerDialog extends DialogFragment {
         txtNombre = v.findViewById(R.id.txtNombreDoteVer);
         txtPrerrequisito = v.findViewById(R.id.txtPrerrequisitoDoteVer);
         txtDescripcion = v.findViewById(R.id.txtDescripcionDoteVer);
-
+        txtAdditional = v.findViewById(R.id.txtNotasDoteVer);
 
         txtNombre.setText(dote.getNombre());
-        txtPrerrequisito.setText(dote.getPrerrequisito());
+        if (dote.getPrerrequisito().equals(""))
+            txtPrerrequisito.setText("None");
+        else
+            txtPrerrequisito.setText(dote.getPrerrequisito());
         txtDescripcion.setText(dote.getDescripcion());
-
+        txtAdditional.setText(dote.getNotas());
 
         // Create the AlertDialog object and return it
         return v;

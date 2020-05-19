@@ -5,6 +5,7 @@ public class Dote {
     private String nombre;
     private String prerrequisito;
     private String descripcion;
+    private String notas;
 
     public int getId() {
         return id;
@@ -36,5 +37,13 @@ public class Dote {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 }
