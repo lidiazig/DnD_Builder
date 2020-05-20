@@ -118,7 +118,8 @@ public class CaracteristicasFragment extends Fragment {
                     if (!txtFue.getText().equals(""))
                         try {
                             lbModFue.setText(calculoMod(Integer.parseInt(txtFue.getText().toString())));
-                            lbStrPresa.setText(calculoMod(Integer.parseInt(txtFue.getText().toString())));
+                            lbStrPresa.setText(lbModFue.getText().toString() + " + ");
+                            lbPresa.setText("+"+Grapple() + " = ");
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
                         }
@@ -132,7 +133,8 @@ public class CaracteristicasFragment extends Fragment {
                     if (!txtDes.getText().equals(""))
                         try {
                             lbModDes.setText(calculoMod(Integer.parseInt(txtDes.getText().toString())));
-                            lbDexIniciativa.setText("= " + calculoMod(Integer.parseInt(txtDes.getText().toString())));
+                            lbDexIniciativa.setText("= " + lbModDes.getText().toString() + " + ");
+                            lbIniciativa.setText("+"+Iniciativa() + " = ");
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
                         }
@@ -243,7 +245,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtDoteIniciativa.getText().equals(""))
                         try {
-                            lbIniciativa.setText(Iniciativa() + "");
+                            lbIniciativa.setText("+"+Iniciativa() + "");
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
                         }
@@ -258,6 +260,36 @@ public class CaracteristicasFragment extends Fragment {
                     if (!txtBaseAttack.getText().equals(""))
                         try {
                             lbAtaqueBase.setText(BaseAttack());
+                            lbBAPresa.setText("= +" + txtBaseAttack.getText().toString());
+                            lbPresa.setText("+"+Grapple() + " = ");
+                        } catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
+                }
+            }
+        });
+
+        txtMiscPresa.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (!txtMiscPresa.getText().equals(""))
+                        try {
+                            lbPresa.setText("+" + Grapple());
+                        } catch (NumberFormatException nfe) {
+                            Log.i("error", "" + nfe);
+                        }
+                }
+            }
+        });
+
+        txtSizePresa.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    if (!txtSizePresa.getText().equals(""))
+                        try {
+                            lbPresa.setText("+" + Grapple());
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
                         }
@@ -286,23 +318,53 @@ public class CaracteristicasFragment extends Fragment {
     }
 
     private String BaseAttack() {
-        String ba="";
-        if (Integer.parseInt(txtBaseAttack.getText().toString()) < 6)
-            ba = "+"+txtBaseAttack.getText().toString();
-        if (Integer.parseInt(txtBaseAttack.getText().toString()) >= 6 && Integer.parseInt(txtBaseAttack.getText().toString()) < 11)
-            ba = "+"+txtBaseAttack.getText().toString() +"/+"+(Integer.parseInt(txtBaseAttack.getText().toString()) - 5);
-        if (Integer.parseInt(txtBaseAttack.getText().toString()) >= 11 && Integer.parseInt(txtBaseAttack.getText().toString()) < 16)
-            ba = "+"+txtBaseAttack.getText().toString() + "/+"+(Integer.parseInt(txtBaseAttack.getText().toString()) - 5) +
-                    "/+"+(Integer.parseInt(txtBaseAttack.getText().toString()) - 10);
-        if (Integer.parseInt(txtBaseAttack.getText().toString()) >= 16)
-            ba = "+"+txtBaseAttack.getText().toString() + "/+"+(Integer.parseInt(txtBaseAttack.getText().toString()) - 5) +
-                    "/+"+(Integer.parseInt(txtBaseAttack.getText().toString()) - 10) + "/+"+(Integer.parseInt(txtBaseAttack.getText().toString()) - 15);;
+        String ba = "";
+        int baseAttack = Integer.parseInt(txtBaseAttack.getText().toString());
+        if (baseAttack < 6)
+            ba = "+" + txtBaseAttack.getText().toString();
+        if (baseAttack >= 6 && baseAttack < 11)
+            ba = "+" + txtBaseAttack.getText().toString() + "/+" + (baseAttack - 5);
+        if (baseAttack >= 11 && baseAttack < 16)
+            ba = "+" + txtBaseAttack.getText().toString() + "/+" + (baseAttack - 5) + "/+" + (baseAttack - 10);
+        if (baseAttack >= 16)
+            ba = "+" + txtBaseAttack.getText().toString() + "/+" + (baseAttack - 5) + "/+" + (baseAttack) + "/+" + (baseAttack - 15);
 
         return ba;
     }
 
+    private int Grapple() {
+        int presa = 0;
+        int ba = 0;
+        int fue = 0;
+        int size = 0;
+        int misc = 0;
+
+        try {
+            ba = Integer.parseInt(txtBaseAttack.getText().toString());
+            fue = Integer.parseInt(lbModFue.getText().toString());
+            size = Integer.parseInt(txtSizePresa.getText().toString());
+            misc = Integer.parseInt(txtMiscPresa.getText().toString());
+        } catch (NumberFormatException nfe) {
+            Log.i("error", "" + nfe);
+        }
+
+        presa = ba + fue + size + misc;
+        return presa;
+    }
+
     private int Iniciativa() {
-        return Integer.parseInt(lbDexIniciativa.getText().toString()) + Integer.parseInt(txtDoteIniciativa.getText().toString());
+        int iniciativa = 0;
+        int dex = 0;
+        int feat = 0;
+        try {
+            dex = Integer.parseInt(lbModDes.getText().toString());
+            feat = Integer.parseInt(txtDoteIniciativa.getText().toString());
+        } catch (NumberFormatException nfe) {
+            Log.i("error", "" + nfe);
+        }
+
+        iniciativa = dex + feat;
+        return iniciativa;
     }
 
     private void Armor() {
