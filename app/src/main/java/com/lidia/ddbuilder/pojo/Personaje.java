@@ -28,6 +28,8 @@ public class Personaje{
     private ArrayList<Inventario> inventario;
     private ArmorClass armorClass;
     private ArrayList<Salvacion> salvaciones;
+    private ArrayList<Habilidad> habilidades;
+    private ArrayList<Dote> dotes;
 
 
     public int getId() {
@@ -124,6 +126,54 @@ public class Personaje{
 
     public void setEquipo(ArrayList<Equipo> equipo) {
         this.equipo = equipo;
+    }
+
+    public Caracteristicas getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(Caracteristicas caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
+
+    public ArrayList<Inventario> getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(ArrayList<Inventario> inventario) {
+        this.inventario = inventario;
+    }
+
+    public ArmorClass getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(ArmorClass armorClass) {
+        this.armorClass = armorClass;
+    }
+
+    public ArrayList<Salvacion> getSalvaciones() {
+        return salvaciones;
+    }
+
+    public void setSalvaciones(ArrayList<Salvacion> salvaciones) {
+        this.salvaciones = salvaciones;
+    }
+
+    public ArrayList<Habilidad> getHabilidades() {
+        return habilidades;
+    }
+
+    public void setHabilidades(ArrayList<Habilidad> habilidades) {
+        this.habilidades = habilidades;
+    }
+
+    public ArrayList<Dote> getDotes() {
+        return dotes;
+    }
+
+    public void setDotes(ArrayList<Dote> dotes) {
+        this.dotes = dotes;
     }
 
     private synchronized static void createInstance() {

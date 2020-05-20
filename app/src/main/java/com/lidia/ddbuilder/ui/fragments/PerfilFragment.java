@@ -122,6 +122,9 @@ public class PerfilFragment extends Fragment {
         setSpinnerAlineamiento();
         fillImagenes();
 
+        if(personaje.getIdImagen()!=0)
+            imagen.setImageResource(personaje.getIdImagen());
+
         txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -241,6 +244,7 @@ public class PerfilFragment extends Fragment {
                     contador = 0;
 
                 imagen.setImageResource(imagenes.get(contador));
+                personaje.setIdImagen(imagenes.get(contador));
             }
         });
         btnAnterior.setOnClickListener(new View.OnClickListener() {
@@ -251,6 +255,7 @@ public class PerfilFragment extends Fragment {
                     contador = imagenes.size() - 1;
 
                 imagen.setImageResource(imagenes.get(contador));
+                personaje.setIdImagen(imagenes.get(contador));
             }
         });
 
@@ -268,6 +273,7 @@ public class PerfilFragment extends Fragment {
     }
 
     private void fillImagenes() {
+        imagenes.clear();
         imagenes.add(R.drawable.barbarian_female);
         imagenes.add(R.drawable.barbarian_male);
         imagenes.add(R.drawable.bard_male);
