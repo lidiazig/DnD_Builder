@@ -26,7 +26,7 @@ public class EquipoFragment extends Fragment {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    public static ArrayList<Equipo> equipo= new ArrayList<>();
+    public static ArrayList<Equipo> equipo= PerfilFragment.personaje.getEquipo();
     private int elemento = R.layout.elemento_equipo;
     private EquipoAdapter adapter;
 

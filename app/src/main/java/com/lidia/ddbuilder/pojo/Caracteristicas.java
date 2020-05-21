@@ -8,6 +8,15 @@ public class Caracteristicas {
     private int sabiduria;
     private int carisma;
 
+    public Caracteristicas() {
+        this.fuerza = 10;
+        this.destreza = 10;
+        this.constitucion = 10;
+        this.inteligencia = 10;
+        this.sabiduria = 10;
+        this.carisma = 10;
+    }
+
     public int getFuerza() {
         return fuerza;
     }
@@ -54,5 +63,17 @@ public class Caracteristicas {
 
     public void setCarisma(int carisma) {
         this.carisma = carisma;
+    }
+
+    public int getModificador(int num){
+        return (num - 10) / 2;
+    }
+
+    public String getModificadorStr(int num){
+        int mod = getModificador(num);
+        if (mod >= 0)
+            return "+" + mod;
+        else
+            return "" + mod;
     }
 }

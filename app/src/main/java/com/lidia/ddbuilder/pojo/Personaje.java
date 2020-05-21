@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class Personaje{
+public class Personaje {
 
     private static Personaje INSTANCE = null;
     private int id;
@@ -21,6 +21,7 @@ public class Personaje{
     private String genero;
     private String tamano;
     private String edad;
+    private String idiomas;
     @SerializedName("id_imagen")
     private int idImagen;
     private ArrayList<Equipo> equipo;
@@ -30,7 +31,26 @@ public class Personaje{
     private ArrayList<Salvacion> salvaciones;
     private ArrayList<Habilidad> habilidades;
     private ArrayList<Dote> dotes;
+    private int pgMax;
+    private int pgHeridas;
+    private int danoNoLetal;
+    private String redDano;
+    private int velocidad;
+    private int resistenciaConjuros;
+    private int baseAttack;
+    private int featIniciativa;
+    private int size;
+    private int miscPresa;
 
+    public Personaje() {
+        this.caracteristicas = new Caracteristicas();
+        this.armorClass = new ArmorClass();
+        this.equipo = new ArrayList<>();
+        this.inventario = new ArrayList<>();
+        this.salvaciones = new ArrayList<>();
+        this.habilidades = new ArrayList<>();
+        this.dotes = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
@@ -112,6 +132,14 @@ public class Personaje{
         this.edad = edad;
     }
 
+    public String getIdiomas() {
+        return idiomas;
+    }
+
+    public void setIdiomas(String idiomas) {
+        this.idiomas = idiomas;
+    }
+
     public int getIdImagen() {
         return idImagen;
     }
@@ -174,6 +202,86 @@ public class Personaje{
 
     public void setDotes(ArrayList<Dote> dotes) {
         this.dotes = dotes;
+    }
+
+    public int getPgMax() {
+        return pgMax;
+    }
+
+    public void setPgMax(int pgMax) {
+        this.pgMax = pgMax;
+    }
+
+    public int getPgHeridas() {
+        return pgHeridas;
+    }
+
+    public void setPgHeridas(int pgHeridas) {
+        this.pgHeridas = pgHeridas;
+    }
+
+    public int getDanoNoLetal() {
+        return danoNoLetal;
+    }
+
+    public void setDanoNoLetal(int danoNoLetal) {
+        this.danoNoLetal = danoNoLetal;
+    }
+
+    public String getRedDano() {
+        return redDano;
+    }
+
+    public void setRedDano(String redDano) {
+        this.redDano = redDano;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public int getResistenciaConjuros() {
+        return resistenciaConjuros;
+    }
+
+    public void setResistenciaConjuros(int resistenciaConjuros) {
+        this.resistenciaConjuros = resistenciaConjuros;
+    }
+
+    public int getBaseAttack() {
+        return baseAttack;
+    }
+
+    public void setBaseAttack(int baseAttack) {
+        this.baseAttack = baseAttack;
+    }
+
+    public int getFeatIniciativa() {
+        return featIniciativa;
+    }
+
+    public void setFeatIniciativa(int featIniciativa) {
+        this.featIniciativa = featIniciativa;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getMiscPresa() {
+        return miscPresa;
+    }
+
+    public void setMiscPresa(int miscPresa) {
+        this.miscPresa = miscPresa;
     }
 
     private synchronized static void createInstance() {

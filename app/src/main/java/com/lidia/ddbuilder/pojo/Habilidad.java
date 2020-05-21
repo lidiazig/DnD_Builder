@@ -14,7 +14,13 @@ public class Habilidad {
     private int modVarios;
     private int penalizador;
     @SerializedName("mod_habilidad")
-    private int modHabilidad;
+    private String modHabilidad;
+
+    public Habilidad() {
+        this.rangos = 0;
+        this.modVarios = 0;
+        this.penalizador = 0;
+    }
 
     public int getId() {
         return id;
@@ -80,11 +86,11 @@ public class Habilidad {
         this.penalizador = penalizador;
     }
 
-    public int getModHabilidad() {
+    public String getModHabilidad() {
         return modHabilidad;
     }
 
-    public void setModHabilidad(int modHabilidad) {
+    public void setModHabilidad(String modHabilidad) {
         this.modHabilidad = modHabilidad;
     }
 }

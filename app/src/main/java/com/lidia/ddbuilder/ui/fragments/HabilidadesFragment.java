@@ -27,8 +27,9 @@ import retrofit2.Response;
 public class HabilidadesFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Habilidad> habilidades;
+    private ArrayList<Habilidad> habilidades = PerfilFragment.personaje.getHabilidades();
     private int elemento = R.layout.elemento_habilidades;
+    private HabilidadesAdapter adapter;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -40,6 +41,13 @@ public class HabilidadesFragment extends Fragment {
         bundle.putInt(ARG_SECTION_NUMBER, index);
         fragment.setArguments(bundle);
         return fragment;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -59,8 +67,11 @@ public class HabilidadesFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_habilidades, container, false);
         recyclerView = root.findViewById(R.id.recyclerViewHabilidades);
-        habilidades = new ArrayList<>();
-        getHabilidades();
+        if (habilidades.size() <= 0)
+            getHabilidades();
+        else {
+            setAdapter();
+        }
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -88,12 +99,7 @@ public class HabilidadesFragment extends Fragment {
                         Log.i("onSuccess", response.body().toString());
 
                         setHabilidadesJSON(response.body());
-                        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
-                        HabilidadesAdapter adapter = new HabilidadesAdapter(getContext(), habilidades, elemento, getFragmentManager());
-
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(layoutManager);
-                        recyclerView.setAdapter(adapter);
+                        setAdapter();
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -105,6 +111,15 @@ public class HabilidadesFragment extends Fragment {
                 Log.d("ERROR", t.getMessage());
             }
         });
+    }
+
+    private void setAdapter(){
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
+        adapter = new HabilidadesAdapter(getContext(), habilidades, elemento, getFragmentManager());
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     private void setHabilidadesJSON(ArrayList<Habilidad> response) {

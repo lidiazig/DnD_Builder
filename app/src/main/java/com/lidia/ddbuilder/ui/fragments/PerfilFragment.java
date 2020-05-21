@@ -117,10 +117,12 @@ public class PerfilFragment extends Fragment {
         spinnerClase = root.findViewById(R.id.spinnerClase);
         spinnerAlineamiento = root.findViewById(R.id.spinnerAlineamiento);
         spinnerRaza = root.findViewById(R.id.spinnerRaza);
+
         setSpinnerClase();
         setSpinnerRaza();
         setSpinnerAlineamiento();
         fillImagenes();
+        fillData();
 
         if(personaje.getIdImagen()!=0)
             imagen.setImageResource(personaje.getIdImagen());
@@ -170,7 +172,7 @@ public class PerfilFragment extends Fragment {
                 }
             }
         });
-       /* txtIdiomas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+       txtIdiomas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(!hasFocus){
@@ -179,8 +181,6 @@ public class PerfilFragment extends Fragment {
                 }
             }
         });
-
-        */
 
         spinnerAlineamiento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -270,6 +270,19 @@ public class PerfilFragment extends Fragment {
 
          */
         return root;
+    }
+
+    private void fillData(){
+        txtNombre.setText(personaje.getNombre());
+        txtNivel.setText(personaje.getNivel());
+        txtGenero.setText(personaje.getGenero());
+        txtTamano.setText(personaje.getTamano());
+        txtEdad.setText(personaje.getEdad());
+        txtIdiomas.setText(personaje.getIdiomas());
+
+        spinnerAlineamiento.setSelection(personaje.getIdAlineamiento(), false);
+        spinnerClase.setSelection(personaje.getIdClase(), false);
+        spinnerRaza.setSelection(personaje.getIdRaza(), false);
     }
 
     private void fillImagenes() {
@@ -395,9 +408,6 @@ public class PerfilFragment extends Fragment {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, alineamientos);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinnerAlineamiento.setAdapter(spinnerArrayAdapter);
-
-        if (personaje.getIdAlineamiento() >= 0)
-            spinnerAlineamiento.setSelection(personaje.getIdAlineamiento(), false);
     }
 
     private void setSpinnerRaza() {
@@ -437,9 +447,6 @@ public class PerfilFragment extends Fragment {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, razas);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinnerRaza.setAdapter(spinnerArrayAdapter);
-
-        if (personaje.getIdRaza() >= 0)
-            spinnerRaza.setSelection(personaje.getIdRaza(), false);
     }
 
     private void setSpinnerClase() {
@@ -480,7 +487,5 @@ public class PerfilFragment extends Fragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinnerClase.setAdapter(spinnerArrayAdapter);
 
-        if (personaje.getIdClase() >= 0)
-            spinnerClase.setSelection(personaje.getIdClase(), false);
     }
 }

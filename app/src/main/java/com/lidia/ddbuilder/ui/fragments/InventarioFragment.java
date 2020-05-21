@@ -27,7 +27,7 @@ public class InventarioFragment extends Fragment {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    public static ArrayList<Inventario> inventario = new ArrayList<>();
+    public static ArrayList<Inventario> inventario = PerfilFragment.personaje.getInventario();
     private int elemento = R.layout.elemento_inventario;
     private InventarioAdapter adapter;
 

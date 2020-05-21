@@ -27,7 +27,7 @@ public class DotesFragment extends Fragment {
     private FloatingActionButton fab;
 
     private RecyclerView recyclerView;
-    public static ArrayList<Dote> dotes= new ArrayList<>();
+    public static ArrayList<Dote> dotes = PerfilFragment.personaje.getDotes();
     private int elemento = R.layout.elemento_dote;
     public static DoteAdapter adapter;
 
@@ -93,9 +93,9 @@ public class DotesFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == LISTADO_DOTE) { // 1 is an arbitrary number, can be any int
+        if (requestCode == LISTADO_DOTE) { // 1 is an arbitrary number, can be any int
             // This is the return result of your DialogFragment
-            if(resultCode == 1) { // 1 is an arbitrary number, can be any int
+            if (resultCode == 1) { // 1 is an arbitrary number, can be any int
                 adapter.notifyDataSetChanged();
             }
         }
