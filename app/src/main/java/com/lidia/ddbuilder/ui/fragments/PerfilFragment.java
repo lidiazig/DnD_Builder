@@ -26,6 +26,7 @@ import android.widget.EditText;
 
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -36,11 +37,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 
+import com.lidia.ddbuilder.MainActivity;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Clase;
 import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Raza;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
@@ -65,6 +69,7 @@ public class PerfilFragment extends Fragment {
     private ArrayList<String> alineamientos = new ArrayList<>();
     private ArrayList<String> razas = new ArrayList<>();
     private ArrayList<Integer> imagenes = new ArrayList<>();
+    private Token token = MainActivity.token;
 
 
     private EditText txtNombre, txtNivel, txtGenero, txtTamano, txtEdad, txtIdiomas;
@@ -374,21 +379,23 @@ public class PerfilFragment extends Fragment {
     private void setSpinnerAlineamiento() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<Alineamiento>> call = conexion.doGetAlineamientos();
+        Call<ArrayList<Alineamiento>> call = conexion.doGetAlineamientos(token);
         call.enqueue(new Callback<ArrayList<Alineamiento>>() {
             @Override
             public void onResponse(Call<ArrayList<Alineamiento>> call, Response<ArrayList<Alineamiento>> response) {
-                Log.i("Responsestring", response.body().toString());
+//                Log.i("Responsestring", response.body().toString());
                 //Toast.makeText()
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.code()==200) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
 
                         spinAlineamientoJSON(response.body());
 
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
+                } else {
+                    Log.i("onEmptyResponse", "Returned empty response");
+                    Toast.makeText(getActivity(), "NOT AUTHORIZED", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), MainActivity.class));
                 }
             }
 
@@ -413,7 +420,7 @@ public class PerfilFragment extends Fragment {
     private void setSpinnerRaza() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<Raza>> call = conexion.doGetRazas();
+        Call<ArrayList<Raza>> call = conexion.doGetRazas(token);
         call.enqueue(new Callback<ArrayList<Raza>>() {
             @Override
             public void onResponse(Call<ArrayList<Raza>> call, Response<ArrayList<Raza>> response) {
@@ -452,7 +459,7 @@ public class PerfilFragment extends Fragment {
     private void setSpinnerClase() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<Clase>> call = conexion.doGetClases();
+        Call<ArrayList<Clase>> call = conexion.doGetClases(token);
         call.enqueue(new Callback<ArrayList<Clase>>() {
             @Override
             public void onResponse(Call<ArrayList<Clase>> call, Response<ArrayList<Clase>> response) {

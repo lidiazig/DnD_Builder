@@ -10,6 +10,7 @@ import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Inventario;
 import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Raza;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.pojo.Usuario;
 
 import java.util.ArrayList;
@@ -28,39 +29,39 @@ public interface RetrofitConexion {
     @GET("/api/personaje/{id}")
     Call<ArrayList<Personaje>> doGetPersonajesUser(@Path("id") int id);
 
-    @GET("/api/alineamientos")
-    Call<ArrayList<Alineamiento>> doGetAlineamientos();
+    @POST("/api/alineamientos")
+    Call<ArrayList<Alineamiento>> doGetAlineamientos(@Body Token token);
 
-    @GET("/api/clases")
-    Call<ArrayList<Clase>> doGetClases();
+    @POST("/api/clases")
+    Call<ArrayList<Clase>> doGetClases(@Body Token token);
 
-    @GET("/api/razas")
-    Call<ArrayList<Raza>> doGetRazas();
+    @POST("/api/razas")
+    Call<ArrayList<Raza>> doGetRazas(@Body Token token);
 
-    @GET("/api/hechizos/{id}")
-    Call<Hechizo> doGetHechizo(@Path("id") int id);
+    @POST("/api/hechizos/{id}")
+    Call<Hechizo> doGetHechizo(@Path("id") int id, @Body Token token);
 
-    @GET("/api/hechizos/clase/{id}")
-    Call<ArrayList<HechizoBase>> doGetHechizosClase(@Path("id") int id);
+    @POST("/api/hechizos/clase/{id}")
+    Call<ArrayList<HechizoBase>> doGetHechizosClase(@Path("id") int id, @Body Token token);
 
     @POST("/api/usuarios")
     Call<Usuario> doCreateUser(@Body Usuario user);
 
     @POST("/api/usuarios/login")
-    Call<Usuario> doLogin(@Body Usuario user);
+    Call<String> doLogin(@Body Usuario user);
 
-    @GET("/api/dotes")
-    Call<ArrayList<Dote>> doGetDotes();
+    @POST("/api/dotes")
+    Call<ArrayList<Dote>> doGetDotes(@Body Token token);
 
-    @GET("/api/dotes/{id}")
-    Call<Dote> doGetDote(@Path("id") int id);
+    @POST("/api/dotes/{id}")
+    Call<Dote> doGetDote(@Path("id") int id,  @Body Token token);
 
     @POST("/api/inventario")
-    Call<Inventario> doSaveObject(@Body Inventario objeto);
+    Call<ArrayList<Inventario>> doSaveInventario(@Body ArrayList<Inventario> inventario);
 
-    @GET("/api/inventario/{id}")
+    @POST("/api/inventario/{id}")
     Call<ArrayList<Inventario>> doGetInventario(@Path("id") int id);
 
-    @GET("/api/habilidades")
-    Call<ArrayList<Habilidad>> doGetHabilidades();
+    @POST("/api/habilidades")
+    Call<ArrayList<Habilidad>> doGetHabilidades(@Body Token token);
 }

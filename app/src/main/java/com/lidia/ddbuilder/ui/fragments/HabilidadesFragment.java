@@ -12,9 +12,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HabilidadesAdapter;
 import com.lidia.ddbuilder.pojo.Habilidad;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
@@ -30,6 +32,7 @@ public class HabilidadesFragment extends Fragment {
     private ArrayList<Habilidad> habilidades = PerfilFragment.personaje.getHabilidades();
     private int elemento = R.layout.elemento_habilidades;
     private HabilidadesAdapter adapter;
+    private Token token = MainActivity.token;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -88,7 +91,7 @@ public class HabilidadesFragment extends Fragment {
     private void getHabilidades() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<Habilidad>> call = conexion.doGetHabilidades();
+        Call<ArrayList<Habilidad>> call = conexion.doGetHabilidades(token);
         call.enqueue(new Callback<ArrayList<Habilidad>>() {
             @Override
             public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {

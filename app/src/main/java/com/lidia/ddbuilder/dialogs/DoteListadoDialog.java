@@ -10,9 +10,11 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.DoteListadoAdapter;
 import com.lidia.ddbuilder.pojo.Dote;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 import com.lidia.ddbuilder.ui.fragments.DotesFragment;
@@ -29,6 +31,7 @@ public class DoteListadoDialog extends DialogFragment {
     private ArrayList<Dote> dotes;
     private int elemento = R.layout.elemento_dialog_dote;
     private DotesFragment dotesFragment;
+    private Token token = MainActivity.token;
 
     public DoteListadoDialog (DotesFragment dotesFragment){
         super();
@@ -62,7 +65,7 @@ public class DoteListadoDialog extends DialogFragment {
     private void getDotes() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<Dote>> call = conexion.doGetDotes();
+        Call<ArrayList<Dote>> call = conexion.doGetDotes(token);
         call.enqueue(new Callback<ArrayList<Dote>>() {
             @Override
             public void onResponse(Call<ArrayList<Dote>> call, Response<ArrayList<Dote>> response) {

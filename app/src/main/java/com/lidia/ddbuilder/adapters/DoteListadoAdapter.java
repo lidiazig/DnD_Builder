@@ -13,9 +13,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.dialogs.DoteAddDialog;
 import com.lidia.ddbuilder.pojo.Dote;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 import com.lidia.ddbuilder.ui.fragments.DotesFragment;
@@ -34,6 +36,7 @@ public class DoteListadoAdapter extends RecyclerView.Adapter<DoteListadoAdapter.
     private FragmentManager fragmentManager;
     private DotesFragment dotesFragment;
     private final int LISTADO_DOTE = 1;
+    private Token token = MainActivity.token;
 
     public DoteListadoAdapter(Context context, ArrayList<Dote> dotes, int resource, FragmentManager fragmentManager, DotesFragment dotesFragment) {
         this.context = context;
@@ -79,7 +82,7 @@ public class DoteListadoAdapter extends RecyclerView.Adapter<DoteListadoAdapter.
     private void getDote(int position) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<Dote> call = conexion.doGetDote(dotes.get(position).getId());
+        Call<Dote> call = conexion.doGetDote(dotes.get(position).getId(), token);
         call.enqueue(new Callback<Dote>() {
             @Override
             public void onResponse(Call<Dote> call, Response<Dote> response) {

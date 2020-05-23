@@ -12,9 +12,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HechizosAdapter;
 import com.lidia.ddbuilder.pojo.HechizoBase;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
@@ -30,6 +32,7 @@ public class ConjurosFragment extends Fragment {
     private ArrayList<HechizoBase> hechizos = new ArrayList<>();
     private int elemento = R.layout.elemento_hechizo;
     private int clase;
+    private Token token = MainActivity.token;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -84,7 +87,7 @@ public class ConjurosFragment extends Fragment {
     private void getHechizos() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(clase+1);
+        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(clase+1, token);
         call.enqueue(new Callback<ArrayList<HechizoBase>>() {
             @Override
             public void onResponse(Call<ArrayList<HechizoBase>> call, Response<ArrayList<HechizoBase>> response) {

@@ -11,10 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.dialogs.HechizoDialog;
 import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
@@ -30,6 +32,7 @@ public class HechizosAdapter extends RecyclerView.Adapter<HechizosAdapter.Elemen
     private ArrayList<HechizoBase> hechizos;
     private int resource;
     private FragmentManager fragmentManager;
+    private Token token = MainActivity.token;
 
     public HechizosAdapter(Context context, ArrayList<HechizoBase> hechizos, int resource, FragmentManager fragmentManager) {
         this.context = context;
@@ -61,7 +64,7 @@ public class HechizosAdapter extends RecyclerView.Adapter<HechizosAdapter.Elemen
     private void getHechizo(int position) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<Hechizo> call = conexion.doGetHechizo(hechizos.get(position).getId());
+        Call<Hechizo> call = conexion.doGetHechizo(hechizos.get(position).getId(), token);
         call.enqueue(new Callback<Hechizo>() {
             @Override
             public void onResponse(Call<Hechizo> call, Response<Hechizo> response) {

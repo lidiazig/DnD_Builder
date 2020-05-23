@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.pojo.Usuario;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtUsuario, txtPassword;
     private Button btnLogin;
     private TextView lbRegistro;
+    public static Token token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +40,22 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!txtUsuario.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
+               // if (!txtUsuario.getText().toString().isEmpty() && !txtPassword.getText().toString().isEmpty()) {
                     Usuario user = new Usuario();
-                    user.setEmail(txtUsuario.getText().toString());
-                    user.setContrasena(txtPassword.getText().toString());
+                   // user.setEmail(txtUsuario.getText().toString());
+                   // user.setContrasena(txtPassword.getText().toString());
+                    user.setEmail("correo2@gmail.com");
+                    user.setContrasena("123456");
                     RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-                    Call<Usuario> call = conexion.doLogin(user);
-                    call.enqueue(new Callback<Usuario>() {
+                    Call<String> call = conexion.doLogin(user);
+                    call.enqueue(new Callback<String>() {
                         @Override
-                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                        public void onResponse(Call<String> call, Response<String> response) {
                             if (response.isSuccessful()) {
                                 if (response.body() != null) {
+                                    token = new Token();
+                                    token.setToken(response.body());
                                     Log.i("onSuccess", response.body().toString());
                                     startActivity(new Intent(MainActivity.this, ListaPersonajesActivity.class));
                                 }
@@ -59,15 +65,15 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<Usuario> call, Throwable t) {
+                        public void onFailure(Call<String> call, Throwable t) {
                             Log.d("ERROR", t.getMessage());
                             Toast.makeText(MainActivity.this, "USER ALREADY EXISTS", Toast.LENGTH_SHORT).show();
                         }
                     });
-                } else {
-                    Toast.makeText(MainActivity.this, "COMPLETE ALL FIELDS", Toast.LENGTH_SHORT).show();
+              //  } else {
+              //      Toast.makeText(MainActivity.this, "COMPLETE ALL FIELDS", Toast.LENGTH_SHORT).show();
                 }
-            }
+        //    }
         });
 
         lbRegistro.setOnClickListener(new View.OnClickListener() {
