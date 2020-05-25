@@ -18,18 +18,22 @@ import com.lidia.ddbuilder.dialogs.ArmorClassDialog;
 import com.lidia.ddbuilder.dialogs.SalvacionesDialog;
 import com.lidia.ddbuilder.pojo.ArmorClass;
 import com.lidia.ddbuilder.pojo.Caracteristicas;
+import com.lidia.ddbuilder.pojo.DatosAdicionales;
 import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Salvacion;
+import com.lidia.ddbuilder.pojo.Vida;
 
 public class CaracteristicasFragment extends Fragment {
 
-    private EditText txtFue, txtDes, txtCon, txtInt, txtSab, txtCar, txtTempFue, txtTempDes, txtTempCon, txtTempInt, txtTempSab, txtTempCar,
-            txtDoteIniciativa, txtPgMax, txtHeridas, txtNoLetal, txtRedDano, txtVelocidad, txtResCon, txtBaseAttack, txtSizePresa, txtMiscPresa;
-    private TextView lbModFue, lbModDes, lbModCon, lbModInt, lbModSab, lbModCar, lbIniciativa, lbDexIniciativa, lbCa, lbToque, lbDesprevenido, lbAtaqueBase,
-            lbPresa, lbBAPresa, lbStrPresa, lbFortaleza, lbReflejos, lbVoluntad;
+    private EditText txtFue, txtDes, txtCon, txtInt, txtSab, txtCar, txtDoteIniciativa, txtPgMax, txtHeridas,
+            txtNoLetal, txtRedDano, txtVelocidad, txtResCon, txtBaseAttack, txtSizePresa, txtMiscPresa;
+    private TextView lbModFue, lbModDes, lbModCon, lbModInt, lbModSab, lbModCar, lbIniciativa, lbCa, lbToque, lbDesprevenido, lbAtaqueBase,
+            lbPresa, lbFortaleza, lbReflejos, lbVoluntad;
 
     private Personaje personaje = PerfilFragment.personaje;
     private Caracteristicas caracteristicas = personaje.getCaracteristicas();
+    private DatosAdicionales datosAdicionales = personaje.getDatosAdicionales();
+    private Vida vida = personaje.getVida();
     public static ArmorClass armorClass = new ArmorClass();
     public static Salvacion fortaleza = new Salvacion();
     public static Salvacion reflejos = new Salvacion();
@@ -80,13 +84,6 @@ public class CaracteristicasFragment extends Fragment {
         lbModSab = root.findViewById(R.id.lbModSab);
         lbModCar = root.findViewById(R.id.lbModCar);
 
-        txtTempFue = root.findViewById(R.id.txtTempFue);
-        txtTempDes = root.findViewById(R.id.txtTempDes);
-        txtTempCon = root.findViewById(R.id.txtTempCon);
-        txtTempInt = root.findViewById(R.id.txtTempInt);
-        txtTempSab = root.findViewById(R.id.txtTempSab);
-        txtTempCar = root.findViewById(R.id.txtTempCar);
-
         txtDoteIniciativa = root.findViewById(R.id.txtDoteIniciativa);
         txtPgMax = root.findViewById(R.id.txtPgMax);
         txtHeridas = root.findViewById(R.id.txtHeridas);
@@ -96,15 +93,12 @@ public class CaracteristicasFragment extends Fragment {
         txtResCon = root.findViewById(R.id.txtResistenciaConjuros);
 
         lbIniciativa = root.findViewById(R.id.lbIniciativa);
-        lbDexIniciativa = root.findViewById(R.id.lbDesIniciativa);
         lbCa = root.findViewById(R.id.lbArmorClass);
         lbToque = root.findViewById(R.id.lbToque);
         lbDesprevenido = root.findViewById(R.id.lbDesprevenido);
         lbAtaqueBase = root.findViewById(R.id.lbAtaqueBase);
         txtBaseAttack = root.findViewById(R.id.txtMaxBaseAttack);
         lbPresa = root.findViewById(R.id.lbPresa);
-        lbBAPresa = root.findViewById(R.id.lbBAPresa);
-        lbStrPresa = root.findViewById(R.id.lbStrPresa);
         txtSizePresa = root.findViewById(R.id.txtSizePresa);
         txtMiscPresa = root.findViewById(R.id.txtMiscPresa);
         lbFortaleza = root.findViewById(R.id.lbFortaleza);
@@ -252,7 +246,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtDoteIniciativa.getText().equals(""))
                         try {
-                            personaje.setFeatIniciativa(Integer.parseInt(txtDoteIniciativa.getText().toString()));
+                            datosAdicionales.setFeatIniciativa(Integer.parseInt(txtDoteIniciativa.getText().toString()));
                             fillIniciativa();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -267,7 +261,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtBaseAttack.getText().equals(""))
                         try {
-                            personaje.setBaseAttack(Integer.parseInt(txtBaseAttack.getText().toString()));
+                            datosAdicionales.setBaseAttack(Integer.parseInt(txtBaseAttack.getText().toString()));
                             fillBaseAttack();
                             fillGrapple();
                         } catch (NumberFormatException nfe) {
@@ -283,7 +277,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtMiscPresa.getText().equals(""))
                         try {
-                            personaje.setMiscPresa(Integer.parseInt(txtMiscPresa.getText().toString()));
+                            datosAdicionales.setMiscPresa(Integer.parseInt(txtMiscPresa.getText().toString()));
                             fillGrapple();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -298,7 +292,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtSizePresa.getText().equals(""))
                         try {
-                            personaje.setSize(Integer.parseInt(txtSizePresa.getText().toString()));
+                            datosAdicionales.setSize(Integer.parseInt(txtSizePresa.getText().toString()));
                             fillGrapple();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -312,7 +306,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtPgMax.getText().equals(""))
                         try {
-                            personaje.setPgMax(Integer.parseInt(txtPgMax.getText().toString()));
+                            vida.setPgMax(Integer.parseInt(txtPgMax.getText().toString()));
                             fillData();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -327,7 +321,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtHeridas.getText().equals(""))
                         try {
-                            personaje.setPgHeridas(Integer.parseInt(txtHeridas.getText().toString()));
+                            vida.setPgHeridas(Integer.parseInt(txtHeridas.getText().toString()));
                             fillData();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -342,7 +336,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtNoLetal.getText().equals(""))
                         try {
-                            personaje.setDanoNoLetal(Integer.parseInt(txtNoLetal.getText().toString()));
+                            vida.setDanoNoLetal(Integer.parseInt(txtNoLetal.getText().toString()));
                             fillData();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -357,7 +351,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtVelocidad.getText().equals(""))
                         try {
-                            personaje.setVelocidad(Integer.parseInt(txtVelocidad.getText().toString()));
+                            datosAdicionales.setVelocidad(Integer.parseInt(txtVelocidad.getText().toString()));
                             fillData();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -372,7 +366,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtResCon.getText().equals(""))
                         try {
-                            personaje.setResistenciaConjuros(Integer.parseInt(txtResCon.getText().toString()));
+                            datosAdicionales.setResistenciaConjuros(Integer.parseInt(txtResCon.getText().toString()));
                             fillData();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -387,7 +381,7 @@ public class CaracteristicasFragment extends Fragment {
                 if (!hasFocus) {
                     if (!txtRedDano.getText().equals(""))
                         try {
-                            personaje.setRedDano(txtRedDano.getText().toString());
+                            datosAdicionales.setRedDano(txtRedDano.getText().toString());
                             fillData();
                         } catch (NumberFormatException nfe) {
                             Log.i("error", "" + nfe);
@@ -409,32 +403,32 @@ public class CaracteristicasFragment extends Fragment {
     }
 
     private void fillData() {
-        if (personaje.getPgMax() == 0)
+        if (vida.getPgMax() == 0)
             txtPgMax.setText("");
         else
-            txtPgMax.setText(personaje.getPgMax() + "");
+            txtPgMax.setText(vida.getPgMax() + "");
 
-        if (personaje.getPgHeridas() == 0)
+        if (vida.getPgHeridas() == 0)
             txtHeridas.setText("");
         else
-            txtHeridas.setText(personaje.getPgHeridas() + "");
+            txtHeridas.setText(vida.getPgHeridas() + "");
 
-        if (personaje.getDanoNoLetal() == 0)
+        if (vida.getDanoNoLetal() == 0)
             txtNoLetal.setText("");
         else
-            txtNoLetal.setText(personaje.getDanoNoLetal() + "");
+            txtNoLetal.setText(vida.getDanoNoLetal() + "");
 
-        if (personaje.getVelocidad() == 0)
+        if (datosAdicionales.getVelocidad() == 0)
             txtVelocidad.setText("");
         else
-            txtVelocidad.setText(personaje.getVelocidad() + "");
+            txtVelocidad.setText(datosAdicionales.getVelocidad() + "");
 
-        if (personaje.getResistenciaConjuros() == 0)
+        if (datosAdicionales.getResistenciaConjuros() == 0)
             txtResCon.setText("");
         else
-            txtResCon.setText(personaje.getResistenciaConjuros() + "");
+            txtResCon.setText(datosAdicionales.getResistenciaConjuros() + "");
 
-        txtRedDano.setText(personaje.getRedDano());
+        txtRedDano.setText(datosAdicionales.getRedDano());
     }
 
     private void fillCaracteristicas() {
@@ -455,7 +449,7 @@ public class CaracteristicasFragment extends Fragment {
 
     private void fillBaseAttack() {
         String ba = "";
-        int baseAttack = personaje.getBaseAttack();
+        int baseAttack = datosAdicionales.getBaseAttack();
 
         if (baseAttack < 6)
             ba = "+" + baseAttack;
@@ -471,10 +465,10 @@ public class CaracteristicasFragment extends Fragment {
 
     private void fillGrapple() {
         int presa;
-        int ba = personaje.getBaseAttack();
+        int ba = datosAdicionales.getBaseAttack();
         int fue = caracteristicas.getModificador(caracteristicas.getFuerza());
-        int size = personaje.getSize();
-        int misc = personaje.getMiscPresa();
+        int size = datosAdicionales.getSize();
+        int misc = datosAdicionales.getMiscPresa();
 
         presa = ba + fue + size + misc;
 
@@ -484,7 +478,7 @@ public class CaracteristicasFragment extends Fragment {
     private void fillIniciativa() {
         int iniciativa;
         int dex = caracteristicas.getModificador(caracteristicas.getDestreza());
-        int feat = personaje.getFeatIniciativa();
+        int feat = datosAdicionales.getFeatIniciativa();
 
         iniciativa = dex + feat;
 

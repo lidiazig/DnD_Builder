@@ -1,10 +1,15 @@
 package com.lidia.ddbuilder.pojo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Armadura extends Equipo {
     private String tipo;
+    @SerializedName("bonus_armadura")
     private int bonus;
+    @SerializedName("max_destreza")
     private int maxDex;
     private int penalty;
+    @SerializedName("fallo_conjuro")
     private String spellFailure;
     private int velocidad;
     private int peso;

@@ -383,8 +383,6 @@ public class PerfilFragment extends Fragment {
         call.enqueue(new Callback<ArrayList<Alineamiento>>() {
             @Override
             public void onResponse(Call<ArrayList<Alineamiento>> call, Response<ArrayList<Alineamiento>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful() && response.code()==200) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -424,8 +422,6 @@ public class PerfilFragment extends Fragment {
         call.enqueue(new Callback<ArrayList<Raza>>() {
             @Override
             public void onResponse(Call<ArrayList<Raza>> call, Response<ArrayList<Raza>> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -463,8 +459,6 @@ public class PerfilFragment extends Fragment {
         call.enqueue(new Callback<ArrayList<Clase>>() {
             @Override
             public void onResponse(Call<ArrayList<Clase>> call, Response<ArrayList<Clase>> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());

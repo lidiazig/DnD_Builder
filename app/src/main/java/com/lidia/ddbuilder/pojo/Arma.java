@@ -1,10 +1,15 @@
 package com.lidia.ddbuilder.pojo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Arma extends Equipo {
+    @SerializedName("bonus_arma")
     private int ataque;
     private String dano;
     private String critico;
+    @SerializedName("alcance")
     private int rango;
+    @SerializedName("tipo_dano")
     private String tipo;
     private int municion;
 
