@@ -1,29 +1,12 @@
 package com.lidia.ddbuilder.pojo;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.ArrayList;
 
 public class Personaje {
 
     private static Personaje INSTANCE = null;
-    private int id;
-    @SerializedName("id_usuario")
-    private int idUsuario;
-    private String nombre;
-    private String nivel;
-    @SerializedName("id_clase")
-    private int idClase;
-    @SerializedName("id_raza")
-    private int idRaza;
-    @SerializedName("id_alineamiento")
-    private int idAlineamiento;
-    private String genero;
-    private String tamano;
-    private String edad;
-    private String idiomas;
-    @SerializedName("id_imagen")
-    private int idImagen;
+
+    private Perfil perfil;
     private ArrayList<Equipo> equipo;
     private Caracteristicas caracteristicas;
     private ArrayList<Inventario> inventario;
@@ -35,111 +18,30 @@ public class Personaje {
     private Vida vida;
 
     public Personaje() {
+        this.perfil = new Perfil();
         this.caracteristicas = new Caracteristicas();
         this.armorClass = new ArmorClass();
         this.equipo = new ArrayList<>();
         this.inventario = new ArrayList<>();
         this.salvaciones = new ArrayList<>();
+
+        salvaciones.add(new Salvacion("fortaleza"));
+        salvaciones.add(new Salvacion("reflejos"));
+        salvaciones.add(new Salvacion("voluntad"));
+
+
         this.habilidades = new ArrayList<>();
         this.dotes = new ArrayList<>();
         this.datosAdicionales = new DatosAdicionales();
         this.vida = new Vida();
     }
 
-    public int getId() {
-        return id;
+    public Perfil getPerfil() {
+        return perfil;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getNivel() {
-        return nivel;
-    }
-
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
-    }
-
-    public int getIdClase() {
-        return idClase;
-    }
-
-    public void setIdClase(int idClase) {
-        this.idClase = idClase;
-    }
-
-    public int getIdRaza() {
-        return idRaza;
-    }
-
-    public void setIdRaza(int idRaza) {
-        this.idRaza = idRaza;
-    }
-
-    public int getIdAlineamiento() {
-        return idAlineamiento;
-    }
-
-    public void setIdAlineamiento(int idAlineamiento) {
-        this.idAlineamiento = idAlineamiento;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getTamano() {
-        return tamano;
-    }
-
-    public void setTamano(String tamano) {
-        this.tamano = tamano;
-    }
-
-    public String getEdad() {
-        return edad;
-    }
-
-    public void setEdad(String edad) {
-        this.edad = edad;
-    }
-
-    public String getIdiomas() {
-        return idiomas;
-    }
-
-    public void setIdiomas(String idiomas) {
-        this.idiomas = idiomas;
-    }
-
-    public int getIdImagen() {
-        return idImagen;
-    }
-
-    public void setIdImagen(int idImagen) {
-        this.idImagen = idImagen;
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     public ArrayList<Equipo> getEquipo() {
@@ -213,6 +115,32 @@ public class Personaje {
     public void setVida(Vida vida) {
         this.vida = vida;
     }
+
+    public void setId(int id) {
+        this.perfil.setId(id);
+        this.caracteristicas.setIdPersonaje(id);
+        // this.armorClass.setIdPersonaje(id)
+
+        for (Equipo e : equipo) {
+             e.setIdPersonaje(id);
+        }
+        for (Inventario e : inventario) {
+            e.setIdPersonaje(id);
+        }
+        for (Salvacion e : salvaciones) {
+            e.setIdPersonaje(id);
+        }
+        for (Habilidad e : habilidades) {
+            e.setIdPersonaje(id);
+        }
+        for (Dote e : dotes) {
+            e.setIdPersonaje(id);
+        }
+
+        datosAdicionales.setIdPersonaje(id);
+        vida.setIdPersonaje(id);
+    }
+
 
     private synchronized static void createInstance() {
         if (INSTANCE == null) {

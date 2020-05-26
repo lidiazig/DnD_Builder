@@ -3,6 +3,8 @@ package com.lidia.ddbuilder.pojo;
 import com.google.gson.annotations.SerializedName;
 
 public class Habilidad {
+    @SerializedName("id_personaje")
+    private int idPersonaje;
     private int id;
     private String nombre;
     private int penalizacion;
@@ -20,6 +22,14 @@ public class Habilidad {
         this.rangos = 0;
         this.modVarios = 0;
         this.penalizador = 0;
+    }
+
+    public int getIdPersonaje() {
+        return idPersonaje;
+    }
+
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
     }
 
     public int getId() {

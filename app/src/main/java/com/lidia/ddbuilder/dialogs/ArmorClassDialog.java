@@ -9,8 +9,10 @@ import android.widget.EditText;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.ArmorClass;
+import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.ui.fragments.CaracteristicasFragment;
 
 
@@ -18,10 +20,11 @@ public class ArmorClassDialog extends DialogFragment {
     private EditText txtArmor, txtShield, txtDex, txtSize, txtNatural, txtDeflection, txtMisc;
     private Button btnSave;
     private ArmorClass armorClass;
+    private Personaje personaje = PersonajeActivity.personaje;
 
     public ArmorClassDialog() {
         super();
-        this.armorClass = CaracteristicasFragment.armorClass;
+        this.armorClass = personaje.getArmorClass();
     }
 
     @Override

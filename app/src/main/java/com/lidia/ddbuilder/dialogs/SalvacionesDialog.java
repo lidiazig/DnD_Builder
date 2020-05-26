@@ -9,20 +9,38 @@ import android.widget.EditText;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
+import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Salvacion;
 import com.lidia.ddbuilder.ui.fragments.CaracteristicasFragment;
+
+import java.util.ArrayList;
 
 public class SalvacionesDialog extends DialogFragment {
     private EditText txtForBase, txtFortAbility, txtFortMagic, txtFortMisc, txtRefBase, txtRefAbility, txtRefMagic, txtRefMisc, txtVolBase, txtVolAbility, txtVolMagic, txtVolMisc;
     private Button btnSave;
     private Salvacion fortaleza, reflejos, voluntad;
+    private Personaje personaje = PersonajeActivity.personaje;
+    private ArrayList<Salvacion> salvaciones;
 
     public SalvacionesDialog() {
         super();
-        this.fortaleza = CaracteristicasFragment.fortaleza;
-        this.reflejos = CaracteristicasFragment.reflejos;
-        this.voluntad = CaracteristicasFragment.voluntad;
+        this.salvaciones = personaje.getSalvaciones();
+
+        for (int i = 0; i < salvaciones.size(); i++) {
+            switch (salvaciones.get(i).getTipo()){
+                case "fortaleza":
+                    this.fortaleza = salvaciones.get(i);
+                    break;
+                case "reflejos":
+                    this.reflejos = salvaciones.get(i);
+                    break;
+                case "voluntad":
+                    this.voluntad = salvaciones.get(i);
+                    break;
+            }
+        }
     }
 
     @Override
@@ -116,9 +134,15 @@ public class SalvacionesDialog extends DialogFragment {
                 int totalr = reflejos.getBase() + reflejos.getAbility() + reflejos.getMagic() + reflejos.getMisc();
                 int totalv = voluntad.getBase() + voluntad.getAbility() + voluntad.getMagic() + voluntad.getMisc();
 
-                fortaleza.setTotal(totalf);
-                reflejos.setTotal(totalr);
-                voluntad.setTotal(totalv);
+                fortaleza.setTipo("fortaleza");
+                reflejos.setTipo("reflejos");
+                voluntad.setTipo("voluntad");
+
+
+                salvaciones.clear();
+                salvaciones.add(fortaleza);
+                salvaciones.add(reflejos);
+                salvaciones.add(voluntad);
 
                 getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
                 dismiss();

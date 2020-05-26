@@ -27,7 +27,6 @@ import retrofit2.Response;
 
 public class ListaPersonajesActivity extends AppCompatActivity {
 
-    private final int DELETEPJ = 1;
     private RecyclerView recyclerView;
     private ArrayList<PersonajeLista> personajes = new ArrayList<>();
     private int elemento = R.layout.elemento_lista_pj;
@@ -61,8 +60,6 @@ public class ListaPersonajesActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<PersonajeLista>>() {
             @Override
             public void onResponse(Call<ArrayList<PersonajeLista>> call, Response<ArrayList<PersonajeLista>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -97,17 +94,4 @@ public class ListaPersonajesActivity extends AppCompatActivity {
             personajes.add(personaje);
         }
     }
-
-    /*
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == DELETEPJ) {
-            if (resultCode == 1) {
-                adapter.notifyDataSetChanged();
-            }
-        }
-    }
-
- */
 }

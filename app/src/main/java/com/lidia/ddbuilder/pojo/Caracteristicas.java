@@ -1,6 +1,10 @@
 package com.lidia.ddbuilder.pojo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Caracteristicas {
+    @SerializedName("id_personaje")
+    private int idPersonaje;
     private int fuerza;
     private int destreza;
     private int constitucion;
@@ -15,6 +19,14 @@ public class Caracteristicas {
         this.inteligencia = 10;
         this.sabiduria = 10;
         this.carisma = 10;
+    }
+
+    public int getIdPersonaje() {
+        return idPersonaje;
+    }
+
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
     }
 
     public int getFuerza() {

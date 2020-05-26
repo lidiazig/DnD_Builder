@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.EquipoAdapter;
 import com.lidia.ddbuilder.dialogs.EquipoDialog;
@@ -26,7 +27,7 @@ public class EquipoFragment extends Fragment {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    public static ArrayList<Equipo> equipo= PerfilFragment.personaje.getEquipo();
+    public static ArrayList<Equipo> equipo= PersonajeActivity.personaje.getEquipo();
     private int elemento = R.layout.elemento_equipo;
     private EquipoAdapter adapter;
 

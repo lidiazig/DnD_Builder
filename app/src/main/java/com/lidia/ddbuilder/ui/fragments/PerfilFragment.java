@@ -42,6 +42,7 @@ import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Clase;
+import com.lidia.ddbuilder.pojo.Perfil;
 import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Raza;
 import com.lidia.ddbuilder.pojo.Token;
@@ -63,13 +64,18 @@ public class PerfilFragment extends Fragment {
 
     private static final int IMAGE_PICKER_SELECT = 1;
 
-    public static Personaje personaje = new Personaje();
 
+    private Personaje personaje = PersonajeActivity.personaje;
+    private Perfil perfil = personaje.getPerfil();
     private ArrayList<String> clases = new ArrayList<>();
     private ArrayList<String> alineamientos = new ArrayList<>();
     private ArrayList<String> razas = new ArrayList<>();
     private ArrayList<Integer> imagenes = new ArrayList<>();
     private Token token = MainActivity.token;
+
+    private ArrayList<Clase> clasesData = new ArrayList<>();
+    private ArrayList<Alineamiento> alineamientosData  = new ArrayList<>();
+    private ArrayList<Raza> razasData  = new ArrayList<>();
 
 
     private EditText txtNombre, txtNivel, txtGenero, txtTamano, txtEdad, txtIdiomas;
@@ -129,15 +135,15 @@ public class PerfilFragment extends Fragment {
         fillImagenes();
         fillData();
 
-        if(personaje.getIdImagen()!=0)
-            imagen.setImageResource(personaje.getIdImagen());
+        if (personaje.getPerfil().getIdImagen() != 0)
+            imagen.setImageResource(perfil.getIdImagen());
 
         txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtNombre.getText().equals(""))
-                        personaje.setNombre(txtNombre.getText().toString());
+                        perfil.setNombre(txtNombre.getText().toString());
                 }
             }
         });
@@ -146,7 +152,7 @@ public class PerfilFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtNivel.getText().equals(""))
-                        personaje.setNivel(txtNivel.getText().toString());
+                        perfil.setNivel(txtNivel.getText().toString());
                 }
             }
         });
@@ -155,7 +161,7 @@ public class PerfilFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtGenero.getText().equals(""))
-                        personaje.setGenero(txtGenero.getText().toString());
+                        perfil.setGenero(txtGenero.getText().toString());
                 }
             }
         });
@@ -164,7 +170,7 @@ public class PerfilFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtTamano.getText().equals(""))
-                        personaje.setTamano(txtTamano.getText().toString());
+                        perfil.setTamano(txtTamano.getText().toString());
                 }
             }
         });
@@ -173,16 +179,16 @@ public class PerfilFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 if (!hasFocus) {
                     if (!txtEdad.getText().equals(""))
-                        personaje.setEdad(txtEdad.getText().toString());
+                        perfil.setEdad(txtEdad.getText().toString());
                 }
             }
         });
-       txtIdiomas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        txtIdiomas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    if(!txtIdiomas.getText().equals(""))
-                        personaje.setIdiomas(txtIdiomas.getText().toString());
+                if (!hasFocus) {
+                    if (!txtIdiomas.getText().equals(""))
+                        perfil.setIdiomas(txtIdiomas.getText().toString());
                 }
             }
         });
@@ -190,7 +196,7 @@ public class PerfilFragment extends Fragment {
         spinnerAlineamiento.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                personaje.setIdAlineamiento(spinnerAlineamiento.getSelectedItemPosition());
+                perfil.setIdAlineamiento(getIdFromPoAlineamiento(spinnerAlineamiento.getSelectedItemPosition()));
             }
 
             @Override
@@ -201,7 +207,7 @@ public class PerfilFragment extends Fragment {
         spinnerRaza.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                personaje.setIdRaza(spinnerRaza.getSelectedItemPosition());
+                perfil.setIdRaza(getIdFromPosRazas(spinnerRaza.getSelectedItemPosition()));
             }
 
             @Override
@@ -212,7 +218,7 @@ public class PerfilFragment extends Fragment {
         spinnerClase.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                personaje.setIdClase(spinnerClase.getSelectedItemPosition());
+                perfil.setIdClase(getIdFromPosClases(spinnerClase.getSelectedItemPosition()));
             }
 
             @Override
@@ -249,7 +255,7 @@ public class PerfilFragment extends Fragment {
                     contador = 0;
 
                 imagen.setImageResource(imagenes.get(contador));
-                personaje.setIdImagen(imagenes.get(contador));
+                perfil.setIdImagen(imagenes.get(contador));
             }
         });
         btnAnterior.setOnClickListener(new View.OnClickListener() {
@@ -260,7 +266,7 @@ public class PerfilFragment extends Fragment {
                     contador = imagenes.size() - 1;
 
                 imagen.setImageResource(imagenes.get(contador));
-                personaje.setIdImagen(imagenes.get(contador));
+                perfil.setIdImagen(imagenes.get(contador));
             }
         });
 
@@ -277,17 +283,17 @@ public class PerfilFragment extends Fragment {
         return root;
     }
 
-    private void fillData(){
-        txtNombre.setText(personaje.getNombre());
-        txtNivel.setText(personaje.getNivel());
-        txtGenero.setText(personaje.getGenero());
-        txtTamano.setText(personaje.getTamano());
-        txtEdad.setText(personaje.getEdad());
-        txtIdiomas.setText(personaje.getIdiomas());
+    private void fillData() {
+        txtNombre.setText(perfil.getNombre());
+        txtNivel.setText(perfil.getNivel());
+        txtGenero.setText(perfil.getGenero());
+        txtTamano.setText(perfil.getTamano());
+        txtEdad.setText(perfil.getEdad());
+        txtIdiomas.setText(perfil.getIdiomas());
 
-        spinnerAlineamiento.setSelection(personaje.getIdAlineamiento(), false);
-        spinnerClase.setSelection(personaje.getIdClase(), false);
-        spinnerRaza.setSelection(personaje.getIdRaza(), false);
+        spinnerAlineamiento.setSelection(getPosFromIdAlineamientos( perfil.getIdAlineamiento()), false);
+        spinnerClase.setSelection(getPosFromIdClases(perfil.getIdClase()), false);
+        spinnerRaza.setSelection(getPosFromIdRazas(perfil.getIdRaza()), false);
     }
 
     private void fillImagenes() {
@@ -383,10 +389,10 @@ public class PerfilFragment extends Fragment {
         call.enqueue(new Callback<ArrayList<Alineamiento>>() {
             @Override
             public void onResponse(Call<ArrayList<Alineamiento>> call, Response<ArrayList<Alineamiento>> response) {
-                if (response.isSuccessful() && response.code()==200) {
+                if (response.isSuccessful() && response.code() == 200) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-
+                        alineamientosData=response.body();
                         spinAlineamientoJSON(response.body());
 
                     }
@@ -413,6 +419,7 @@ public class PerfilFragment extends Fragment {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, alineamientos);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinnerAlineamiento.setAdapter(spinnerArrayAdapter);
+        fillData();
     }
 
     private void setSpinnerRaza() {
@@ -425,7 +432,7 @@ public class PerfilFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-
+                        razasData=response.body();
                         spinRazaJSON(response.body());
 
                     } else {
@@ -450,6 +457,7 @@ public class PerfilFragment extends Fragment {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item, razas);
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinnerRaza.setAdapter(spinnerArrayAdapter);
+        fillData();
     }
 
     private void setSpinnerClase() {
@@ -462,7 +470,7 @@ public class PerfilFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-
+                        clasesData=response.body();
                         spinClaseJSON(response.body());
 
                     } else {
@@ -488,5 +496,47 @@ public class PerfilFragment extends Fragment {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
         spinnerClase.setAdapter(spinnerArrayAdapter);
 
+        fillData();
+    }
+
+    private int getIdFromPosClases(int position)
+    {
+        return clasesData.get(position).getId();
+    }
+    private int getIdFromPosRazas(int position)
+    {
+        return razasData.get(position).getId();
+    }
+    private int getIdFromPoAlineamiento(int position)
+    {
+        return alineamientosData.get(position).getId();
+    }
+
+    private int getPosFromIdClases(int id)
+    {
+        for(int i=0;i<clasesData.size();i++) {
+            if (clasesData.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    private int getPosFromIdRazas(int id)
+    {
+        for(int i=0;i<razasData.size();i++) {
+            if (razasData.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    private int getPosFromIdAlineamientos(int id)
+    {
+        for(int i=0;i<alineamientosData.size();i++) {
+            if (alineamientosData.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

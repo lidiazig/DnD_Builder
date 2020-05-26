@@ -1,11 +1,23 @@
 package com.lidia.ddbuilder.pojo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Dote {
+    @SerializedName("id_personaje")
+    private int idPersonaje;
     private int id;
     private String nombre;
     private String prerrequisito;
     private String descripcion;
     private String notas;
+
+    public int getIdPersonaje() {
+        return idPersonaje;
+    }
+
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
+    }
 
     public int getId() {
         return id;

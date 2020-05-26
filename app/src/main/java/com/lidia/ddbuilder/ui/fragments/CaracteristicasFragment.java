@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.dialogs.ArmorClassDialog;
 import com.lidia.ddbuilder.dialogs.SalvacionesDialog;
@@ -23,6 +24,8 @@ import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Salvacion;
 import com.lidia.ddbuilder.pojo.Vida;
 
+import java.util.ArrayList;
+
 public class CaracteristicasFragment extends Fragment {
 
     private EditText txtFue, txtDes, txtCon, txtInt, txtSab, txtCar, txtDoteIniciativa, txtPgMax, txtHeridas,
@@ -30,14 +33,12 @@ public class CaracteristicasFragment extends Fragment {
     private TextView lbModFue, lbModDes, lbModCon, lbModInt, lbModSab, lbModCar, lbIniciativa, lbCa, lbToque, lbDesprevenido, lbAtaqueBase,
             lbPresa, lbFortaleza, lbReflejos, lbVoluntad;
 
-    private Personaje personaje = PerfilFragment.personaje;
+    private Personaje personaje = PersonajeActivity.personaje;
     private Caracteristicas caracteristicas = personaje.getCaracteristicas();
     private DatosAdicionales datosAdicionales = personaje.getDatosAdicionales();
     private Vida vida = personaje.getVida();
-    public static ArmorClass armorClass = new ArmorClass();
-    public static Salvacion fortaleza = new Salvacion();
-    public static Salvacion reflejos = new Salvacion();
-    public static Salvacion voluntad = new Salvacion();
+    private ArmorClass armorClass = personaje.getArmorClass();
+    private ArrayList<Salvacion> salvaciones = personaje.getSalvaciones();
 
     private final int ARMOR = 1;
     private final int SALVACIONES = 2;
@@ -511,10 +512,10 @@ public class CaracteristicasFragment extends Fragment {
         }
         if (requestCode == SALVACIONES) {
             if (resultCode == 1) {
-                lbFortaleza.setText(fortaleza.getTotal() + "");
 
-                lbReflejos.setText(reflejos.getTotal() + "");
-                lbVoluntad.setText(voluntad.getTotal() + "");
+                lbFortaleza.setText(salvaciones.get(0).getTotal() + "");
+                lbReflejos.setText(salvaciones.get(1).getTotal() + "");
+                lbVoluntad.setText(salvaciones.get(2).getTotal() + "");
             }
         }
     }

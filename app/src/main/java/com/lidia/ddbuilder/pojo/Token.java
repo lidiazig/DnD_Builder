@@ -10,4 +10,8 @@ public class Token {
     public void setToken(String token) {
         this.token = token;
     }
+
+    public int getIdUser(){
+        return Integer.parseInt(token);
+    }
 }

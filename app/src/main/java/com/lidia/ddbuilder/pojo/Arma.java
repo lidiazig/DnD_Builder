@@ -10,20 +10,20 @@ public class Arma extends Equipo {
     @SerializedName("alcance")
     private int rango;
     @SerializedName("tipo_dano")
-    private String tipo;
+    private String tipoDano;
     private int municion;
 
     public Arma(String nombre, String propiedades) {
         super(nombre, propiedades);
     }
 
-    public Arma(String nombre, String propiedades, int ataque, String dano, String critico, int rango, String tipo, int municion) {
+    public Arma(String nombre, String propiedades, int ataque, String dano, String critico, int rango, String tipoDano, int municion) {
         super(nombre, propiedades);
         this.ataque = ataque;
         this.dano = dano;
         this.critico = critico;
         this.rango = rango;
-        this.tipo = tipo;
+        this.tipoDano = tipoDano;
         this.municion = municion;
     }
 
@@ -59,12 +59,12 @@ public class Arma extends Equipo {
         this.rango = rango;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getTipoDano() {
+        return tipoDano;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoDano(String tipoDano) {
+        this.tipoDano = tipoDano;
     }
 
     public int getMunicion() {

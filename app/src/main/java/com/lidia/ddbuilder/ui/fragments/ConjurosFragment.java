@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.MainActivity;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HechizosAdapter;
 import com.lidia.ddbuilder.pojo.HechizoBase;
@@ -64,11 +65,11 @@ public class ConjurosFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_conjuros, container, false);
         recyclerView = root.findViewById(R.id.recyclerViewHechizos);
         hechizos = new ArrayList<>();
-        clase=PerfilFragment.personaje.getIdClase();
+        clase= PersonajeActivity.personaje.getPerfil().getIdClase();
         //Cambio la última clase porque al coincidir hechizos de mago y hechicero solo están almacenados para una clase y así no estar duplicados
-        if(clase==1 || clase==2 || clase==3 || clase==6 || clase==7 || clase==9 || clase==10)
-            if(clase==10)
-                clase=9;
+        if(clase==2 || clase==3 || clase==4 || clase==7 || clase==8 || clase==10 || clase==11)
+            if(clase==11)
+                clase=10;
             getHechizos();
 
         /*
@@ -87,12 +88,10 @@ public class ConjurosFragment extends Fragment {
     private void getHechizos() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(clase+1, token);
+        Call<ArrayList<HechizoBase>> call = conexion.doGetHechizosClase(clase, token);
         call.enqueue(new Callback<ArrayList<HechizoBase>>() {
             @Override
             public void onResponse(Call<ArrayList<HechizoBase>> call, Response<ArrayList<HechizoBase>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());

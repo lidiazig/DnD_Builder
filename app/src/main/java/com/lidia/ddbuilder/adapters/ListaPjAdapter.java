@@ -3,6 +3,7 @@ package com.lidia.ddbuilder.adapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.ListaPersonajesActivity;
 import com.lidia.ddbuilder.MainActivity;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.dialogs.DeleteDialog;
 import com.lidia.ddbuilder.pojo.Personaje;
@@ -63,6 +65,17 @@ public class ListaPjAdapter extends RecyclerView.Adapter<ListaPjAdapter.Elemento
             public void onClick(View v) {
                 DeleteDialog deleteDialog = new DeleteDialog();
                 deleteDialog.showDialog(context, personajes, position);
+            }
+        });
+
+        holder.txtNombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, PersonajeActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("id",personajes.get(position).getId());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
     }

@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Dote;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
@@ -38,7 +39,7 @@ public class DoteAddDialog extends DialogFragment {
     public DoteAddDialog(Dote dote) {
         super();
         this.dote = dote;
-        this.dotesPJ = DotesFragment.dotes;
+        this.dotesPJ = PersonajeActivity.personaje.getDotes();
     }
 
     @Override

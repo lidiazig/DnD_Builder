@@ -12,6 +12,7 @@ import com.lidia.ddbuilder.ListaPersonajesActivity;
 import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.ListaPjAdapter;
+import com.lidia.ddbuilder.pojo.Perfil;
 import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.PersonajeLista;
 import com.lidia.ddbuilder.pojo.Token;
@@ -63,10 +64,10 @@ public class DeleteDialog{
     private void deletePersonaje(final int position) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
-        Call<Personaje> call = conexion.doDeletePersonaje(personajes.get(position).getId(), token);
-        call.enqueue(new Callback<Personaje>() {
+        Call<Perfil> call = conexion.doDeletePersonaje(personajes.get(position).getId(), token);
+        call.enqueue(new Callback<Perfil>() {
             @Override
-            public void onResponse(Call<Personaje> call, Response<Personaje> response) {
+            public void onResponse(Call<Perfil> call, Response<Perfil> response) {
                 Log.i("Responsestring", response.body().toString());
                 //Toast.makeText()
                 if (response.isSuccessful()) {
@@ -81,7 +82,7 @@ public class DeleteDialog{
             }
 
             @Override
-            public void onFailure(Call<Personaje> call, Throwable t) {
+            public void onFailure(Call<Perfil> call, Throwable t) {
                 Log.d("ERROR", t.getMessage());
             }
         });

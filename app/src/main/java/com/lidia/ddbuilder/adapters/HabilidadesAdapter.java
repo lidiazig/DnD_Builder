@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Habilidad;
 import com.lidia.ddbuilder.pojo.Personaje;
@@ -38,8 +39,8 @@ public class HabilidadesAdapter extends RecyclerView.Adapter<HabilidadesAdapter.
         this.habilidades = habilidades;
         this.resource = resource;
         this.fragmentManager = fragmentManager;
-        this.personaje = PerfilFragment.personaje;
-        this.habilidadesPJ = PerfilFragment.personaje.getHabilidades();
+        this.personaje = PersonajeActivity.personaje;
+        this.habilidadesPJ = PersonajeActivity.personaje.getHabilidades();
     }
 
     @NonNull

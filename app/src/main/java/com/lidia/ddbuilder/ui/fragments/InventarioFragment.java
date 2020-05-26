@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.InventarioAdapter;
 import com.lidia.ddbuilder.dialogs.InventarioDialog;
@@ -27,7 +28,7 @@ public class InventarioFragment extends Fragment {
 
     private FloatingActionButton fab;
     private RecyclerView recyclerView;
-    public static ArrayList<Inventario> inventario = PerfilFragment.personaje.getInventario();
+    public static ArrayList<Inventario> inventario = PersonajeActivity.personaje.getInventario();
     private int elemento = R.layout.elemento_inventario;
     private InventarioAdapter adapter;
 

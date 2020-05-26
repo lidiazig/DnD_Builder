@@ -3,6 +3,8 @@ package com.lidia.ddbuilder.pojo;
 import com.google.gson.annotations.SerializedName;
 
 public class DatosAdicionales {
+    @SerializedName("id_personaje")
+    private int idPersonaje;
     @SerializedName("reduccion_dano")
     private String redDano;
     private int velocidad;
@@ -16,6 +18,14 @@ public class DatosAdicionales {
     private int size;
     @SerializedName("presa_dote")
     private int miscPresa;
+
+    public int getIdPersonaje() {
+        return idPersonaje;
+    }
+
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
+    }
 
     public String getRedDano() {
         return redDano;

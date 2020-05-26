@@ -36,6 +36,7 @@ public class DoteListadoDialog extends DialogFragment {
     public DoteListadoDialog (DotesFragment dotesFragment){
         super();
         this.dotesFragment = dotesFragment;
+        dotes = new ArrayList<>();
     }
 
     @Override
@@ -54,7 +55,6 @@ public class DoteListadoDialog extends DialogFragment {
         View v = inflater.inflate(R.layout.dialog_dote, container, false);
 
         recyclerView = v.findViewById(R.id.recyclerViewDialogDotes);
-        dotes = new ArrayList<>();
 
         getDotes();
 

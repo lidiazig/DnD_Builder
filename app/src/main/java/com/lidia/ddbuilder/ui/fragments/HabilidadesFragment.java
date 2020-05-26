@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lidia.ddbuilder.MainActivity;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HabilidadesAdapter;
 import com.lidia.ddbuilder.pojo.Habilidad;
@@ -29,7 +30,7 @@ import retrofit2.Response;
 public class HabilidadesFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Habilidad> habilidades = PerfilFragment.personaje.getHabilidades();
+    private ArrayList<Habilidad> habilidades = PersonajeActivity.personaje.getHabilidades();
     private int elemento = R.layout.elemento_habilidades;
     private HabilidadesAdapter adapter;
     private Token token = MainActivity.token;

@@ -1,6 +1,5 @@
 package com.lidia.ddbuilder.retrofit_api;
 
-
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Arma;
 import com.lidia.ddbuilder.pojo.Armadura;
@@ -13,6 +12,7 @@ import com.lidia.ddbuilder.pojo.Habilidad;
 import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Inventario;
+import com.lidia.ddbuilder.pojo.Perfil;
 import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.PersonajeLista;
 import com.lidia.ddbuilder.pojo.Raza;
@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -40,10 +39,10 @@ public interface RetrofitConexion {
 
     //Caracteristicas
     @POST("/api/caracteristicas/save")
-    Call<ArrayList<Caracteristicas>> doSaveCaracteristicas(@Body Token token);
+    Call<Caracteristicas> doSaveCaracteristicas(@Body Caracteristicas caracteristicas);
 
     @POST("/api/caracteristicas/get/{id}")
-    Call<ArrayList<Caracteristicas>> doGetCaracteristicas(@Path("id") int id, @Body Token token);
+    Call<Caracteristicas> doGetCaracteristicas(@Path("id") int id, @Body Token token);
 
     //Clases
     @POST("/api/clases")
@@ -54,10 +53,10 @@ public interface RetrofitConexion {
 
     //Datos adicionales
     @POST("/api/datos/save")
-    Call<ArrayList<DatosAdicionales>> doSaveDatos(@Body Token token);
+    Call<DatosAdicionales> doSaveDatos(@Body DatosAdicionales datosAdicionales);
 
     @POST("/api/datos/get/{id}")
-    Call<ArrayList<DatosAdicionales>> doGetDatos(@Path("id") int id, @Body Token token);
+    Call<DatosAdicionales> doGetDatos(@Path("id") int id, @Body Token token);
 
     //Dotes
     @POST("/api/dotes")
@@ -70,8 +69,8 @@ public interface RetrofitConexion {
     Call<Dote> doGetDote(@Path("id") int id, @Body Token token);
 
     //Equipo
-    @POST("/api/equipo")
-    Call<ArrayList<Equipo>> doSaveEquipo(@Body Token token);
+    @POST("/api/equipo/save")
+    Call<ArrayList<Equipo>> doSaveEquipo(@Body ArrayList<Equipo> equipo);
 
     @POST("/api/dotes/personaje/{id}")
     Call<ArrayList<Equipo>> doGetEquipoPj(@Path("id") int id, @Body Token token);
@@ -98,20 +97,20 @@ public interface RetrofitConexion {
     Call<ArrayList<Inventario>> doSaveInventario(@Body ArrayList<Inventario> inventario);
 
     @POST("/api/inventario/{id}")
-    Call<ArrayList<Inventario>> doGetInventario(@Path("id") int id);
+    Call<ArrayList<Inventario>> doGetInventario(@Path("id") int id, @Body Token token);
 
     //Personaje
     @POST("/api/personaje")
-    Call<Personaje> doSavePersonaje(@Body Personaje personaje);
+    Call<Integer> doSavePersonaje(@Body Perfil personaje);
 
     @POST("/api/personaje/{id}")
-    Call<Personaje> doGetPersonaje(@Path("id") int id, @Body Token token);
+    Call<Perfil> doGetPersonaje(@Path("id") int id, @Body Token token);
 
     @POST("/api/personaje/user/{id}")
     Call<ArrayList<PersonajeLista>> doGetPersonajesUser(@Path("id") Token id, @Body Token token);
 
     @POST("/api/personaje/delete/{id}")
-    Call<Personaje> doDeletePersonaje(@Path("id") int id, @Body Token token);
+    Call<Perfil> doDeletePersonaje(@Path("id") int id, @Body Token token);
 
     //Razas
     @POST("/api/razas")
@@ -122,7 +121,7 @@ public interface RetrofitConexion {
 
     //Salvaciones
     @POST("/api/salvaciones/save")
-    Call<ArrayList<Salvacion>> doSaveSalvaciones(@Body Token token);
+    Call<ArrayList<Salvacion>> doSaveSalvaciones(@Body ArrayList<Salvacion> salvaciones);
 
     @POST("/api/salvaciones/get/{id}")
     Call<ArrayList<Salvacion>> doGetSalvaciones(@Path("id") int id, @Body Token token);
@@ -136,8 +135,8 @@ public interface RetrofitConexion {
 
     //Vida
     @POST("/api/vida/save")
-    Call<ArrayList<Vida>> doSaveVida(@Body Token token);
+    Call<Vida> doSaveVida(@Body Vida vida);
 
     @POST("/api/vida/get/{id}")
-    Call<ArrayList<Vida>> doGetVida(@Path("id") int id, @Body Token token);
+    Call<Vida> doGetVida(@Path("id") int id, @Body Token token);
 }

@@ -3,18 +3,20 @@ package com.lidia.ddbuilder.pojo;
 import com.google.gson.annotations.SerializedName;
 
 public class Inventario {
-    @SerializedName("id_objeto")
-    private int id;
+    @SerializedName("id_personaje")
+    private int idPersonaje;
     private String nombre;
     private String cantidad;
 
-    public int getId() {
-        return id;
+    public int getIdPersonaje() {
+        return idPersonaje;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
     }
+
+
 
     public String getNombre() {
         return nombre;

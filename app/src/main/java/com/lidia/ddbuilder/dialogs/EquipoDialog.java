@@ -103,7 +103,7 @@ public class EquipoDialog extends DialogFragment {
                 txtDano.setText(((Arma) objeto).getDano());
                 txtCritico.setText(((Arma) objeto).getCritico());
                 txtRango.setText(((Arma) objeto).getRango()+"");
-                txtTipoArma.setText(((Arma) objeto).getTipo());
+                txtTipoArma.setText(((Arma) objeto).getTipoDano());
                 txtMunicion.setText(((Arma) objeto).getMunicion()+"");
             }else{
                 rbArmadura.setChecked(true);
@@ -151,8 +151,9 @@ public class EquipoDialog extends DialogFragment {
                     arma.setDano(txtDano.getText().toString());
                     arma.setCritico(txtCritico.getText().toString());
                     arma.setRango(Integer.parseInt(txtRango.getText().toString()));
-                    arma.setTipo(txtTipoArma.getText().toString());
+                    arma.setTipoDano(txtTipoArma.getText().toString());
                     arma.setMunicion(Integer.parseInt(txtMunicion.getText().toString()));
+                    arma.setTipoObjeto(0);
 
                 }else{
                     if(objeto==null) {
@@ -168,6 +169,7 @@ public class EquipoDialog extends DialogFragment {
                     armadura.setSpellFailure(txtSpell.getText().toString());
                     armadura.setVelocidad(Integer.parseInt(txtSpeed.getText().toString()));
                     armadura.setPeso(Integer.parseInt(txtPeso.getText().toString()));
+                    armadura.setTipoObjeto(1);
                 }
 
                 objeto.setNombre(txtNombre.getText().toString());

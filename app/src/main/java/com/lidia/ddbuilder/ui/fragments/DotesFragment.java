@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.DoteAdapter;
 import com.lidia.ddbuilder.dialogs.DoteAddDialog;
@@ -27,7 +28,7 @@ public class DotesFragment extends Fragment {
     private FloatingActionButton fab;
 
     private RecyclerView recyclerView;
-    public static ArrayList<Dote> dotes = PerfilFragment.personaje.getDotes();
+    private ArrayList<Dote> dotes = PersonajeActivity.personaje.getDotes();
     private int elemento = R.layout.elemento_dote;
     public static DoteAdapter adapter;
 

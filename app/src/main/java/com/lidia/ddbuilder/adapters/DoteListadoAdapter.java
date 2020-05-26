@@ -86,8 +86,6 @@ public class DoteListadoAdapter extends RecyclerView.Adapter<DoteListadoAdapter.
         call.enqueue(new Callback<Dote>() {
             @Override
             public void onResponse(Call<Dote> call, Response<Dote> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());

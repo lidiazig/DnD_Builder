@@ -3,6 +3,7 @@ package com.lidia.ddbuilder.pojo;
 import com.google.gson.annotations.SerializedName;
 
 public class Armadura extends Equipo {
+    @SerializedName("tipo_armadura")
     private String tipo;
     @SerializedName("bonus_armadura")
     private int bonus;
