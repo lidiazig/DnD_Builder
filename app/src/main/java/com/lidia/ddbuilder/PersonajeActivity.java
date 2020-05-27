@@ -16,8 +16,10 @@ import com.lidia.ddbuilder.dialogs.HomeDialog;
 import com.lidia.ddbuilder.pojo.Arma;
 import com.lidia.ddbuilder.pojo.Armadura;
 import com.lidia.ddbuilder.pojo.Caracteristicas;
+import com.lidia.ddbuilder.pojo.DatosAdicionales;
 import com.lidia.ddbuilder.pojo.Dote;
 import com.lidia.ddbuilder.pojo.Equipo;
+import com.lidia.ddbuilder.pojo.Habilidad;
 import com.lidia.ddbuilder.pojo.Inventario;
 import com.lidia.ddbuilder.pojo.Perfil;
 import com.lidia.ddbuilder.pojo.Personaje;
@@ -59,13 +61,6 @@ public class PersonajeActivity extends AppCompatActivity {
             id = bundle.getInt("id");
             personaje.getPerfil().setId(id);
             getPersonaje(id);
-            getCaracteristicas(id);
-            getDotes(id);
-            getEquipo(id);
-            getHabilidades(id);
-            getInventario(id);
-            getSalvaciones(id);
-            getVida(id);
         }
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
@@ -106,9 +101,9 @@ public class PersonajeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (personaje.getPerfil().getId() != 0)
-                    deletePersonaje(personaje.getPerfil().getId(),true);
+                    deletePersonaje(personaje.getPerfil().getId(), true);
                 else
-                savePersonaje();
+                    savePersonaje();
 
                 Toast.makeText(PersonajeActivity.this, "CHARACTER SAVED", Toast.LENGTH_SHORT).show();
             }
@@ -126,7 +121,7 @@ public class PersonajeActivity extends AppCompatActivity {
                 //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        if(save)
+                        if (save)
                             savePersonaje();
                         Log.i("onSuccess", response.body().toString());
                     } else {
@@ -137,6 +132,31 @@ public class PersonajeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Perfil> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
+    }
+
+    private void saveDatos() {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
+
+        Call<DatosAdicionales> call = conexion.doSaveDatos(personaje.getDatosAdicionales());
+        call.enqueue(new Callback<DatosAdicionales>() {
+            @Override
+            public void onResponse(Call<DatosAdicionales> call, Response<DatosAdicionales> response) {
+//                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DatosAdicionales> call, Throwable t) {
                 Log.d("ERROR", t.getMessage());
             }
         });
@@ -218,6 +238,28 @@ public class PersonajeActivity extends AppCompatActivity {
     }
 
     private void saveHabilidades() {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
+
+        Call<ArrayList<Habilidad>> call = conexion.doSaveHabilidades(personaje.getHabilidades());
+        call.enqueue(new Callback<ArrayList<Habilidad>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {
+//                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Habilidad>> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
     }
 
     private void saveEquipo() {
@@ -246,11 +288,33 @@ public class PersonajeActivity extends AppCompatActivity {
     }
 
     private void saveDotes() {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
+
+        Call<ArrayList<Dote>> call = conexion.doSaveDotes(personaje.getDotes());
+        call.enqueue(new Callback<ArrayList<Dote>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Dote>> call, Response<ArrayList<Dote>> response) {
+//                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Dote>> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
     }
 
     private void saveCaracteristicas() {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
-        Caracteristicas c =personaje.getCaracteristicas();
+        Caracteristicas c = personaje.getCaracteristicas();
         c.setIdPersonaje(personaje.getPerfil().getId());
         Call<Caracteristicas> call = conexion.doSaveCaracteristicas(c);
         call.enqueue(new Callback<Caracteristicas>() {
@@ -289,15 +353,14 @@ public class PersonajeActivity extends AppCompatActivity {
                         Log.i("asdasdasd", response.body().toString());
                         personaje.setId(response.body());
 
-                      // saveCaracteristicas();
-                      // saveDotes();
-                       saveEquipo();
-                      // saveHabilidades();
-                      // saveInventario();
-                      // saveSalvaciones();
-                      // saveVida();
-
-
+                        saveCaracteristicas();
+                        saveDatos();
+                        saveDotes();
+                        saveEquipo();
+                        saveHabilidades();
+                        saveInventario();
+                        saveSalvaciones();
+                        saveVida();
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -311,7 +374,7 @@ public class PersonajeActivity extends AppCompatActivity {
         });
     }
 
-    private void getPersonaje(int id) {
+    private void getPersonaje(final int id) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
         Call<Perfil> call = conexion.doGetPersonaje(id, token);
@@ -336,6 +399,17 @@ public class PersonajeActivity extends AppCompatActivity {
                         perfil.setEdad(response.body().getEdad());
                         perfil.setIdiomas(response.body().getIdiomas());
                         perfil.setIdImagen(response.body().getIdImagen());
+
+                        personaje.setPerfil(perfil);
+
+                        getCaracteristicas(id);
+                        getDotes(id);
+                        getDatos(id);
+                        getEquipo(id);
+                        getHabilidades(id);
+                        getInventario(id);
+                        getSalvaciones(id);
+                        getVida(id);
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -363,6 +437,7 @@ public class PersonajeActivity extends AppCompatActivity {
                         Log.i("onSuccess", response.body().toString());
 
                         Caracteristicas caracteristicas = new Caracteristicas();
+                        caracteristicas.setIdPersonaje(response.body().getIdPersonaje());
                         caracteristicas.setFuerza(response.body().getFuerza());
                         caracteristicas.setDestreza(response.body().getDestreza());
                         caracteristicas.setConstitucion(response.body().getConstitucion());
@@ -379,6 +454,43 @@ public class PersonajeActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Caracteristicas> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
+    }
+
+    private void getDatos(int id) {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
+
+        Call<DatosAdicionales> call = conexion.doGetDatos(id, token);
+        call.enqueue(new Callback<DatosAdicionales>() {
+            @Override
+            public void onResponse(Call<DatosAdicionales> call, Response<DatosAdicionales> response) {
+//                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+
+                        DatosAdicionales datos = new DatosAdicionales();
+                        datos.setIdPersonaje(response.body().getIdPersonaje());
+                        datos.setBaseAttack(response.body().getBaseAttack());
+                        datos.setFeatIniciativa(response.body().getFeatIniciativa());
+                        datos.setMiscPresa(response.body().getMiscPresa());
+                        datos.setRedDano(response.body().getRedDano());
+                        datos.setResistenciaConjuros(response.body().getResistenciaConjuros());
+                        datos.setSize(response.body().getSize());
+                        datos.setVelocidad(response.body().getVelocidad());
+
+                        personaje.setDatosAdicionales(datos);
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DatosAdicionales> call, Throwable t) {
                 Log.d("ERROR", t.getMessage());
             }
         });
@@ -454,12 +566,14 @@ public class PersonajeActivity extends AppCompatActivity {
     }
 
     private void setEquipoJSON(ArrayList<Equipo> response) {
+        ArrayList<Equipo> equipo =personaje.getEquipo();
         for (int i = 0; i < response.size(); i++) {
             if (response.get(i).getTipoObjeto() == 0)
-                setArma(id, response);
+                setArma(response.get(i).getIdObjeto(), equipo);
             else
-                setArmadura(id, response);
+                setArmadura(id, equipo);
         }
+        personaje.setEquipo(equipo);
     }
 
     private void setArma(int id, final ArrayList<Equipo> equipo) {

@@ -37,6 +37,7 @@ public class EquipoDialog extends DialogFragment {
         super();
         this.equipo = EquipoFragment.equipo;
     }
+
     public EquipoDialog(Equipo objeto) {
         super();
         this.equipo = EquipoFragment.equipo;
@@ -90,34 +91,34 @@ public class EquipoDialog extends DialogFragment {
         radioGroup = v.findViewById(R.id.radioGroupEquipo);
         btnSave = v.findViewById(R.id.btnSaveEquipo);
 
-        if(objeto!=null) {
+        if (objeto != null) {
             rbArma.setEnabled(false);
             rbArmadura.setEnabled(false);
             txtNombre.setText(objeto.getNombre());
             txtPropiedades.setText(objeto.getPropiedades());
 
-            if(objeto instanceof Arma){
+            if (objeto instanceof Arma) {
                 rbArma.setChecked(true);
 
-                txtBonusArma.setText(((Arma) objeto).getAtaque()+"");
+                txtBonusArma.setText(((Arma) objeto).getAtaque() + "");
                 txtDano.setText(((Arma) objeto).getDano());
                 txtCritico.setText(((Arma) objeto).getCritico());
-                txtRango.setText(((Arma) objeto).getRango()+"");
+                txtRango.setText(((Arma) objeto).getRango() + "");
                 txtTipoArma.setText(((Arma) objeto).getTipoDano());
-                txtMunicion.setText(((Arma) objeto).getMunicion()+"");
-            }else{
+                txtMunicion.setText(((Arma) objeto).getMunicion() + "");
+            } else {
                 rbArmadura.setChecked(true);
                 activateArmadura();
 
                 txtTipoArmadura.setText(((Armadura) objeto).getTipo());
-                txtBonusArmadura.setText(((Armadura) objeto).getBonus()+"");
-                txtDex.setText(((Armadura) objeto).getMaxDex()+"");
-                txtPenalty.setText(((Armadura) objeto).getPenalty()+"");
+                txtBonusArmadura.setText(((Armadura) objeto).getBonus() + "");
+                txtDex.setText(((Armadura) objeto).getMaxDex() + "");
+                txtPenalty.setText(((Armadura) objeto).getPenalty() + "");
                 txtSpell.setText(((Armadura) objeto).getSpellFailure());
-                txtSpeed.setText(((Armadura) objeto).getVelocidad()+"");
-                txtPeso.setText(((Armadura) objeto).getPeso()+"");
+                txtSpeed.setText(((Armadura) objeto).getVelocidad() + "");
+                txtPeso.setText(((Armadura) objeto).getPeso() + "");
             }
-        }else {
+        } else {
             rbArmadura.setEnabled(true);
             rbArma.setEnabled(true);
         }
@@ -140,35 +141,51 @@ public class EquipoDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
 
-                if (rbArma.isChecked()){
-                    if(objeto==null) {
-                        objeto = new Arma("","");
+                if (rbArma.isChecked()) {
+                    if (objeto == null) {
+                        objeto = new Arma("", "");
                         equipo.add(objeto);
                     }
                     Arma arma = (Arma) objeto;
 
-                    arma.setAtaque(Integer.parseInt(txtBonusArma.getText().toString()));
+                    if (!txtBonusArma.getText().toString().equals(""))
+                        arma.setAtaque(Integer.parseInt(txtBonusArma.getText().toString()));
+
                     arma.setDano(txtDano.getText().toString());
                     arma.setCritico(txtCritico.getText().toString());
-                    arma.setRango(Integer.parseInt(txtRango.getText().toString()));
+                    if (!txtRango.getText().toString().equals(""))
+                        arma.setRango(Integer.parseInt(txtRango.getText().toString()));
+
                     arma.setTipoDano(txtTipoArma.getText().toString());
-                    arma.setMunicion(Integer.parseInt(txtMunicion.getText().toString()));
+                    if (!txtMunicion.getText().toString().equals(""))
+                        arma.setMunicion(Integer.parseInt(txtMunicion.getText().toString()));
+
                     arma.setTipoObjeto(0);
 
-                }else{
-                    if(objeto==null) {
+                } else {
+                    if (objeto == null) {
                         objeto = new Armadura("", "");
                         equipo.add(objeto);
                     }
                     Armadura armadura = (Armadura) objeto;
 
                     armadura.setTipo(txtTipoArmadura.getText().toString());
-                    armadura.setBonus(Integer.parseInt(txtBonusArmadura.getText().toString()));
-                    armadura.setMaxDex(Integer.parseInt(txtDex.getText().toString()));
-                    armadura.setPenalty(Integer.parseInt(txtPenalty.getText().toString()));
+                    if (!txtBonusArmadura.getText().toString().equals(""))
+                        armadura.setBonus(Integer.parseInt(txtBonusArmadura.getText().toString()));
+
+                    if (!txtDex.getText().toString().equals(""))
+                        armadura.setMaxDex(Integer.parseInt(txtDex.getText().toString()));
+
+                    if (!txtPenalty.getText().toString().equals(""))
+                        armadura.setPenalty(Integer.parseInt(txtPenalty.getText().toString()));
+
                     armadura.setSpellFailure(txtSpell.getText().toString());
-                    armadura.setVelocidad(Integer.parseInt(txtSpeed.getText().toString()));
-                    armadura.setPeso(Integer.parseInt(txtPeso.getText().toString()));
+                    if (!txtSpeed.getText().toString().equals(""))
+                        armadura.setVelocidad(Integer.parseInt(txtSpeed.getText().toString()));
+
+                    if (!txtPeso.getText().toString().equals(""))
+                        armadura.setPeso(Integer.parseInt(txtPeso.getText().toString()));
+
                     armadura.setTipoObjeto(1);
                 }
 
@@ -182,12 +199,11 @@ public class EquipoDialog extends DialogFragment {
         });
 
 
-
         // Create the AlertDialog object and return it
         return v;
     }
 
-    private void activateArma(){
+    private void activateArma() {
         rbArma.setTypeface(Typeface.DEFAULT_BOLD);
         rbArmadura.setTypeface(Typeface.DEFAULT);
         arma1.setVisibility(View.VISIBLE);
@@ -201,7 +217,7 @@ public class EquipoDialog extends DialogFragment {
         armadura4.setVisibility(View.GONE);
     }
 
-    private void activateArmadura(){
+    private void activateArmadura() {
         rbArmadura.setTypeface(Typeface.DEFAULT_BOLD);
         rbArma.setTypeface(Typeface.DEFAULT);
         arma1.setVisibility(View.GONE);

@@ -59,6 +59,9 @@ public interface RetrofitConexion {
     Call<DatosAdicionales> doGetDatos(@Path("id") int id, @Body Token token);
 
     //Dotes
+    @POST("/api/dotes/save")
+    Call<ArrayList<Dote>> doSaveDotes(@Body ArrayList<Dote> dotes);
+
     @POST("/api/dotes")
     Call<ArrayList<Dote>> doGetDotes(@Body Token token);
 
@@ -72,7 +75,7 @@ public interface RetrofitConexion {
     @POST("/api/equipo/save")
     Call<ArrayList<Equipo>> doSaveEquipo(@Body ArrayList<Equipo> equipo);
 
-    @POST("/api/dotes/personaje/{id}")
+    @POST("/api/equipo/personaje/{id}")
     Call<ArrayList<Equipo>> doGetEquipoPj(@Path("id") int id, @Body Token token);
 
     @POST("/api/equipo/arma/{id}")
@@ -84,6 +87,12 @@ public interface RetrofitConexion {
     //Habilidades
     @POST("/api/habilidades")
     Call<ArrayList<Habilidad>> doGetHabilidades(@Body Token token);
+
+    @POST("/api/habilidades/personaje/{id}")
+    Call<ArrayList<Habilidad>> doGetHabilidadesPj(@Path("id") int id, @Body Token token);
+
+    @POST("/api/habilidades/save")
+    Call<ArrayList<Habilidad>> doSaveHabilidades(@Body ArrayList<Habilidad> habilidades);
 
     //Hechizos
     @POST("/api/hechizos/{id}")

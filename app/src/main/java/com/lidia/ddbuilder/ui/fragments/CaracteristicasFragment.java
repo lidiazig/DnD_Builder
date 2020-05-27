@@ -108,6 +108,9 @@ public class CaracteristicasFragment extends Fragment {
 
         fillCaracteristicas();
         fillData();
+        fillBaseAttack();
+        fillGrapple();
+        fillIniciativa();
 
         txtFue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -449,6 +452,7 @@ public class CaracteristicasFragment extends Fragment {
     }
 
     private void fillBaseAttack() {
+        txtBaseAttack.setText(datosAdicionales.getBaseAttack()+"");
         String ba = "";
         int baseAttack = datosAdicionales.getBaseAttack();
 
@@ -465,6 +469,9 @@ public class CaracteristicasFragment extends Fragment {
     }
 
     private void fillGrapple() {
+        txtSizePresa.setText(datosAdicionales.getSize()+"");
+        txtMiscPresa.setText(datosAdicionales.getMiscPresa()+"");
+
         int presa;
         int ba = datosAdicionales.getBaseAttack();
         int fue = caracteristicas.getModificador(caracteristicas.getFuerza());
@@ -477,6 +484,8 @@ public class CaracteristicasFragment extends Fragment {
     }
 
     private void fillIniciativa() {
+        txtDoteIniciativa.setText(datosAdicionales.getFeatIniciativa()+"");
+
         int iniciativa;
         int dex = caracteristicas.getModificador(caracteristicas.getDestreza());
         int feat = datosAdicionales.getFeatIniciativa();

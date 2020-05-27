@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class Equipo {
     @SerializedName("id_personaje")
     private int idPersonaje;
+    @SerializedName("id_objeto")
+    private int idObjeto;
     private String nombre;
     private String propiedades;
     @SerializedName("tipo_objeto")
@@ -14,6 +16,14 @@ public class Equipo {
     public Equipo(String nombre, String propiedades) {
         this.nombre = nombre;
         this.propiedades = propiedades;
+    }
+
+    public int getIdObjeto() {
+        return idObjeto;
+    }
+
+    public void setIdObjeto(int idObjeto) {
+        this.idObjeto = idObjeto;
     }
 
     public String getNombre() {
