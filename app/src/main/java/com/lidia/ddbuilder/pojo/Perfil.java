@@ -27,7 +27,6 @@ public class Perfil {
     }
 
     public void setId(int id) {
-
         this.id = id;
     }
 

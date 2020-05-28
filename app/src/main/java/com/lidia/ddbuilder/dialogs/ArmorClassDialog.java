@@ -85,13 +85,6 @@ public class ArmorClassDialog extends DialogFragment {
                 if (!txtMisc.getText().toString().equals(""))
                     armorClass.setMisc(Integer.parseInt(txtMisc.getText().toString()));
 
-                int ac = 10 + armorClass.getArmor() + armorClass.getShield() + armorClass.getDex() + armorClass.getSize() + armorClass.getNaturalArmor() + armorClass.getDeflection() + armorClass.getMisc();
-                int touch = 10 + armorClass.getDex() + armorClass.getSize() + armorClass.getDeflection() + armorClass.getMisc();
-                int flatfooted = 10 + armorClass.getArmor() + armorClass.getShield() + armorClass.getSize() + armorClass.getNaturalArmor() + armorClass.getMisc();
-
-                armorClass.setAc(ac);
-                armorClass.setTouch(touch);
-                armorClass.setFlatfooted(flatfooted);
 
                 getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
                 dismiss();

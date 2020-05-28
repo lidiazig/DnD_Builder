@@ -38,7 +38,6 @@ public class CaracteristicasFragment extends Fragment {
     private DatosAdicionales datosAdicionales = personaje.getDatosAdicionales();
     private Vida vida = personaje.getVida();
     private ArmorClass armorClass = personaje.getArmorClass();
-    private ArrayList<Salvacion> salvaciones = personaje.getSalvaciones();
 
     private final int ARMOR = 1;
     private final int SALVACIONES = 2;
@@ -69,6 +68,7 @@ public class CaracteristicasFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_caracteristicas, container, false);
 
         txtFue = root.findViewById(R.id.txtFuerza);
@@ -111,6 +111,8 @@ public class CaracteristicasFragment extends Fragment {
         fillBaseAttack();
         fillGrapple();
         fillIniciativa();
+        fillArmorClass();
+        fillSalvaciones();
 
         txtFue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -514,18 +516,27 @@ public class CaracteristicasFragment extends Fragment {
         if (requestCode == ARMOR) { // 1 is an arbitrary number, can be any int
             // This is the return result of your DialogFragment
             if (resultCode == 1) { // 1 is an arbitrary number, can be any int
-                lbCa.setText(armorClass.getAc() + "");
-                lbToque.setText(armorClass.getTouch() + "");
-                lbDesprevenido.setText(armorClass.getFlatfooted() + "");
+                fillArmorClass();
             }
         }
         if (requestCode == SALVACIONES) {
             if (resultCode == 1) {
-
-                lbFortaleza.setText(salvaciones.get(0).getTotal() + "");
-                lbReflejos.setText(salvaciones.get(1).getTotal() + "");
-                lbVoluntad.setText(salvaciones.get(2).getTotal() + "");
+                fillSalvaciones();
             }
         }
+    }
+
+    private void fillArmorClass() {
+        lbCa.setText(armorClass.getAc() + "");
+        lbToque.setText(armorClass.getTouch() + "");
+        lbDesprevenido.setText(armorClass.getFlatfooted() + "");
+    }
+
+    private void fillSalvaciones() {
+        ArrayList<Salvacion> salvaciones = personaje.getSalvaciones();
+
+        lbFortaleza.setText(salvaciones.get(0).getTotal() + "");
+        lbReflejos.setText(salvaciones.get(1).getTotal() + "");
+        lbVoluntad.setText(salvaciones.get(2).getTotal() + "");
     }
 }

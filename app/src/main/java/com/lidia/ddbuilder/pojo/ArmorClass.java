@@ -1,9 +1,10 @@
 package com.lidia.ddbuilder.pojo;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ArmorClass {
-    private int ac;
-    private int touch;
-    private int flatfooted;
+    @SerializedName("id_personaje")
+    private int idPersonaje;
     private int armor;
     private int shield;
     private int dex;
@@ -13,28 +14,25 @@ public class ArmorClass {
     private int misc;
 
     public int getAc() {
-        return ac;
+        return getArmor() + getShield() + getDex() + getSize() + getNaturalArmor() + getDeflection() + getMisc();
     }
 
-    public void setAc(int ac) {
-        this.ac = ac;
+    public int getTouch(){
+        return getDex() + getSize() + getDeflection() + getMisc();
     }
 
-    public int getTouch() {
-        return touch;
+    public int getFlatfooted(){
+        return getArmor() + getShield() + getSize() + getNaturalArmor() + getMisc();
     }
 
-    public void setTouch(int touch) {
-        this.touch = touch;
+    public int getIdPersonaje() {
+        return idPersonaje;
     }
 
-    public int getFlatfooted() {
-        return flatfooted;
+    public void setIdPersonaje(int idPersonaje) {
+        this.idPersonaje = idPersonaje;
     }
 
-    public void setFlatfooted(int flatfooted) {
-        this.flatfooted = flatfooted;
-    }
 
     public int getArmor() {
         return armor;

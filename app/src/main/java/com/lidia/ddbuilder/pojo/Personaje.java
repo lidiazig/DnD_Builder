@@ -3,9 +3,6 @@ package com.lidia.ddbuilder.pojo;
 import java.util.ArrayList;
 
 public class Personaje {
-
-    private static Personaje INSTANCE = null;
-
     private Perfil perfil;
     private ArrayList<Equipo> equipo;
     private Caracteristicas caracteristicas;
@@ -119,7 +116,7 @@ public class Personaje {
     public void setId(int id) {
         this.perfil.setId(id);
         this.caracteristicas.setIdPersonaje(id);
-        // this.armorClass.setIdPersonaje(id)
+        this.armorClass.setIdPersonaje(id);
 
         for (Equipo e : equipo) {
              e.setIdPersonaje(id);
@@ -139,17 +136,5 @@ public class Personaje {
 
         datosAdicionales.setIdPersonaje(id);
         vida.setIdPersonaje(id);
-    }
-
-
-    private synchronized static void createInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new Personaje();
-        }
-    }
-
-    public static Personaje getInstance() {
-        if (INSTANCE == null) createInstance();
-        return INSTANCE;
     }
 }

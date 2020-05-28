@@ -3,6 +3,7 @@ package com.lidia.ddbuilder.retrofit_api;
 import com.lidia.ddbuilder.pojo.Alineamiento;
 import com.lidia.ddbuilder.pojo.Arma;
 import com.lidia.ddbuilder.pojo.Armadura;
+import com.lidia.ddbuilder.pojo.ArmorClass;
 import com.lidia.ddbuilder.pojo.Caracteristicas;
 import com.lidia.ddbuilder.pojo.Clase;
 import com.lidia.ddbuilder.pojo.DatosAdicionales;
@@ -36,6 +37,13 @@ public interface RetrofitConexion {
 
     @POST("/api/alineamientos/{id}")
     Call<ArrayList<Alineamiento>> doGetAlineamiento(@Path("id") int id, @Body Token token);
+
+    //Armor Class
+    @POST("/api/armor/save")
+    Call<ArmorClass> doSaveArmor(@Body ArmorClass armorClass);
+
+    @POST("/api/armor/get/{id}")
+    Call<ArmorClass> doGetArmor(@Path("id") int id, @Body Token token);
 
     //Caracteristicas
     @POST("/api/caracteristicas/save")

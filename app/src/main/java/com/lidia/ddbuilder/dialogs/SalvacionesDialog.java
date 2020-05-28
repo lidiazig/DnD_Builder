@@ -130,19 +130,6 @@ public class SalvacionesDialog extends DialogFragment {
                 if (!txtVolMisc.getText().toString().equals(""))
                     voluntad.setMisc(Integer.parseInt(txtVolMisc.getText().toString()));
 
-                int totalf = fortaleza.getBase() + fortaleza.getAbility() + fortaleza.getMagic() + fortaleza.getMisc();
-                int totalr = reflejos.getBase() + reflejos.getAbility() + reflejos.getMagic() + reflejos.getMisc();
-                int totalv = voluntad.getBase() + voluntad.getAbility() + voluntad.getMagic() + voluntad.getMisc();
-
-                fortaleza.setTipo("fortaleza");
-                reflejos.setTipo("reflejos");
-                voluntad.setTipo("voluntad");
-
-
-                salvaciones.clear();
-                salvaciones.add(fortaleza);
-                salvaciones.add(reflejos);
-                salvaciones.add(voluntad);
 
                 getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());
                 dismiss();

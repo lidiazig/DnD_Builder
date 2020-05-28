@@ -28,8 +28,6 @@ public class Salvacion {
       return getBase() + getAbility() + getMagic() + getMisc();
     }
 
-
-
     public String getTipo() {
         return tipo;
     }
