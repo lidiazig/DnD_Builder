@@ -35,9 +35,6 @@ public interface RetrofitConexion {
     @POST("/api/alineamientos")
     Call<ArrayList<Alineamiento>> doGetAlineamientos(@Body Token token);
 
-    @POST("/api/alineamientos/{id}")
-    Call<ArrayList<Alineamiento>> doGetAlineamiento(@Path("id") int id, @Body Token token);
-
     //Armor Class
     @POST("/api/armor/save")
     Call<ArmorClass> doSaveArmor(@Body ArmorClass armorClass);
@@ -55,9 +52,6 @@ public interface RetrofitConexion {
     //Clases
     @POST("/api/clases")
     Call<ArrayList<Clase>> doGetClases(@Body Token token);
-
-    @POST("/api/clases/{id}")
-    Call<ArrayList<Clase>> doGetClase(@Path("id") int id,@Body Token token);
 
     //Datos adicionales
     @POST("/api/datos/save")
@@ -93,9 +87,6 @@ public interface RetrofitConexion {
     Call<Armadura> doGetArmadura(@Path("id") int id, @Body Token token);
 
     //Habilidades
-    @POST("/api/habilidades")
-    Call<ArrayList<Habilidad>> doGetHabilidades(@Body Token token);
-
     @POST("/api/habilidades/personaje/{id}")
     Call<ArrayList<Habilidad>> doGetHabilidadesPj(@Path("id") int id, @Body Token token);
 
@@ -132,9 +123,6 @@ public interface RetrofitConexion {
     //Razas
     @POST("/api/razas")
     Call<ArrayList<Raza>> doGetRazas(@Body Token token);
-
-    @POST("/api/razas/{id}")
-    Call<ArrayList<Raza>> doGetRaza(@Path("id") int id,@Body Token token);
 
     //Salvaciones
     @POST("/api/salvaciones/save")

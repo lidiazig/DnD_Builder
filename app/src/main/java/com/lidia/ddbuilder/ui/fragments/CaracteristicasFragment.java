@@ -106,6 +106,7 @@ public class CaracteristicasFragment extends Fragment {
         lbReflejos = root.findViewById(R.id.lbReflejos);
         lbVoluntad = root.findViewById(R.id.lbVoluntad);
 
+        /*
         fillCaracteristicas();
         fillData();
         fillBaseAttack();
@@ -113,6 +114,8 @@ public class CaracteristicasFragment extends Fragment {
         fillIniciativa();
         fillArmorClass();
         fillSalvaciones();
+
+         */
 
         txtFue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -437,6 +440,20 @@ public class CaracteristicasFragment extends Fragment {
         txtRedDano.setText(datosAdicionales.getRedDano());
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            fillCaracteristicas();
+            fillSalvaciones();
+            fillArmorClass();
+            fillIniciativa();
+            fillGrapple();
+            fillBaseAttack();
+            fillData();
+        }
+    }
+
     private void fillCaracteristicas() {
         txtFue.setText(caracteristicas.getFuerza() + "");
         txtDes.setText(caracteristicas.getDestreza() + "");
@@ -535,8 +552,19 @@ public class CaracteristicasFragment extends Fragment {
     private void fillSalvaciones() {
         ArrayList<Salvacion> salvaciones = personaje.getSalvaciones();
 
-        lbFortaleza.setText(salvaciones.get(0).getTotal() + "");
-        lbReflejos.setText(salvaciones.get(1).getTotal() + "");
-        lbVoluntad.setText(salvaciones.get(2).getTotal() + "");
+        for (int i = 0; i < salvaciones.size(); i++) {
+            Salvacion s = salvaciones.get(i);
+            switch (s.getTipo()){
+                case "fortaleza":
+                    lbFortaleza.setText(s.getTotal()+"");
+                    break;
+                case "reflejos":
+                    lbReflejos.setText(s.getTotal() + "");
+                    break;
+                case "voluntad":
+                    lbVoluntad.setText(s.getTotal() + "");
+                    break;
+            }
+        }
     }
 }

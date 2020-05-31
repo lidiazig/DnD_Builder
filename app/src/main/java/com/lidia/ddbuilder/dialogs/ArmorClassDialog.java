@@ -72,18 +72,38 @@ public class ArmorClassDialog extends DialogFragment {
             public void onClick(View v) {
                 if (!txtArmor.getText().toString().equals(""))
                     armorClass.setArmor(Integer.parseInt(txtArmor.getText().toString()));
+                else
+                    armorClass.setArmor(0);
+
                 if (!txtShield.getText().toString().equals(""))
                     armorClass.setShield(Integer.parseInt(txtShield.getText().toString()));
+                else
+                    armorClass.setShield(0);
+
                 if (!txtDex.getText().toString().equals(""))
                     armorClass.setDex(Integer.parseInt(txtDex.getText().toString()));
+                else
+                    armorClass.setDex(0);
+
                 if (!txtSize.getText().toString().equals(""))
                     armorClass.setSize(Integer.parseInt(txtSize.getText().toString()));
+                else
+                    armorClass.setSize(0);
+
                 if (!txtNatural.getText().toString().equals(""))
                     armorClass.setNaturalArmor(Integer.parseInt(txtNatural.getText().toString()));
+                else
+                    armorClass.setNaturalArmor(0);
+
                 if (!txtDeflection.getText().toString().equals(""))
                     armorClass.setDeflection(Integer.parseInt(txtDeflection.getText().toString()));
+                else
+                    armorClass.setDeflection(0);
+
                 if (!txtMisc.getText().toString().equals(""))
                     armorClass.setMisc(Integer.parseInt(txtMisc.getText().toString()));
+                else
+                    armorClass.setMisc(0);
 
 
                 getTargetFragment().onActivityResult(getTargetRequestCode(), 1, getActivity().getIntent());

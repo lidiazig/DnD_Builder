@@ -17,6 +17,7 @@ import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HabilidadesAdapter;
 import com.lidia.ddbuilder.pojo.Habilidad;
+import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
 import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
@@ -30,7 +31,8 @@ import retrofit2.Response;
 public class HabilidadesFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private ArrayList<Habilidad> habilidades = PersonajeActivity.personaje.getHabilidades();
+    private Personaje personaje = PersonajeActivity.personaje;
+    private ArrayList<Habilidad> habilidades = personaje.getHabilidades();
     private int elemento = R.layout.elemento_habilidades;
     private HabilidadesAdapter adapter;
     private Token token = MainActivity.token;
@@ -71,11 +73,8 @@ public class HabilidadesFragment extends Fragment {
             Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_habilidades, container, false);
         recyclerView = root.findViewById(R.id.recyclerViewHabilidades);
-        if (habilidades.size() <= 0)
-            getHabilidades();
-        else {
-            setAdapter();
-        }
+
+        setAdapter();
         /*
         final TextView textView = root.findViewById(R.id.txtNombre);
         pageViewModel.getText().observe(this, new Observer<String>() {
@@ -89,52 +88,12 @@ public class HabilidadesFragment extends Fragment {
         return root;
     }
 
-    private void getHabilidades() {
-        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
-
-        Call<ArrayList<Habilidad>> call = conexion.doGetHabilidades(token);
-        call.enqueue(new Callback<ArrayList<Habilidad>>() {
-            @Override
-            public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
-                if (response.isSuccessful()) {
-                    if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
-
-                        setHabilidadesJSON(response.body());
-                        setAdapter();
-                    } else {
-                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<Habilidad>> call, Throwable t) {
-                Log.d("ERROR", t.getMessage());
-            }
-        });
-    }
-
-    private void setAdapter(){
+    private void setAdapter() {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 1);
         adapter = new HabilidadesAdapter(getContext(), habilidades, elemento, getFragmentManager());
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-    }
-
-    private void setHabilidadesJSON(ArrayList<Habilidad> response) {
-        for (int i = 0; i < response.size(); i++) {
-            Habilidad habilidad = new Habilidad();
-            habilidad.setId(response.get(i).getId());
-            habilidad.setNombre(response.get(i).getNombre());
-            habilidad.setCaracteristica(response.get(i).getCaracteristica());
-            habilidad.setPenalizacion(response.get(i).isPenalizacion());
-            habilidad.setSoloEntrenamiento(response.get(i).isSoloEntrenamiento());
-            habilidades.add(habilidad);
-        }
     }
 }

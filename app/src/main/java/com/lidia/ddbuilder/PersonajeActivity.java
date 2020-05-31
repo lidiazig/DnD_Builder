@@ -472,7 +472,6 @@ public class PersonajeActivity extends AppCompatActivity {
                         caracteristicas.setSabiduria(response.body().getSabiduria());
                         caracteristicas.setCarisma(response.body().getCarisma());
 
-                        personaje.setCaracteristicas(caracteristicas);
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -589,6 +588,7 @@ public class PersonajeActivity extends AppCompatActivity {
 
     private void setDotesJSON(ArrayList<Dote> response) {
         ArrayList<Dote> dotes = personaje.getDotes();
+        dotes.clear();
         for (int i = 0; i < response.size(); i++) {
             Dote dote = new Dote();
             dote.setId(response.get(i).getId());
@@ -631,11 +631,12 @@ public class PersonajeActivity extends AppCompatActivity {
 
     private void setEquipoJSON(ArrayList<Equipo> response) {
         ArrayList<Equipo> equipo = personaje.getEquipo();
+        equipo.clear();
         for (int i = 0; i < response.size(); i++) {
             if (response.get(i).getTipoObjeto() == 0)
                 setArma(response.get(i).getIdObjeto(), equipo);
             else
-                setArmadura(id, equipo);
+                setArmadura(response.get(i).getIdObjeto(), equipo);
         }
         personaje.setEquipo(equipo);
     }
@@ -715,7 +716,30 @@ public class PersonajeActivity extends AppCompatActivity {
     }
 
     private void getHabilidades(int id) {
+        RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
+        Call<ArrayList<Habilidad>> call = conexion.doGetHabilidadesPj(personaje.getPerfil().getId(),token);
+        call.enqueue(new Callback<ArrayList<Habilidad>>() {
+            @Override
+            public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {
+                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        Log.i("onSuccess", response.body().toString());
+
+                        personaje.setHabilidades(response.body());
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<Habilidad>> call, Throwable t) {
+                Log.d("ERROR", t.getMessage());
+            }
+        });
     }
 
     private void getInventario(int id) {
@@ -747,6 +771,7 @@ public class PersonajeActivity extends AppCompatActivity {
 
     private void setInventarioJSON(ArrayList<Inventario> response) {
         ArrayList<Inventario> inventario = personaje.getInventario();
+        inventario.clear();
         for (int i = 0; i < response.size(); i++) {
             Inventario objeto = new Inventario();
             objeto.setNombre(response.get(i).getNombre());
@@ -785,6 +810,7 @@ public class PersonajeActivity extends AppCompatActivity {
 
     private void setSalvacionesJSON(ArrayList<Salvacion> response) {
         ArrayList<Salvacion> salvaciones = personaje.getSalvaciones();
+        salvaciones.clear();
         for (int i = 0; i < response.size(); i++) {
             Salvacion salvacion = new Salvacion(response.get(i).getTipo());
             salvacion.setBase(response.get(i).getBase());
@@ -793,7 +819,6 @@ public class PersonajeActivity extends AppCompatActivity {
             salvacion.setMisc(response.get(i).getMisc());
             salvaciones.add(salvacion);
         }
-        personaje.setSalvaciones(salvaciones);
     }
 
     private void getVida(int id) {
@@ -826,5 +851,9 @@ public class PersonajeActivity extends AppCompatActivity {
                 Log.d("ERROR", t.getMessage());
             }
         });
+    }
+
+    public static void resetPersonaje(){
+        personaje = new Personaje();
     }
 }

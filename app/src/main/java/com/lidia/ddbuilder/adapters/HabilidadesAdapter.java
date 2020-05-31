@@ -29,7 +29,6 @@ import java.util.Hashtable;
 public class HabilidadesAdapter extends RecyclerView.Adapter<HabilidadesAdapter.Elemento> {
     private Context context;
     private ArrayList<Habilidad> habilidades;
-    private ArrayList<Habilidad> habilidadesPJ;
     private int resource;
     private FragmentManager fragmentManager;
     private Personaje personaje;
@@ -40,7 +39,6 @@ public class HabilidadesAdapter extends RecyclerView.Adapter<HabilidadesAdapter.
         this.resource = resource;
         this.fragmentManager = fragmentManager;
         this.personaje = PersonajeActivity.personaje;
-        this.habilidadesPJ = PersonajeActivity.personaje.getHabilidades();
     }
 
     @NonNull

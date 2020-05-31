@@ -48,6 +48,7 @@ public class ListaPersonajesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PersonajeActivity.resetPersonaje();
                 startActivity(new Intent(ListaPersonajesActivity.this, PersonajeActivity.class));
             }
         });

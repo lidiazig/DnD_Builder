@@ -9,20 +9,21 @@ public class ArmorClass {
     private int shield;
     private int dex;
     private int size;
+    @SerializedName("natural_armor")
     private int naturalArmor;
     private int deflection;
     private int misc;
 
     public int getAc() {
-        return getArmor() + getShield() + getDex() + getSize() + getNaturalArmor() + getDeflection() + getMisc();
+        return 10 + getArmor() + getShield() + getDex() + getSize() + getNaturalArmor() + getDeflection() + getMisc();
     }
 
     public int getTouch(){
-        return getDex() + getSize() + getDeflection() + getMisc();
+        return 10 + getDex() + getSize() + getDeflection() + getMisc();
     }
 
     public int getFlatfooted(){
-        return getArmor() + getShield() + getSize() + getNaturalArmor() + getMisc();
+        return 10 + getArmor() + getShield() + getSize() + getNaturalArmor() + getMisc();
     }
 
     public int getIdPersonaje() {

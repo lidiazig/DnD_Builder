@@ -74,8 +74,8 @@ public class PerfilFragment extends Fragment {
     private Token token = MainActivity.token;
 
     private ArrayList<Clase> clasesData = new ArrayList<>();
-    private ArrayList<Alineamiento> alineamientosData  = new ArrayList<>();
-    private ArrayList<Raza> razasData  = new ArrayList<>();
+    private ArrayList<Alineamiento> alineamientosData = new ArrayList<>();
+    private ArrayList<Raza> razasData = new ArrayList<>();
 
 
     private EditText txtNombre, txtNivel, txtGenero, txtTamano, txtEdad, txtIdiomas;
@@ -134,9 +134,6 @@ public class PerfilFragment extends Fragment {
         setSpinnerAlineamiento();
         fillImagenes();
         fillData();
-
-        if (personaje.getPerfil().getIdImagen() != 0)
-            imagen.setImageResource(perfil.getIdImagen());
 
         txtNombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -290,8 +287,15 @@ public class PerfilFragment extends Fragment {
         txtTamano.setText(perfil.getTamano());
         txtEdad.setText(perfil.getEdad());
         txtIdiomas.setText(perfil.getIdiomas());
+        imagen.setImageResource(perfil.getIdImagen());
+        for (int i = 0; i < imagenes.size(); i++) {
+            if (imagenes.get(i) == perfil.getIdImagen()) {
+                contador = i;
+                break;
+            }
+        }
 
-        spinnerAlineamiento.setSelection(getPosFromIdAlineamientos( perfil.getIdAlineamiento()), false);
+        spinnerAlineamiento.setSelection(getPosFromIdAlineamientos(perfil.getIdAlineamiento()), false);
         spinnerClase.setSelection(getPosFromIdClases(perfil.getIdClase()), false);
         spinnerRaza.setSelection(getPosFromIdRazas(perfil.getIdRaza()), false);
     }
@@ -392,7 +396,7 @@ public class PerfilFragment extends Fragment {
                 if (response.isSuccessful() && response.code() == 200) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-                        alineamientosData=response.body();
+                        alineamientosData = response.body();
                         spinAlineamientoJSON(response.body());
 
                     }
@@ -432,7 +436,7 @@ public class PerfilFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-                        razasData=response.body();
+                        razasData = response.body();
                         spinRazaJSON(response.body());
 
                     } else {
@@ -470,7 +474,7 @@ public class PerfilFragment extends Fragment {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
-                        clasesData=response.body();
+                        clasesData = response.body();
                         spinClaseJSON(response.body());
 
                     } else {
@@ -499,40 +503,38 @@ public class PerfilFragment extends Fragment {
         fillData();
     }
 
-    private int getIdFromPosClases(int position)
-    {
+    private int getIdFromPosClases(int position) {
         return clasesData.get(position).getId();
     }
-    private int getIdFromPosRazas(int position)
-    {
+
+    private int getIdFromPosRazas(int position) {
         return razasData.get(position).getId();
     }
-    private int getIdFromPoAlineamiento(int position)
-    {
+
+    private int getIdFromPoAlineamiento(int position) {
         return alineamientosData.get(position).getId();
     }
 
-    private int getPosFromIdClases(int id)
-    {
-        for(int i=0;i<clasesData.size();i++) {
+    private int getPosFromIdClases(int id) {
+        for (int i = 0; i < clasesData.size(); i++) {
             if (clasesData.get(i).getId() == id) {
                 return i;
             }
         }
         return -1;
     }
-    private int getPosFromIdRazas(int id)
-    {
-        for(int i=0;i<razasData.size();i++) {
+
+    private int getPosFromIdRazas(int id) {
+        for (int i = 0; i < razasData.size(); i++) {
             if (razasData.get(i).getId() == id) {
                 return i;
             }
         }
         return -1;
     }
-    private int getPosFromIdAlineamientos(int id)
-    {
-        for(int i=0;i<alineamientosData.size();i++) {
+
+    private int getPosFromIdAlineamientos(int id) {
+        for (int i = 0; i < alineamientosData.size(); i++) {
             if (alineamientosData.get(i).getId() == id) {
                 return i;
             }
