@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lidia.ddbuilder.adapters.ListaPjAdapter;
-import com.lidia.ddbuilder.dialogs.DeleteDialog;
 import com.lidia.ddbuilder.pojo.PersonajeLista;
 import com.lidia.ddbuilder.pojo.Token;
 import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
@@ -63,8 +62,6 @@ public class ListaPersonajesActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<PersonajeLista>> call, Response<ArrayList<PersonajeLista>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.i("onSuccess", response.body().toString());
-
                         setPersonajesJSON(response.body());
 
                         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(ListaPersonajesActivity.this, 1);

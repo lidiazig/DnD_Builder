@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Arma;
 import com.lidia.ddbuilder.pojo.Armadura;
@@ -35,12 +36,12 @@ public class EquipoDialog extends DialogFragment {
 
     public EquipoDialog() {
         super();
-        this.equipo = EquipoFragment.equipo;
+        this.equipo = PersonajeActivity.personaje.getEquipo();
     }
 
     public EquipoDialog(Equipo objeto) {
         super();
-        this.equipo = EquipoFragment.equipo;
+        this.equipo = PersonajeActivity.personaje.getEquipo();
         this.objeto = objeto;
     }
 

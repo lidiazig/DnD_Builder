@@ -14,7 +14,6 @@ import com.lidia.ddbuilder.pojo.Hechizo;
 import com.lidia.ddbuilder.pojo.HechizoBase;
 import com.lidia.ddbuilder.pojo.Inventario;
 import com.lidia.ddbuilder.pojo.Perfil;
-import com.lidia.ddbuilder.pojo.Personaje;
 import com.lidia.ddbuilder.pojo.PersonajeLista;
 import com.lidia.ddbuilder.pojo.Raza;
 import com.lidia.ddbuilder.pojo.Salvacion;

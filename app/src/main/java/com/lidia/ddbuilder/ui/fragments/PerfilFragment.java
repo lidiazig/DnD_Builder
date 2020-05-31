@@ -267,16 +267,6 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        /*
-        final TextView textView = root.findViewById(R.id.txtNombre);
-        pageViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-
-         */
         return root;
     }
 
@@ -287,11 +277,14 @@ public class PerfilFragment extends Fragment {
         txtTamano.setText(perfil.getTamano());
         txtEdad.setText(perfil.getEdad());
         txtIdiomas.setText(perfil.getIdiomas());
-        imagen.setImageResource(perfil.getIdImagen());
-        for (int i = 0; i < imagenes.size(); i++) {
-            if (imagenes.get(i) == perfil.getIdImagen()) {
-                contador = i;
-                break;
+
+        if(perfil.getIdImagen()!=0) {
+            imagen.setImageResource(perfil.getIdImagen());
+            for (int i = 0; i < imagenes.size(); i++) {
+                if (imagenes.get(i) == perfil.getIdImagen()) {
+                    contador = i;
+                    break;
+                }
             }
         }
 

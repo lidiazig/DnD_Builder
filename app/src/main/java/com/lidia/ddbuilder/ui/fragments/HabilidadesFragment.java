@@ -1,7 +1,6 @@
 package com.lidia.ddbuilder.ui.fragments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +11,14 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.lidia.ddbuilder.MainActivity;
 import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.adapters.HabilidadesAdapter;
 import com.lidia.ddbuilder.pojo.Habilidad;
 import com.lidia.ddbuilder.pojo.Personaje;
-import com.lidia.ddbuilder.pojo.Token;
-import com.lidia.ddbuilder.retrofit_api.RetrofitConexion;
-import com.lidia.ddbuilder.retrofit_api.RetrofitObject;
 
 import java.util.ArrayList;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HabilidadesFragment extends Fragment {
 
@@ -35,7 +27,6 @@ public class HabilidadesFragment extends Fragment {
     private ArrayList<Habilidad> habilidades = personaje.getHabilidades();
     private int elemento = R.layout.elemento_habilidades;
     private HabilidadesAdapter adapter;
-    private Token token = MainActivity.token;
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
@@ -75,16 +66,7 @@ public class HabilidadesFragment extends Fragment {
         recyclerView = root.findViewById(R.id.recyclerViewHabilidades);
 
         setAdapter();
-        /*
-        final TextView textView = root.findViewById(R.id.txtNombre);
-        pageViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
-         */
         return root;
     }
 

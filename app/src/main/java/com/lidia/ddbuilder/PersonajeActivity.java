@@ -62,7 +62,8 @@ public class PersonajeActivity extends AppCompatActivity {
             id = bundle.getInt("id");
             personaje.setId(id);
             getPersonaje(id);
-        }
+        }else
+            getHabilidades(0);
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             switch (i) {
@@ -118,8 +119,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Perfil>() {
             @Override
             public void onResponse(Call<Perfil> call, Response<Perfil> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         savePersonaje();
@@ -144,8 +143,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArmorClass>() {
             @Override
             public void onResponse(Call<ArmorClass> call, Response<ArmorClass> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -169,8 +166,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<DatosAdicionales>() {
             @Override
             public void onResponse(Call<DatosAdicionales> call, Response<DatosAdicionales> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -194,8 +189,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Vida>() {
             @Override
             public void onResponse(Call<Vida> call, Response<Vida> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -219,8 +212,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Salvacion>>() {
             @Override
             public void onResponse(Call<ArrayList<Salvacion>> call, Response<ArrayList<Salvacion>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -244,8 +235,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Inventario>>() {
             @Override
             public void onResponse(Call<ArrayList<Inventario>> call, Response<ArrayList<Inventario>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -269,8 +258,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Habilidad>>() {
             @Override
             public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -294,8 +281,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Equipo>>() {
             @Override
             public void onResponse(Call<ArrayList<Equipo>> call, Response<ArrayList<Equipo>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -319,8 +304,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Dote>>() {
             @Override
             public void onResponse(Call<ArrayList<Dote>> call, Response<ArrayList<Dote>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -345,8 +328,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Caracteristicas>() {
             @Override
             public void onResponse(Call<Caracteristicas> call, Response<Caracteristicas> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -371,8 +352,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Integer>() {
             @Override
             public void onResponse(Call<Integer> call, Response<Integer> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("asdasdasd", response.body().toString());
@@ -407,8 +386,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Perfil>() {
             @Override
             public void onResponse(Call<Perfil> call, Response<Perfil> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -425,8 +402,6 @@ public class PersonajeActivity extends AppCompatActivity {
                         perfil.setEdad(response.body().getEdad());
                         perfil.setIdiomas(response.body().getIdiomas());
                         perfil.setIdImagen(response.body().getIdImagen());
-
-                        personaje.setPerfil(perfil);
 
                         getCaracteristicas(id);
                         getHabilidades(id);
@@ -457,8 +432,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Caracteristicas>() {
             @Override
             public void onResponse(Call<Caracteristicas> call, Response<Caracteristicas> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -492,8 +465,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArmorClass>() {
             @Override
             public void onResponse(Call<ArmorClass> call, Response<ArmorClass> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -508,7 +479,6 @@ public class PersonajeActivity extends AppCompatActivity {
                         armorClass.setDeflection(response.body().getDeflection());
                         armorClass.setMisc(response.body().getMisc());
 
-                        personaje.setArmorClass(armorClass);
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -529,8 +499,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<DatosAdicionales>() {
             @Override
             public void onResponse(Call<DatosAdicionales> call, Response<DatosAdicionales> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -545,7 +513,6 @@ public class PersonajeActivity extends AppCompatActivity {
                         datos.setSize(response.body().getSize());
                         datos.setVelocidad(response.body().getVelocidad());
 
-                        personaje.setDatosAdicionales(datos);
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -566,13 +533,11 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Dote>>() {
             @Override
             public void onResponse(Call<ArrayList<Dote>> call, Response<ArrayList<Dote>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
 
-                        setDotesJSON(response.body());
+                        personaje.setDotes(response.body());
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -586,21 +551,6 @@ public class PersonajeActivity extends AppCompatActivity {
         });
     }
 
-    private void setDotesJSON(ArrayList<Dote> response) {
-        ArrayList<Dote> dotes = personaje.getDotes();
-        dotes.clear();
-        for (int i = 0; i < response.size(); i++) {
-            Dote dote = new Dote();
-            dote.setId(response.get(i).getId());
-            dote.setNombre(response.get(i).getNombre());
-            dote.setPrerrequisito(response.get(i).getPrerrequisito());
-            dote.setDescripcion(response.get(i).getDescripcion());
-            dote.setNotas(response.get(i).getNotas());
-            dotes.add(dote);
-        }
-        personaje.setDotes(dotes);
-    }
-
 
     private void getEquipo(int id) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
@@ -609,8 +559,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Equipo>>() {
             @Override
             public void onResponse(Call<ArrayList<Equipo>> call, Response<ArrayList<Equipo>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -638,7 +586,6 @@ public class PersonajeActivity extends AppCompatActivity {
             else
                 setArmadura(response.get(i).getIdObjeto(), equipo);
         }
-        personaje.setEquipo(equipo);
     }
 
     private void setArma(int id, final ArrayList<Equipo> equipo) {
@@ -648,8 +595,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Arma>() {
             @Override
             public void onResponse(Call<Arma> call, Response<Arma> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -685,8 +630,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Armadura>() {
             @Override
             public void onResponse(Call<Armadura> call, Response<Armadura> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -722,8 +665,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Habilidad>>() {
             @Override
             public void onResponse(Call<ArrayList<Habilidad>> call, Response<ArrayList<Habilidad>> response) {
-                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -749,13 +690,11 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Inventario>>() {
             @Override
             public void onResponse(Call<ArrayList<Inventario>> call, Response<ArrayList<Inventario>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
 
-                        setInventarioJSON(response.body());
+                        personaje.setInventario(response.body());
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -769,18 +708,6 @@ public class PersonajeActivity extends AppCompatActivity {
         });
     }
 
-    private void setInventarioJSON(ArrayList<Inventario> response) {
-        ArrayList<Inventario> inventario = personaje.getInventario();
-        inventario.clear();
-        for (int i = 0; i < response.size(); i++) {
-            Inventario objeto = new Inventario();
-            objeto.setNombre(response.get(i).getNombre());
-            objeto.setCantidad(response.get(i).getCantidad());
-            inventario.add(objeto);
-        }
-        personaje.setInventario(inventario);
-    }
-
     private void getSalvaciones(int id) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
 
@@ -788,13 +715,11 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<ArrayList<Salvacion>>() {
             @Override
             public void onResponse(Call<ArrayList<Salvacion>> call, Response<ArrayList<Salvacion>> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
 
-                        setSalvacionesJSON(response.body());
+                        personaje.setSalvaciones(response.body());
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
@@ -808,18 +733,6 @@ public class PersonajeActivity extends AppCompatActivity {
         });
     }
 
-    private void setSalvacionesJSON(ArrayList<Salvacion> response) {
-        ArrayList<Salvacion> salvaciones = personaje.getSalvaciones();
-        salvaciones.clear();
-        for (int i = 0; i < response.size(); i++) {
-            Salvacion salvacion = new Salvacion(response.get(i).getTipo());
-            salvacion.setBase(response.get(i).getBase());
-            salvacion.setAbility(response.get(i).getAbility());
-            salvacion.setMagic(response.get(i).getMagic());
-            salvacion.setMisc(response.get(i).getMisc());
-            salvaciones.add(salvacion);
-        }
-    }
 
     private void getVida(int id) {
         RetrofitConexion conexion = RetrofitObject.getConexion().create(RetrofitConexion.class);
@@ -828,8 +741,6 @@ public class PersonajeActivity extends AppCompatActivity {
         call.enqueue(new Callback<Vida>() {
             @Override
             public void onResponse(Call<Vida> call, Response<Vida> response) {
-//                Log.i("Responsestring", response.body().toString());
-                //Toast.makeText()
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         Log.i("onSuccess", response.body().toString());
@@ -838,8 +749,6 @@ public class PersonajeActivity extends AppCompatActivity {
                         vida.setPgMax(response.body().getPgMax());
                         vida.setPgHeridas(response.body().getPgHeridas());
                         vida.setDanoNoLetal(response.body().getDanoNoLetal());
-
-                        personaje.setVida(vida);
                     } else {
                         Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }

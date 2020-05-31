@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.lidia.ddbuilder.PersonajeActivity;
 import com.lidia.ddbuilder.R;
 import com.lidia.ddbuilder.pojo.Inventario;
 
@@ -26,12 +27,12 @@ public class InventarioDialog extends DialogFragment {
 
     public InventarioDialog () {
         super();
-        this.inventario = InventarioFragment.inventario;
+        this.inventario = PersonajeActivity.personaje.getInventario();
     }
 
     public InventarioDialog (Inventario objeto) {
         super();
-        this.inventario = InventarioFragment.inventario;
+        this.inventario = PersonajeActivity.personaje.getInventario();
         this.objeto = objeto;
     }
 
